@@ -10,5 +10,7 @@ public:
 	float radio;
 	unsigned char rojo, verde, azul;
 	Vector2D posicion, velocidad, aceleracion;
+	void Dibuja();
+	void Mueve(float t);
 };
 

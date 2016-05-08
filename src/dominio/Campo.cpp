@@ -1,5 +1,12 @@
 #include "..\..\include\dominio\Campo.h"
+#include "..\..\include\dominio\Pared.h"
 
+
+
+Pared suelo;
+Pared techo;
+Pared pared_dcha;
+Pared pared_izq;
 
 Campo::Campo()  //constructor de campo. Damos valores iniciales
 {
@@ -42,4 +49,12 @@ Campo::Campo()  //constructor de campo. Damos valores iniciales
 
 Campo::~Campo()
 {
+}
+void Campo::Dibuja(){
+
+	suelo.Dibuja();
+	techo.Dibuja();
+	pared_izq.Dibuja(); 
+	pared_dcha.Dibuja();
+
 }

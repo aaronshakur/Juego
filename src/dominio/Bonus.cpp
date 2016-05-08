@@ -1,4 +1,5 @@
 #include "..\..\include\dominio\Bonus.h"
+#include "..\..\include\comun\glut.h"
 
 
 Bonus::Bonus()    //constructor de bonus. Damos valores iniciales
@@ -11,4 +12,14 @@ Bonus::Bonus()    //constructor de bonus. Damos valores iniciales
 
 Bonus::~Bonus()
 {
+}
+
+void Bonus::Dibuja()
+{
+	glPushMatrix();
+	glTranslatef(posicion.x, posicion.y, 0); glRotatef(30, 1, 1, 1);
+	glColor3ub(255, 255, 255);
+	glutSolidCube(lado);
+	glPopMatrix();
+
 }

@@ -8,6 +8,6 @@ public:
 	~Campo();
 
 	Pared suelo, techo, pared_izq, pared_dcha;
-	
+	void Dibuja();
 };
 
