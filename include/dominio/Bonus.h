@@ -10,5 +10,11 @@ public:
 	float lado;
 	unsigned char rojo, verde, azul;
 	Vector2D posicion, velocidad, aceleracion;
+
+	//Metodos
+	void Dibuja();
+	void Mueve(float);
+
+
 };
 

@@ -11,14 +11,13 @@ Campo::Campo()  //constructor de campo. Damos valores iniciales
 	suelo.verde = 100;
 	suelo.rojo = 25;
 
-
 	techo.limite1.x = 20.0f;
 	techo.limite2.x = -20.f;
 	techo.limite1.y = 20.0f;
 	techo.limite2.y = 20.0f;
-	techo.azul = 85;
-	techo.verde = 220;
-	techo.rojo = 35;
+	techo.azul = 45;
+	techo.verde = 100;
+	techo.rojo = 25;
 
 	pared_dcha.limite1.x = 20.0f;
 	pared_dcha.limite2.x = 20.f;
@@ -36,10 +35,27 @@ Campo::Campo()  //constructor de campo. Damos valores iniciales
 	pared_izq.verde = 220;
 	pared_izq.rojo = 35;
 
+	red.limite1.x = 0.0f;
+	red.limite2.x = 0.0f;
+	red.limite1.y = 0.0f;
+	red.limite2.y = 5.0f;
+	red.azul = 80;
+	red.verde = 50;
+	red.rojo = 100;
+
 
 }
 
-
 Campo::~Campo()
 {
+}
+
+void Campo::Dibuja(){
+
+	suelo.Dibuja();
+	techo.Dibuja();
+	pared_dcha.Dibuja();
+	pared_izq.Dibuja();
+	red.Dibuja();
+
 }

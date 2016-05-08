@@ -9,5 +9,9 @@ public:
 
 	float altura;
 	Vector2D posicion, velocidad, aceleracion;
+
+	//Metodos
+	void Dibuja();
+	void Mueve(float);
 };
 

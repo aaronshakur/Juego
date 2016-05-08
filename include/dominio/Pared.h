@@ -10,6 +10,9 @@ public:
 	unsigned char rojo, verde, azul;
 	Vector2D limite1, limite2;
 
+	//Metodos
+	void Dibuja();
+
 
 };
 
