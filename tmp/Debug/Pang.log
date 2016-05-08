@@ -1,7 +1,10 @@
-﻿Compilación iniciada a las 5/7/2016 5:15:16 PM.
+﻿Compilación iniciada a las 5/8/2016 9:20:02 PM.
      1>Proyecto "C:\Users\Aaron\Desktop\2016\Practicas\Juego\Pang.vcxproj" en el nodo 2 (Build destinos).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (tmp\Debug\) contains files shared from another project (Pang.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-     1>Link:
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ilib /Isrc /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"tmp\Debug\\" /Fd"tmp\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\juego\Mundo.cpp
+         Mundo.cpp
+       Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.exe" /INCREMENTAL /NOLOGO /LIBPATH:lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.lib" /MACHINE:X86 tmp\Debug\Vector2D.obj
          tmp\Debug\Balon.obj
          tmp\Debug\Bonus.obj
@@ -15,4 +18,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:00.36
+Tiempo transcurrido 00:00:00.94
