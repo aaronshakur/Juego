@@ -3,16 +3,19 @@
 
 class Balon
 {
-public:
-	Balon();
-	~Balon();
+private:
 
 	float radio;
 	unsigned char rojo, verde, azul;
 	Vector2D posicion, velocidad, aceleracion;
+public:
 
+	Balon();
+	~Balon();
 	//Metodos
 	void Dibuja();
 	void Mueve(float);
+	void SetColor(unsigned char, unsigned char, unsigned char);
+	void SetRadio(float);
 };
 

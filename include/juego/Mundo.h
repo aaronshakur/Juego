@@ -24,6 +24,7 @@ public:
 	void RotarOjo();
 	void Mueve();
 	void Dibuja();
+	void SetColor(); //Necesario??
 
 	
 };

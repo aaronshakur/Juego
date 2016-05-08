@@ -3,14 +3,15 @@
 
 class Bonus
 {
-public:
-	Bonus();
-	~Bonus();
+private:
 
 	float lado;
 	unsigned char rojo, verde, azul;
 	Vector2D posicion, velocidad, aceleracion;
 
+public:
+	Bonus();
+	~Bonus();
 	//Metodos
 	void Dibuja();
 	void Mueve(float);

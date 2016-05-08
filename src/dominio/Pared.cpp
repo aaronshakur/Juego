@@ -29,3 +29,11 @@ void Pared::Dibuja(){
 	glEnable(GL_LIGHTING);
 
 }
+
+void Pared::SetColor(unsigned char r, unsigned char g, unsigned char b){
+
+	rojo = r;
+	verde = g;
+	azul = b;
+
+}

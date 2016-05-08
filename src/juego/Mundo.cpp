@@ -23,17 +23,6 @@ void Mundo::Dibuja()
 	bonus.Dibuja();
 	campo.Dibuja();
 
-	//dibujo del suelo
-	/*glDisable(GL_LIGHTING);
-	glBegin(GL_POLYGON);
-		glColor3ub(255,0,0);
-		glVertex3f(-5.0f,0,-5.0f);
-		glVertex3f(-5.0f,0,5.0f);
-		glColor3ub(255,255,0);
-		glVertex3f(5.0f,0,5.0f);	
-		glVertex3f(5.0f,0,-5.0f);
-	glEnd();
-	glEnable(GL_LIGHTING);*/
 }
 
 void Mundo::Mueve()
@@ -50,14 +39,20 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	y_ojo=7.5;
 	z_ojo=40;
 
+	hombre1.SetColor(255, 0, 0);
+	hombre1.SetAltura(1.8f);
 	hombre1.posicion.x = 6;
 	hombre1.posicion.y = 0;
+	hombre2.SetColor(0, 0, 255);
+	hombre2.SetAltura(1.8f);
 	hombre2.posicion.x = -6;
 	hombre2.posicion.y = 0;
 
 	bonus.posicion.x = 8;
 	bonus.posicion.y = 8;
 
+	balon.SetColor(255, 255, 0);
+	balon.SetRadio(0.5f);
 	balon.posicion.x = 1;
 	balon.posicion.y = 6;
 
