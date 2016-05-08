@@ -29,3 +29,16 @@ void Balon::Mueve(float t){
 	velocidad.y = velocidad.y + aceleracion.y*t;
 
 }
+
+void Balon::SetColor(unsigned char r, unsigned char g, unsigned char b)
+{
+	rojo = r;
+	verde = g;
+	azul = b;
+};
+
+void Balon::SetRadio(float rad){
+
+	radio = rad;
+
+}

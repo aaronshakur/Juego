@@ -5,6 +5,7 @@
 Hombre::Hombre()  //constructor de hombre. Damos valores iniciales
 {
 	altura = 1.8f;
+	rojo = verde = azul = 255; //blanco
 	//mas adelante cuando salten, pondremos gravedad.
 }
 
@@ -16,7 +17,7 @@ void Hombre::Dibuja(){
 
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
-	glColor3f(1.0f, 0.0f, 0.0f);
+	glColor3ub(rojo, verde, azul);
 	glutSolidSphere(altura, 20, 20);
 	glPopMatrix();
 
@@ -28,5 +29,18 @@ void Hombre::Mueve(float t){
 	posicion.y = posicion.y + velocidad.y*t + 0.5f*aceleracion.y*t*t;
 	velocidad.x = velocidad.x + aceleracion.x*t;
 	velocidad.y = velocidad.y + aceleracion.y*t;
+
+}
+
+void Hombre::SetColor(unsigned char r, unsigned char g, unsigned char b)
+{
+	rojo = r;
+	verde = g;
+	azul = b;
+};
+
+void Hombre::SetAltura(float rad){ //ALTURA=RADIO ESFERAS HOMBRES
+
+	altura = rad;
 
 }

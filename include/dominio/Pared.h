@@ -3,15 +3,18 @@
 
 class Pared
 {
-public:
-	Pared();
-	~Pared();
+private:
 
 	unsigned char rojo, verde, azul;
 	Vector2D limite1, limite2;
 
+public:
+	Pared();
+	~Pared();
+
 	//Metodos
 	void Dibuja();
+	void SetColor(unsigned char, unsigned char, unsigned char);
 
 
 };
