@@ -41,20 +41,21 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 
 	hombre1.SetColor(255, 0, 0);
 	hombre1.SetAltura(1.8f);
-	hombre1.posicion.x = 6;
-	hombre1.posicion.y = 0;
+	hombre1.SetPos(6, 0);//hombre1.posicion.x = 6;
+	//hombre1.posicion.y = 0;
 	hombre2.SetColor(0, 0, 255);
 	hombre2.SetAltura(1.8f);
-	hombre2.posicion.x = -6;
-	hombre2.posicion.y = 0;
+	hombre2.SetPos(-6, 0);
+	//hombre2.posicion.x = -6;
+	//hombre2.posicion.y = 0;
 
-	bonus.posicion.x = 8;
-	bonus.posicion.y = 8;
+	bonus.SetPos(8, 8);// posicion.x = 8;
+	//bonus.posicion.y = 8;
 
 	balon.SetColor(255, 255, 0);
 	balon.SetRadio(0.5f);
-	balon.posicion.x = 1;
-	balon.posicion.y = 6;
+	balon.SetPos(1, 6);
+
 
 
 }

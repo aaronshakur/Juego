@@ -15,7 +15,7 @@ public:
 	//Metodos
 	void Dibuja();
 	void SetColor(unsigned char, unsigned char, unsigned char);
-
+	void SetLim(float, float,float,float);
 
 };
 

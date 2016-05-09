@@ -44,3 +44,8 @@ void Hombre::SetAltura(float rad){ //ALTURA=RADIO ESFERAS HOMBRES
 	altura = rad;
 
 }
+void Hombre::SetPos(float posx, float posy){
+
+	posicion.x = posx;
+	posicion.y = posy;
+}
