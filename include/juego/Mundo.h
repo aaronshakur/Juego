@@ -6,17 +6,18 @@
 
 class Mundo
 {
-public: 
+
+private:
+
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
-
-	//Creamos los objetos para instanciarlos en Mundo. De esta manera, cuando se instancie el objeto Mundo, 
-	//se instanciaran todos estos objetos.
-	Balon balon;
-	Campo campo;
+	Balon balon;		//Creamos los objetos para instanciarlos en Mundo. De esta manera, cuando se instancie el objeto Mundo, 
+	Campo campo;		//se instanciaran todos estos objetos.
 	Hombre hombre1, hombre2;
 	Bonus bonus;
+
+public: 
 	
 	//Metodos
 	void Tecla(unsigned char key);
@@ -24,7 +25,7 @@ public:
 	void RotarOjo();
 	void Mueve();
 	void Dibuja();
-	void SetColor(); //Necesario??
+	void SetPos(float,float,float); //Necesario??
 
 	
 };
