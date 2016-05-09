@@ -6,9 +6,13 @@
 
 class Mundo
 {
+<<<<<<< HEAD
 
 private:
 
+=======
+private:
+>>>>>>> refs/remotes/origin/master
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
@@ -16,9 +20,13 @@ private:
 	Campo campo;		//se instanciaran todos estos objetos.
 	Hombre hombre1, hombre2;
 	Bonus bonus;
+<<<<<<< HEAD
 
 public: 
 	
+=======
+public:
+>>>>>>> refs/remotes/origin/master
 	//Metodos
 	void Tecla(unsigned char key);
 	void Inicializa();

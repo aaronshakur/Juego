@@ -25,11 +25,9 @@ void Hombre::Dibuja(){
 
 void Hombre::Mueve(float t){
 
-	posicion.x = posicion.x + velocidad.x*t + 0.5f*aceleracion.x*t*t;
-	posicion.y = posicion.y + velocidad.y*t + 0.5f*aceleracion.y*t*t;
-	velocidad.x = velocidad.x + aceleracion.x*t;
-	velocidad.y = velocidad.y + aceleracion.y*t;
-
+	posicion = posicion + velocidad*t + aceleracion*(t*t*0.5f);   //no puede ser escalar*vector!!! debe ser Vector2D* escalar!! debido a la declaracion en Vector2D.cpp
+	velocidad = velocidad + aceleracion*t;
+	
 }
 
 void Hombre::SetColor(unsigned char r, unsigned char g, unsigned char b)
