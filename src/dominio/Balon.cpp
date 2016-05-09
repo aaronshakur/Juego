@@ -42,3 +42,8 @@ void Balon::SetRadio(float rad){
 	radio = rad;
 
 }
+void Balon::SetPos(float posx, float posy){
+
+	posicion.x = posx;
+	posicion.y = posy;
+}

@@ -15,7 +15,7 @@ public:
 	//Metodos
 	void Dibuja();
 	void Mueve(float);
-
+	void SetPos(float, float);
 
 };
 
