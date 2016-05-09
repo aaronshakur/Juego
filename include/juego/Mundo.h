@@ -6,7 +6,7 @@
 
 class Mundo
 {
-public: 
+private:
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
@@ -17,7 +17,7 @@ public:
 	Campo campo;
 	Hombre hombre1, hombre2;
 	Bonus bonus;
-	
+public:
 	//Metodos
 	void Tecla(unsigned char key);
 	void Inicializa();
