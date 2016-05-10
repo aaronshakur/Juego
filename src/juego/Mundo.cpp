@@ -29,11 +29,14 @@ void Mundo::Dibuja()
 
 void Mundo::Mueve()
 {
-	hombre1.Mueve(0.05f);
-	hombre2.Mueve(0.05f);
+	hombre1.Mueve(0.075f);
+	hombre2.Mueve(0.075f);
 	balon.Mueve(0.05f);
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
+	Interaccion::Rebote(balon, campo);
+	Interaccion::Rebote(balon, hombre1);
+	Interaccion::Rebote(balon, hombre2);
 	
 
 }
@@ -42,21 +45,21 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 {
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	x_ojo = 1.5;
-	y_ojo = 7.5;
-	z_ojo = 40;
+	y_ojo = 9;
+	z_ojo = 42;
 
 	hombre1.SetColor(255, 0, 0);
 	hombre1.SetAltura(1.8f);
-	hombre1.SetPos(6, 0);
+	hombre1.SetPos(6, 1);
 
 	hombre2.SetColor(0, 0, 255);
 	hombre2.SetAltura(1.8f);
-	hombre2.SetPos(-6, 0);
+	hombre2.SetPos(-6, 1);
 
 	bonus.SetPos(8, 8);
 
 	balon.SetColor(255, 255, 0);
-	balon.SetRadio(0.5f);
+	balon.SetRadio(0.75f);
 	balon.SetPos(1, 6);
 
 }

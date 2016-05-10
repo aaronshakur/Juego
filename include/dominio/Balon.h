@@ -9,7 +9,6 @@ private:
 	unsigned char rojo, verde, azul;
 	Vector2D posicion, velocidad, aceleracion;
 public:
-
 	Balon();
 	~Balon();
 	//Metodos
@@ -18,5 +17,6 @@ public:
 	void SetColor(unsigned char, unsigned char, unsigned char);
 	void SetRadio(float);
 	void SetPos(float, float);
+	friend class Interaccion;
 };
 
