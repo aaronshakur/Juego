@@ -1,5 +1,7 @@
 #include "..\include\comun\glut.h"
 #include "..\include\juego\Mundo.h"
+#include "..\..\include\dominio\Interaccion.h"
+
 #include <math.h>
 
 void Mundo::RotarOjo()
@@ -30,37 +32,57 @@ void Mundo::Mueve()
 	hombre1.Mueve(0.05f);
 	hombre2.Mueve(0.05f);
 	balon.Mueve(0.05f);
+	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
+	Interaccion::Rebote(hombre2, campo);
+	
 
 }
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
-	x_ojo=1.5;
-	y_ojo=7.5;
-	z_ojo=40;
+	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
+	x_ojo = 1.5;
+	y_ojo = 7.5;
+	z_ojo = 40;
 
 	hombre1.SetColor(255, 0, 0);
 	hombre1.SetAltura(1.8f);
-	hombre1.SetPos(6, 0);//hombre1.posicion.x = 6;
-	//hombre1.posicion.y = 0;
+	hombre1.SetPos(6, 0);
+
 	hombre2.SetColor(0, 0, 255);
 	hombre2.SetAltura(1.8f);
 	hombre2.SetPos(-6, 0);
-	//hombre2.posicion.x = -6;
-	//hombre2.posicion.y = 0;
 
-	bonus.SetPos(8, 8);// posicion.x = 8;
-	//bonus.posicion.y = 8;
+	bonus.SetPos(8, 8);
 
 	balon.SetColor(255, 255, 0);
 	balon.SetRadio(0.5f);
 	balon.SetPos(1, 6);
 
-
-
 }
 
 void Mundo::Tecla(unsigned char key)
 {
+	switch (key)
+	{
+	case 'a':
+		hombre2.SetVel(-5.0f, 0.0f);
+		break;
+	case 'd':
+		hombre2.SetVel(5.0f, 0.0f);
+		break;
+	}
+}
 
+void Mundo::TeclaEspecial(unsigned char key)
+{
+	switch (key)
+	{
+	case GLUT_KEY_LEFT:
+		hombre1.SetVel(-5.0f, 0.0f);
+		break;
+	case GLUT_KEY_RIGHT:
+		hombre1.SetVel(5.0f, 0.0f);
+		break;
+	}
 }
