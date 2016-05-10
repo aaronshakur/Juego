@@ -16,6 +16,10 @@ public:
 	void Dibuja();
 	void SetColor(unsigned char, unsigned char, unsigned char);
 	void SetLim(float, float,float,float);
+	float Distancia(Vector2D punto, Vector2D *direccion = 0);
+
+
+friend class Interaccion;
 
 };
 

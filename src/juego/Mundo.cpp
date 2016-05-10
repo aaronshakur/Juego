@@ -1,5 +1,7 @@
 #include "..\include\comun\glut.h"
 #include "..\include\juego\Mundo.h"
+#include "..\..\include\dominio\Interaccion.h"
+
 #include <math.h>
 
 void Mundo::RotarOjo()
@@ -30,6 +32,9 @@ void Mundo::Mueve()
 	hombre1.Mueve(0.05f);
 	hombre2.Mueve(0.05f);
 	balon.Mueve(0.05f);
+	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
+	Interaccion::Rebote(hombre2, campo);
+	
 
 }
 
@@ -58,5 +63,26 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 
 void Mundo::Tecla(unsigned char key)
 {
+	switch (key)
+	{
+	case 'a':
+		hombre2.SetVel(-5.0f, 0.0f);
+		break;
+	case 'd':
+		hombre2.SetVel(5.0f, 0.0f);
+		break;
+	}
+}
 
+void Mundo::TeclaEspecial(unsigned char key)
+{
+	switch (key)
+	{
+	case GLUT_KEY_LEFT:
+		hombre1.SetVel(-5.0f, 0.0f);
+		break;
+	case GLUT_KEY_RIGHT:
+		hombre1.SetVel(5.0f, 0.0f);
+		break;
+	}
 }

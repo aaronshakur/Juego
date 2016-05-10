@@ -14,5 +14,7 @@ public:
 	//Metodos
 	void Dibuja();
 
+friend class Interaccion;
+
 };
 

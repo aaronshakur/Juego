@@ -16,6 +16,7 @@
     <ClCompile Include="src\dominio\Bonus.cpp" />
     <ClCompile Include="src\dominio\Campo.cpp" />
     <ClCompile Include="src\dominio\Hombre.cpp" />
+    <ClCompile Include="src\dominio\Interaccion.cpp" />
     <ClCompile Include="src\dominio\Pared.cpp" />
     <ClCompile Include="src\juego\Juego.cpp" />
     <ClCompile Include="src\juego\Mundo.cpp" />
@@ -26,6 +27,7 @@
     <ClInclude Include="include\dominio\Bonus.h" />
     <ClInclude Include="include\dominio\Campo.h" />
     <ClInclude Include="include\dominio\Hombre.h" />
+    <ClInclude Include="include\dominio\Interaccion.h" />
     <ClInclude Include="include\dominio\Pared.h" />
     <ClInclude Include="include\juego\Mundo.h" />
   </ItemGroup>
