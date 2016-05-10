@@ -37,10 +37,6 @@ void Mundo::Mueve()
 	Interaccion::Rebote(balon, campo);
 	Interaccion::Rebote(balon, hombre1);
 	Interaccion::Rebote(balon, hombre2);
-<<<<<<< HEAD
-	
-=======
->>>>>>> refs/remotes/origin/master
 
 }
 
@@ -48,11 +44,11 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 {
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	x_ojo = 1.5;
-<<<<<<< HEAD
+
 	y_ojo = 9;
-=======
+
 	y_ojo = 9.0;
->>>>>>> refs/remotes/origin/master
+
 	z_ojo = 42;
 
 	hombre1.SetColor(255, 0, 0);

@@ -2,10 +2,8 @@
 #include "Hombre.h"
 #include "Campo.h"
 #include "Balon.h"
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
+
 class Interaccion {
 
 public:
@@ -19,10 +17,6 @@ public:
 	static bool Rebote(Balon &b, Pared p);
 	static bool ReboteSuelo(Balon &b, Pared suelo);
 	static bool Rebote(Balon &b, Hombre &h);
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
 
 private:
 
