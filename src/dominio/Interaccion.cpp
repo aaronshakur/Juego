@@ -1,6 +1,10 @@
 #include "..\include\comun\glut.h"
 #include "..\..\include\dominio\Interaccion.h"
+<<<<<<< HEAD
 #include "math.h"
+=======
+#include <math.h>
+>>>>>>> refs/remotes/origin/master
 
 //En esta clase no se van a generar objetos. Va a reunir todos los metodos de interaccion entre parejas de objetos.
 //Ademas, todos los objetos que interaccionen, necesitaran ser amigos de esta clase, ya que estamos intentando acceder a sus
@@ -16,6 +20,7 @@ Interaccion::~Interaccion()
 
 //Este metodo llama a cada rebote individual de los hombres con las 5 paredes.
 //Posteriormente, llamaremos a este metodo desde mundo.
+//Se pasa el parametro hombre por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
 void Interaccion::Rebote(Hombre &h, Campo c)   
 {
 	Interaccion::Rebote(h, c.suelo);
@@ -23,11 +28,16 @@ void Interaccion::Rebote(Hombre &h, Campo c)
 	Interaccion::Rebote(h, c.pared_dcha);
 	Interaccion::Rebote(h, c.pared_izq);
 	Interaccion::Rebote(h, c.red);
-	
 }
 
 //En este metodo, interaccionamos los hombres con las paredes, en funcion de la Distancia calculada en otro metodo de Pared.
+<<<<<<< HEAD
 bool Interaccion::Rebote(Hombre &h, Pared p) 
+=======
+//Se pasa el parametro hombre por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
+
+bool Interaccion::Rebote(Hombre &h, Pared p)
+>>>>>>> refs/remotes/origin/master
 {
 	Vector2D dir;
 	float dif = p.Distancia(h.posicion, &dir) - h.altura;
@@ -37,8 +47,85 @@ bool Interaccion::Rebote(Hombre &h, Pared p)
 		return true;
 	}
 	return false;
+}
 
+//Este metodo llama a cada rebote individual del balon con las 5 paredes.
+//Posteriormente, llamaremos a este metodo desde mundo.
+//Se pasa el parametro balon por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
 
+void Interaccion::Rebote(Balon &b, Campo c)
+{
+	Interaccion::ReboteSuelo(b, c.suelo);
+	Interaccion::Rebote(b, c.techo);
+	Interaccion::Rebote(b, c.pared_dcha);
+	Interaccion::Rebote(b, c.pared_izq);
+	Interaccion::Rebote(b, c.red);
+}
+
+//En este metodo, interaccionamos el balon con las paredes, en funcion de la Distancia calculada en otro metodo de Pared.
+//Se pasa el parametro balon por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
+
+bool Interaccion::Rebote(Balon &b, Pared p)
+{
+	Vector2D dir;
+	float dif = p.Distancia(b.posicion, &dir) - b.radio;
+	if (dif <= 0.0f)
+	{
+		Vector2D v_inicial = b.velocidad;
+		b.velocidad = v_inicial - dir*2.0*(v_inicial*dir);
+		b.posicion = b.posicion - dir*dif;
+		return true;
+	}
+	return false;
+}
+
+//Metodo para que disminuye la velocidad de la pelota paulatinamente
+
+bool Interaccion::ReboteSuelo(Balon &b, Pared suelo) {
+
+	Vector2D dir;
+
+	float dif = suelo.Distancia(b.posicion, &dir) - b.radio;
+	if (dif <= 0.0f){
+
+		Vector2D v_inicial = b.velocidad;
+		b.velocidad = v_inicial - dir*2.0*(v_inicial*dir);
+		b.posicion = b.posicion - dir*dif;
+		b.velocidad = b.velocidad - b.velocidad*0.25f;      
+		return true;
+	}
+	return false;
+}
+
+//Codigo rebote dos esferas 
+
+bool Interaccion::Rebote(Balon &b, Hombre &h) {
+
+	//Vector que une los centros
+	Vector2D dif = h.posicion - b.posicion;
+	float d = dif.modulo();
+	float dentro = d - (b.radio + h.altura);
+
+	if (dentro<0.0f)//si hay colision
+	{
+		//El modulo y argumento de la velocidad de la pelota1
+		float v1 = b.velocidad.modulo();
+		float ang1 = b.velocidad.argumento();
+
+		//El modulo y argumento de la velocidad de la pelota2
+		float v2 = 0; //h.velocidad.modulo();
+		float ang2 = 0;//h.velocidad.argumento();
+
+		//el argumento del vector que une los centros
+		float angd = dif.argumento();
+
+		//Separamos las esferas, lo que se han incrustado
+		//la mitad cada una
+		Vector2D desp(dentro / 2 * (float)cos(angd), dentro / 2 * (float)sin(angd));
+		b.posicion = b.posicion + desp;
+		h.posicion = h.posicion; //la posicion del hombre no debe ser modificada
+
+<<<<<<< HEAD
 }
 void Interaccion::Rebote(Balon &b, Campo c)
 {
@@ -105,6 +192,8 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 		b.posicion = b.posicion + desp;
 		h.posicion = h.posicion; //- desp //la posicion del hombre no debe ser modificada
 
+=======
+>>>>>>> refs/remotes/origin/master
 		angd = angd - 3.14159f / 2;//la normal al choque
 
 		//El angulo de las velocidades en el sistema relativo antes del choque
@@ -147,11 +236,18 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 		fi2 = angd + (float)atan2(v2y, v2x);
 
 		//Velocidades en absolutas despues del choque en componentes
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/master
 		b.velocidad.x = 1.1f*(modv1*(float)cos(fi1));
 		b.velocidad.y = 1.1f*(modv1*(float)sin(fi1)) + 2;
 		h.velocidad.x = h.velocidad.x; //modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
 		h.velocidad.y = h.velocidad.y; //modv2*sin(fi2);
 	}
 	return false;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/remotes/origin/master

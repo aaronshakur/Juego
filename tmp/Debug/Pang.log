@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 ﻿Compilación iniciada a las 10/05/2016 17:46:09.
      1>Proyecto "C:\Users\Windows 7\Desktop\Juego\Pang.vcxproj" en el nodo 2 (Build destinos).
+=======
+﻿Compilación iniciada a las 5/10/2016 5:45:37 PM.
+     1>Proyecto "C:\Users\Aaron\Desktop\2016\Practicas\Juego\Pang.vcxproj" en el nodo 2 (Build destinos).
+>>>>>>> refs/remotes/origin/master
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (tmp\Debug\) contains files shared from another project (Pang.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ilib /Isrc /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"tmp\Debug\\" /Fd"tmp\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\juego\Mundo.cpp
@@ -19,4 +24,8 @@
 
 Compilación correcta.
 
+<<<<<<< HEAD
 Tiempo transcurrido 00:00:01.35
+=======
+Tiempo transcurrido 00:00:00.98
+>>>>>>> refs/remotes/origin/master
