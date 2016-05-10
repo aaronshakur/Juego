@@ -19,6 +19,8 @@ public:
 	void SetColor(unsigned char r, unsigned char g, unsigned char b);
 	void SetAltura(float);
 	void SetPos(float, float);
+	void SetVel(float, float);
 
+	friend class Interaccion;
 };
 

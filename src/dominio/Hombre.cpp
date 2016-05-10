@@ -47,3 +47,9 @@ void Hombre::SetPos(float posx, float posy){
 	posicion.x = posx;
 	posicion.y = posy;
 }
+
+void Hombre::SetVel(float vx, float vy){ //Sera llamado por Mundo cada vez que pulsemos una tecla para mover a los jugadores
+
+	velocidad.x = vx;
+	velocidad.y = vy;
+}
