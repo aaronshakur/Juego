@@ -18,5 +18,7 @@ public:
 	void SetColor(unsigned char, unsigned char, unsigned char);
 	void SetRadio(float);
 	void SetPos(float, float);
+
+	friend class Interaccion;
 };
 
