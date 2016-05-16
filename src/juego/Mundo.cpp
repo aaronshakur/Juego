@@ -1,6 +1,7 @@
 #include "..\include\comun\glut.h"
 #include "..\include\juego\Mundo.h"
 #include "..\..\include\dominio\Interaccion.h"
+#include "..\..\include\dominio\Pared.h"
 
 #include <math.h>
 
@@ -44,7 +45,11 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 {
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	x_ojo = 1.5;
+
+	y_ojo = 9;
+
 	y_ojo = 9.0;
+
 	z_ojo = 42;
 
 	hombre1.SetColor(255, 0, 0);
@@ -58,7 +63,7 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	bonus.SetPos(8, 8);
 
 	balon.SetColor(255, 255, 0);
-	balon.SetRadio(0.5f);
+	balon.SetRadio(0.75f);
 	balon.SetPos(1, 6);
 
 }
@@ -73,6 +78,13 @@ void Mundo::Tecla(unsigned char key)
 	case 'd':
 		hombre2.SetVel(5.0f, 0.0f);
 		break;
+	case 'w':
+	{
+						if(Interaccion::Rebote(hombre2,campo.suelo)) // para que solo pueda saltar una vez
+							hombre2.SetVel(0.0f, 7.0f);
+						break;
+	}
+
 	}
 }
 
@@ -86,5 +98,11 @@ void Mundo::TeclaEspecial(unsigned char key)
 	case GLUT_KEY_RIGHT:
 		hombre1.SetVel(5.0f, 0.0f);
 		break;
+	case GLUT_KEY_UP:
+	{
+						if (Interaccion::Rebote(hombre1,campo.suelo)) //para que solo pueda saltar una vez
+							hombre1.SetVel(0.0f, 7.0f);
+						break;
+	}
 	}
 }

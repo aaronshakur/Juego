@@ -15,7 +15,7 @@ private:
 	Hombre hombre1, hombre2;  //Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
 	Bonus bonus;
 
-
+	friend class campo;
 public: 
 	
 	//Metodos
