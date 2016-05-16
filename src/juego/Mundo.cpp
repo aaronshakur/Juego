@@ -39,6 +39,17 @@ void Mundo::Mueve()
 	Interaccion::Rebote(balon, hombre1);
 	Interaccion::Rebote(balon, hombre2);
 
+	if (Interaccion::Rebote(balon, hombre1)){
+
+		balon.SetVel(-10,balon.GetVel_y());
+	
+	}
+
+	if (Interaccion::Rebote(balon, hombre2)){
+
+		balon.SetVel(+10, balon.GetVel_y());
+
+	}
 }
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.

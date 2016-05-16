@@ -27,6 +27,12 @@ void Balon::Mueve(float t){
 	velocidad= velocidad+ aceleracion*t;
 	if (posicion.y <= 0.5) // para que la pelota no desaparezca nunca.
 		posicion.y = 0.5;
+	if (posicion.y >= 19.5)
+		posicion.y = 19.5;
+	if (posicion.x >= 19.5)
+		posicion.x = 19.5;
+	if (posicion.x <= -19.5)
+		posicion.x = -19.5;
 
 }
 
@@ -46,4 +52,14 @@ void Balon::SetPos(float posx, float posy){
 
 	posicion.x = posx;
 	posicion.y = posy;
+}
+void Balon::SetVel(float velx, float vely){
+
+	velocidad.x = velx;
+	velocidad.y = vely;
+}
+
+float Balon::GetVel_y()
+{
+	return velocidad.y;
 }
