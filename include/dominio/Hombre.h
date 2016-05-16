@@ -20,6 +20,7 @@ public:
 	void SetAltura(float);
 	void SetPos(float, float);
 	void SetVel(float, float);
+	void SetAce(float ax, float ay);
 
 	friend class Interaccion;
 };

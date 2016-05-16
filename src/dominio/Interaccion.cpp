@@ -1,6 +1,8 @@
 #include "..\include\comun\glut.h"
 #include "..\..\include\dominio\Interaccion.h"
-#include <math.h>
+
+#include "math.h"
+
 
 //En esta clase no se van a generar objetos. Va a reunir todos los metodos de interaccion entre parejas de objetos.
 //Ademas, todos los objetos que interaccionen, necesitaran ser amigos de esta clase, ya que estamos intentando acceder a sus
@@ -27,15 +29,18 @@ void Interaccion::Rebote(Hombre &h, Campo c)
 }
 
 //En este metodo, interaccionamos los hombres con las paredes, en funcion de la Distancia calculada en otro metodo de Pared.
+
+bool Interaccion::Rebote(Hombre &h, Pared p) 
+
 //Se pasa el parametro hombre por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
 
-bool Interaccion::Rebote(Hombre &h, Pared p)
+
 {
 	Vector2D dir;
 	float dif = p.Distancia(h.posicion, &dir) - h.altura;
 	if (dif <= 0.0f){
 
-		h.posicion = h.posicion - dir*dif;
+		h.posicion = h.posicion - dir*dif; 
 		return true;
 	}
 	return false;
@@ -89,6 +94,9 @@ bool Interaccion::ReboteSuelo(Balon &b, Pared suelo) {
 	return false;
 }
 
+
+
+
 //Codigo rebote dos esferas 
 
 bool Interaccion::Rebote(Balon &b, Hombre &h) {
@@ -115,7 +123,8 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 		//la mitad cada una
 		Vector2D desp(dentro / 2 * (float)cos(angd), dentro / 2 * (float)sin(angd));
 		b.posicion = b.posicion + desp;
-		h.posicion = h.posicion; //la posicion del hombre no debe ser modificada
+		h.posicion = h.posicion; //- desp //la posicion del hombre no debe ser modificada
+
 
 		angd = angd - 3.14159f / 2;//la normal al choque
 
@@ -159,10 +168,15 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 		fi2 = angd + (float)atan2(v2y, v2x);
 
 		//Velocidades en absolutas despues del choque en componentes
+
 		b.velocidad.x = 1.1f*(modv1*(float)cos(fi1));
 		b.velocidad.y = 1.1f*(modv1*(float)sin(fi1)) + 2;
 		h.velocidad.x = h.velocidad.x; //modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
 		h.velocidad.y = h.velocidad.y; //modv2*sin(fi2);
 	}
 	return false;
+
 }
+
+
+
