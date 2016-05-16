@@ -15,6 +15,7 @@ public:
 	void Dibuja();
 
 friend class Interaccion;
+friend class Mundo;
 
 };
 

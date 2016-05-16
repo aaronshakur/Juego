@@ -1,6 +1,7 @@
 #include "..\include\comun\glut.h"
 #include "..\include\juego\Mundo.h"
 #include "..\..\include\dominio\Interaccion.h"
+#include "..\..\include\dominio\Pared.h"
 
 #include <math.h>
 
@@ -77,6 +78,13 @@ void Mundo::Tecla(unsigned char key)
 	case 'd':
 		hombre2.SetVel(5.0f, 0.0f);
 		break;
+	case 'w':
+	{
+						if(Interaccion::Rebote(hombre2,campo.suelo)) // para que solo pueda saltar una vez
+							hombre2.SetVel(0.0f, 7.0f);
+						break;
+	}
+
 	}
 }
 
@@ -90,5 +98,11 @@ void Mundo::TeclaEspecial(unsigned char key)
 	case GLUT_KEY_RIGHT:
 		hombre1.SetVel(5.0f, 0.0f);
 		break;
+	case GLUT_KEY_UP:
+	{
+						if (Interaccion::Rebote(hombre1,campo.suelo)) //para que solo pueda saltar una vez
+							hombre1.SetVel(0.0f, 7.0f);
+						break;
+	}
 	}
 }
