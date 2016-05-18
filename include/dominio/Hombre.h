@@ -22,6 +22,8 @@ public:
 	void SetVel(float, float);
 	void SetAce(float ax, float ay);
 
+	float GetVelx(){ return velocidad.x;};
+
 	friend class Interaccion;
 };
 
