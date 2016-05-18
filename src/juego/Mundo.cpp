@@ -59,8 +59,6 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 
 	y_ojo = 9;
 
-	y_ojo = 9.0;
-
 	z_ojo = 42;
 
 	hombre1.SetColor(255, 0, 0);
@@ -83,19 +81,21 @@ void Mundo::Tecla(unsigned char key)
 {
 	switch (key)
 	{
-	case 'a':
-		hombre2.SetVel(-5.0f, 0.0f);
-		break;
-	case 'd':
-		hombre2.SetVel(5.0f, 0.0f);
-		break;
-	case 'w':
-	{
-						if(Interaccion::Rebote(hombre2,campo.suelo)) // para que solo pueda saltar una vez
-							hombre2.SetVel(0.0f, 7.0f);
-						break;
-	}
-
+		case 'a':
+			hombre2.SetVel(-5.0f, 0.0f);
+			break;
+		case 'd':
+			hombre2.SetVel(5.0f, 0.0f);
+			break;
+		case 'w':
+		{
+					if(Interaccion::Rebote(hombre2,campo.suelo)) // para que solo pueda saltar una vez
+					hombre2.SetVel(hombre2.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad	
+				    break;
+		}
+		case 's':
+			hombre2.SetVel(0.0f, 0.0f);
+			break;
 	}
 }
 
@@ -103,17 +103,20 @@ void Mundo::TeclaEspecial(unsigned char key)
 {
 	switch (key)
 	{
-	case GLUT_KEY_LEFT:
-		hombre1.SetVel(-5.0f, 0.0f);
-		break;
-	case GLUT_KEY_RIGHT:
-		hombre1.SetVel(5.0f, 0.0f);
-		break;
-	case GLUT_KEY_UP:
-	{
-						if (Interaccion::Rebote(hombre1,campo.suelo)) //para que solo pueda saltar una vez
-							hombre1.SetVel(0.0f, 7.0f);
-						break;
+		case GLUT_KEY_LEFT:
+			hombre1.SetVel(-5.0f, 0.0f);
+			break;
+		case GLUT_KEY_RIGHT:
+			hombre1.SetVel(5.0f, 0.0f);
+			break;
+		case GLUT_KEY_UP:
+		{
+					if (Interaccion::Rebote(hombre1,campo.suelo)) //para que solo pueda saltar una vez
+						hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
+					break;
+		case GLUT_KEY_DOWN:
+			hombre1.SetVel(0.0f, 0.0f);
+			break;
 	}
 	}
 }

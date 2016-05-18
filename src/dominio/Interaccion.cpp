@@ -94,9 +94,6 @@ bool Interaccion::ReboteSuelo(Balon &b, Pared suelo) {
 	return false;
 }
 
-
-
-
 //Codigo rebote dos esferas 
 
 bool Interaccion::Rebote(Balon &b, Hombre &h) {
@@ -108,23 +105,22 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 
 	if (dentro<0.0f)//si hay colision
 	{
-		//El modulo y argumento de la velocidad de la pelota1
+		//El modulo y argumento de la velocidad del balon
 		float v1 = b.velocidad.modulo();
 		float ang1 = b.velocidad.argumento();
 
-		//El modulo y argumento de la velocidad de la pelota2
+		//El modulo y argumento de la velocidad del hombre
 		float v2 = 0; //h.velocidad.modulo();
 		float ang2 = 0;//h.velocidad.argumento();
 
 		//el argumento del vector que une los centros
 		float angd = dif.argumento();
 
-		//Separamos las esferas, lo que se han incrustado
-		//la mitad cada una
-		Vector2D desp(dentro / 2 * (float)cos(angd), dentro / 2 * (float)sin(angd));
+		//Separamos las esferas, lo que se han incrustado la mitad cada una
+		//Vector con dos componentes que sumo 
+		Vector2D desp(dentro / 2 * (float)cos(angd), dentro / 2 * (float)sin(angd));  
 		b.posicion = b.posicion + desp;
 		h.posicion = h.posicion; //- desp //la posicion del hombre no debe ser modificada
-
 
 		angd = angd - 3.14159f / 2;//la normal al choque
 
