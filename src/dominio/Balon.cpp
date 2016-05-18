@@ -25,6 +25,8 @@ void Balon::Mueve(float t){
 
 	posicion= posicion + velocidad*t + aceleracion*(t*t*0.5f); // usando metodos sobrecargados de Vector2d
 	velocidad= velocidad+ aceleracion*t;
+	if (posicion.y <= 0.5) // para que la pelota no desaparezca nunca.
+		posicion.y = 0.5;
 
 }
 
