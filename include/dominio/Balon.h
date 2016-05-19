@@ -17,7 +17,10 @@ public:
 	void SetColor(unsigned char, unsigned char, unsigned char);
 	void SetRadio(float);
 	void SetPos(float, float);
+
 	float GetPosY(){ return posicion.y; };
+	float GetVelX(){ return velocidad.x; };
+	float GetVelY(){ return velocidad.y; };
 
 	friend class Interaccion;
 };
