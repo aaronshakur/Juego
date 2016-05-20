@@ -23,6 +23,7 @@ public:
 	void SetAce(float ax, float ay);
 
 	float GetVelx(){ return velocidad.x;};
+	float GetPosY(){ return posicion.y; };
 
 	friend class Interaccion;
 };
