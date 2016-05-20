@@ -51,6 +51,7 @@ bool Interaccion::Rebote(Hombre &h, Pared p)
 void Interaccion::Rebote(Balon &b, Campo c)
 {
 	Interaccion::ReboteSuelo(b, c.suelo);
+	
 	Interaccion::Rebote(b, c.techo);
 	Interaccion::Rebote(b, c.pared_dcha);
 	Interaccion::Rebote(b, c.pared_izq);
