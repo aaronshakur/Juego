@@ -1,10 +1,20 @@
-﻿Compilación iniciada a las 5/21/2016 6:54:27 PM.
+﻿Compilación iniciada a las 5/21/2016 7:02:05 PM.
      1>Proyecto "C:\Users\Aaron\Desktop\2016\Practicas\Juego\Pang.vcxproj" en el nodo 2 (Build destinos).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (tmp\Debug\) contains files shared from another project (Pang.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.exe" /INCREMENTAL /NOLOGO /LIBPATH:lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.lib" /MACHINE:X86 tmp\Debug\Vector2D.obj
+         tmp\Debug\Balon.obj
+         tmp\Debug\Bonus.obj
+         tmp\Debug\Campo.obj
+         tmp\Debug\Hombre.obj
+         tmp\Debug\Interaccion.obj
+         tmp\Debug\Pared.obj
+         tmp\Debug\Juego.obj
+         tmp\Debug\Mundo.obj
+         LINK : no se encontró C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
          Pang.vcxproj -> C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.exe
      1>Compilación del proyecto terminada "C:\Users\Aaron\Desktop\2016\Practicas\Juego\Pang.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:00.40
+Tiempo transcurrido 00:00:00.77
