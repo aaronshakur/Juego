@@ -46,9 +46,9 @@ void Pared::SetLim(float x1, float y1, float x2, float y2){
 }
 
 //Calculo de distancia de una pared a un punto, adicionalmente
-//se modifica el valor de un vector direccion opcional que contendra
+//se modifica el valor de un vector direccion opcional que contendra?
 //el vector unitario saliente que indica la direccion de la
-//recta maas corta entre el punto y la pared.
+//recta ma?s corta entre el punto y la pared.
 
 float Pared::Distancia(Vector2D punto, Vector2D *direccion)
 {

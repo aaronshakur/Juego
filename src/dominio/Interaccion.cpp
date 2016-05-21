@@ -33,6 +33,8 @@ void Interaccion::Rebote(Hombre &h, Campo c)
 bool Interaccion::Rebote(Hombre &h, Pared p) 
 
 //Se pasa el parametro hombre por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
+
+
 {
 	Vector2D dir;
 	float dif = p.Distancia(h.posicion, &dir) - h.altura;
@@ -51,7 +53,6 @@ bool Interaccion::Rebote(Hombre &h, Pared p)
 void Interaccion::Rebote(Balon &b, Campo c)
 {
 	Interaccion::ReboteSuelo(b, c.suelo);
-	
 	Interaccion::Rebote(b, c.techo);
 	Interaccion::Rebote(b, c.pared_dcha);
 	Interaccion::Rebote(b, c.pared_izq);
@@ -100,168 +101,92 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 	//Vector que une los centros
 	Vector2D dif = h.posicion - b.posicion;
 	float d = dif.modulo();
-	float dentro = d - (b.radio + h.altura);//dentro es la cantidad que se han juntado. linea recta entre centros .
+	float dentro = d - (b.radio + h.altura);
 
-	if (dentro < 0.0f)//si hay colision
+	if (dentro<0.0f)//si hay colision
 	{
-		if (b.GetPosY() >= h.GetPosY()){
+		//El modulo y argumento de la velocidad del balon
+		float v1 = b.velocidad.modulo();
+		float ang1 = b.velocidad.argumento();
 
-			//El modulo y argumento de la velocidad del balon
-			float v1 = b.velocidad.modulo();
-			float ang1 = b.velocidad.argumento();
+		//El modulo y argumento de la velocidad del hombre
+		float v2 = 0; //h.velocidad.modulo();
+		float ang2 = 0;//h.velocidad.argumento();
 
-			//El modulo y argumento de la velocidad del hombre
-			float v2 = h.velocidad.modulo(); //v2 = 0
-			float ang2 = h.velocidad.argumento(); //ang2 = 0;
+		//el argumento del vector que une los centros
+		float angd = dif.argumento();
 
-			//el argumento del vector que une los centros
-			float angd = dif.argumento();
+		//Separamos las esferas, lo que se han incrustado la mitad cada una
+		//Vector con dos componentes que sumo 
+		Vector2D desp(dentro / 2 * (float)cos(angd), dentro / 2 * (float)sin(angd));  
+		b.posicion = b.posicion + desp;
+		h.posicion = h.posicion; //- desp //la posicion del hombre no debe ser modificada
 
-			//Separamos las esferas, lo que se han incrustado la mitad cada una
-			//Vector con dos componentes que sumo 
-			Vector2D desp(dentro / 2 * (float)cos(angd), dentro / 2 * (float)sin(angd));
+		angd = angd - 3.14159f / 2;//la normal al choque
 
-			//NUEVO	
+		//El angulo de las velocidades en el sistema relativo antes del choque
+		float th1 = ang1 - angd;
+		float th2 = ang2 - angd;
 
-			b.posicion.x = b.posicion.x + 1.1f*desp.x; //doy mas valor a que el balon se despegue mas en la horizontal
-			b.posicion.y = b.posicion.y + 1.1f*desp.y; //doy mas valor a que el balon se despegue mas en la vertical
+		//Las componentes de las velocidades en el sistema relativo ANTES del choque
+		float u1x = v1*(float)cos(th1);
+		float u1y = v1*(float)sin(th1);
+		float u2x = v2*(float)cos(th2);
+		float u2y = v2*(float)sin(th2);
 
-			//del hombre no modifico posicion
-			h.posicion.x = h.posicion.x; // -desp.x;
-			h.posicion.y = h.posicion.y; //- desp.y;
+		//Las componentes de las velocidades en el sistema relativo DESPUES del choque
+		//la componente en X del sistema relativo no cambia
+		float v1x = u1x;
+		float v2x = u2x;
 
-			angd = angd - 3.14159f / 2;//la normal al choque
+		//en el eje Y, rebote elastico
+		float m1 = b.radio;
+		float m2 = h.altura;
+		float py = m1*u1y + m2*u2y;//Cantidad de movimiento inicial ejey
+		float ey = m1*u1y*u1y + m2*u2y*u2y;//Energia cinetica inicial ejey
 
-			//El angulo de las velocidades en el sistema relativo ANTES del choque
-			//NO SE MODIFICA
-			float th1 = ang1 - angd;
-			float th2 = ang2 - angd;
+		//los coeficientes y discriminante de la ecuacion cuadrada
+		float a = m2*m2 + m1*m2;
+		float bb = -2 * py*m2;
+		float c = py*py - m1*ey;
+		float disc = bb*bb - 4 * a*c;
+		if (disc<0)disc = 0;
 
-			//Las componentes de las velocidades en el sistema relativo ANTES del choque
-			//NO SE MODIFICA
-			float u1x = v1*(float)cos(th1);
-			float u1y = v1*(float)sin(th1);
-			float u2x = v2*(float)cos(th2);
-			float u2y = v2*(float)sin(th2);
+		//las nuevas velocidades segun el eje Y relativo
+		float v2y = (-bb + (float)sqrt(disc)) / (2 * a);
+		float v1y = (py - m2*v2y) / m1;
 
-			//Las componentes de las velocidades en el sistema relativo DESPUES del choque
-			//la componente en X del sistema relativo no cambia
-			float v1x = u1x;
-			float v2x = u2x;
+		//Modulo y argumento de las velocidades en coordenadas absolutas
+		float modv1, modv2, fi1, fi2;
+		modv1 = (float)sqrt(v1x*v1x + v1y*v1y);
+		modv2 = (float)sqrt(v2x*v2x + v2y*v2y);
+		fi1 = angd + (float)atan2(v1y, v1x);
+		fi2 = angd + (float)atan2(v2y, v2x);
 
-			//en el eje Y, rebote elastico
-			float m1 = b.radio;
-			float m2 = h.altura;
-			float py = m1*u1y + m2*u2y;//Cantidad de movimiento inicial ejey //NO MODIFICO
-			float ey = m1*u1y*u1y + m2*u2y*u2y;//Energia cinetica inicial ejey  //NO MODIFICO
+		//Velocidades en absolutas despues del choque en componentes
 
-			//los coeficientes y discriminante de la ecuacion cuadrada
-			float a = m2*m2 + m1*m2;
-			float bb = -2 * py*m2;
-			float c = py*py - m1*ey;
-			float disc = bb*bb - 4 * a*c;
-			if (disc < 0)disc = 0;
+		if (b.posicion.y > h.posicion.y) {
 
-			//las nuevas velocidades segun el eje Y relativo
-			float v2y = (-bb + (float)sqrt(disc)) / (2 * a);
-			float v1y = (py - m2*v2y) / m1;
-
-			//Modulo y argumento de las velocidades en coordenadas absolutas
-			float modv1, modv2, fi1, fi2;
-			modv1 = (float)sqrt(v1x*v1x + v1y*v1y);
-			modv2 = (float)sqrt(v2x*v2x + v2y*v2y);
-			fi1 = angd + (float)atan2(v1y, v1x);
-			fi2 = angd + (float)atan2(v2y, v2x);
-
-			//Velocidades en absolutas despues del choque en componentes
-
-			b.velocidad.x = (modv1*(float)cos(fi1));
-			b.velocidad.y = (modv1*(float)sin(fi1));
-			h.velocidad.x = h.velocidad.x; //modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
-			h.velocidad.y = h.velocidad.y; //modv2*sin(fi2);
+		b.velocidad.x = (modv1*(float)cos(fi1));
+		b.velocidad.y = (modv1*(float)sin(fi1)) + 5;
+		h.velocidad.x = h.velocidad.x; //modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
+		h.velocidad.y = h.velocidad.y; //modv2*sin(fi2);
 		}
-
 		else {
 
-			//------->la historia es meter algo aqui diferente para que cuando toque por abajo no levante el balon<-----------------------
+		b.velocidad.x = 1.1f*(modv1*(float)cos(fi1));
+		b.velocidad.y = (modv1*(float)sin(fi1)) -15;
+		h.velocidad.x = modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
+		h.velocidad.y = modv2*sin(fi2); 
 
-			//El modulo y argumento de la velocidad del balon
-			float v1 = b.velocidad.modulo();
-			float ang1 = b.velocidad.argumento();
-
-			//El modulo y argumento de la velocidad del hombre
-			float v2 = h.velocidad.modulo(); //v2 = 0
-			float ang2 = h.velocidad.argumento(); //ang2 = 0;
-
-			//el argumento del vector que une los centros
-			float angd = dif.argumento();
-
-			//Separamos las esferas, lo que se han incrustado la mitad cada una
-			//Vector con dos componentes que sumo 
-			Vector2D desp(dentro / 2 * (float)cos(angd), dentro / 2 * (float)sin(angd));
-
-			//NUEVO	
-
-			b.posicion.x = b.posicion.x + 1.5f*desp.x; //doy mas valor a que el balon se despegue mas en la horizontal
-			b.posicion.y = b.posicion.y + 1.5f*desp.y; //doy mas valor a que el balon se despegue mas en la vertical
-
-			//del hombre no modifico posicion
-			h.posicion.x = h.posicion.x; // -desp.x;
-			h.posicion.y = h.posicion.y; //- desp.y;
-
-			angd = angd - 3.14159f / 2;//la normal al choque
-
-			//El angulo de las velocidades en el sistema relativo ANTES del choque
-			//NO SE MODIFICA
-			float th1 = ang1 - angd;
-			float th2 = ang2 - angd;
-
-			//Las componentes de las velocidades en el sistema relativo ANTES del choque
-			//NO SE MODIFICA
-			float u1x = v1*(float)cos(th1);
-			float u1y = v1*(float)sin(th1);
-			float u2x = v2*(float)cos(th2);
-			float u2y = v2*(float)sin(th2);
-
-			//Las componentes de las velocidades en el sistema relativo DESPUES del choque
-			//la componente en X del sistema relativo no cambia
-			float v1x = u1x;
-			float v2x = u2x;
-
-			//en el eje Y, rebote elastico
-			float m1 = b.radio;
-			float m2 = h.altura;
-			float py = m1*u1y + m2*u2y;//Cantidad de movimiento inicial ejey //NO MODIFICO
-			float ey = m1*u1y*u1y + m2*u2y*u2y;//Energia cinetica inicial ejey  //NO MODIFICO
-
-			//los coeficientes y discriminante de la ecuacion cuadrada
-			float a = m2*m2 + m1*m2;
-			float bb = -2 * py*m2;
-			float c = py*py - m1*ey;
-			float disc = bb*bb - 4 * a*c;
-			if (disc < 0)disc = 0;
-
-			//las nuevas velocidades segun el eje Y relativo
-			float v2y = (-bb + (float)sqrt(disc)) / (2 * a);
-			float v1y = (py - m2*v2y) / m1;
-
-			//Modulo y argumento de las velocidades en coordenadas absolutas
-			float modv1, modv2, fi1, fi2;
-			modv1 = (float)sqrt(v1x*v1x + v1y*v1y);
-			modv2 = (float)sqrt(v2x*v2x + v2y*v2y);
-			fi1 = angd + (float)atan2(v1y, v1x);
-			fi2 = angd + (float)atan2(v2y, v2x);
-
-			//Velocidades en absolutas despues del choque en componentes
-
-			b.velocidad.x = (1.3f*modv1*(float)cos(fi1));
-			b.velocidad.y = (1.3f*modv1*(float)sin(fi1));
-			h.velocidad.x = h.velocidad.x; //modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
-			h.velocidad.y = h.velocidad.y; //modv2*sin(fi2);
 		}
 
-		return false;
-
-	}
+		
+		}
+		
+	return false;
 
 }
+
+
+
