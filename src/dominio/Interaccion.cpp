@@ -181,7 +181,6 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 
 		}
 
-		
 		}
 		
 	return false;
