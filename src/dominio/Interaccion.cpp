@@ -165,11 +165,25 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 
 		//Velocidades en absolutas despues del choque en componentes
 
-		b.velocidad.x = 1.1f*(modv1*(float)cos(fi1));
-		b.velocidad.y = 1.1f*(modv1*(float)sin(fi1)) + 2;
+		if (b.posicion.y > h.posicion.y) {
+
+		b.velocidad.x = (modv1*(float)cos(fi1));
+		b.velocidad.y = (modv1*(float)sin(fi1)) + 5;
 		h.velocidad.x = h.velocidad.x; //modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
 		h.velocidad.y = h.velocidad.y; //modv2*sin(fi2);
-	}
+		}
+		else {
+
+		b.velocidad.x = 1.1f*(modv1*(float)cos(fi1));
+		b.velocidad.y = (modv1*(float)sin(fi1)) -15;
+		h.velocidad.x = modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
+		h.velocidad.y = modv2*sin(fi2); 
+
+		}
+
+		
+		}
+		
 	return false;
 
 }
