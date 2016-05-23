@@ -174,6 +174,7 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 		}
 		else {
 
+<<<<<<< HEAD
 		b.velocidad.x = 1.1f*(modv1*(float)cos(fi1));
 		b.velocidad.y = (modv1*(float)sin(fi1)) -15;
 		h.velocidad.x = modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
@@ -182,6 +183,15 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 		}
 
 		
+=======
+		b.velocidad.x = 1.2f*(modv1*(float)cos(fi1));
+		b.velocidad.y = (modv1*(float)sin(fi1)) -15;
+		h.velocidad.x = modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
+		h.velocidad.y = modv2*sin(fi2); 
+
+		}
+
+>>>>>>> refs/remotes/origin/RamaAaron
 		}
 		
 	return false;
