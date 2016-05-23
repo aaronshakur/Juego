@@ -18,7 +18,6 @@ public:
 	void SetRadio(float);
 	void SetPos(float, float);
 
-<<<<<<< HEAD
 	void SetVel(float velx, float vely);
 	float GetVel_y();
 
@@ -26,8 +25,7 @@ public:
 	float GetPosY(){ return posicion.y; };
 	float GetVelX(){ return velocidad.x; };
 	float GetVelY(){ return velocidad.y; };
-=======
->>>>>>> refs/remotes/origin/master
+
 
 
 	friend class Interaccion;
