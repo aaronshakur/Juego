@@ -10,7 +10,7 @@ private:
 	Vector2D posicion, velocidad, aceleracion;
 
 public:
-	Hombre();
+	Hombre(float, float, float, float, float );
 	~Hombre();
 
 	//Metodos
