@@ -1,18 +1,10 @@
-﻿Compilación iniciada a las 5/24/2016 1:02:54 AM.
+﻿Compilación iniciada a las 5/25/2016 6:34:01 PM.
      1>Proyecto "C:\Users\Aaron\Desktop\2016\Practicas\Juego\Pang.vcxproj" en el nodo 2 (Build destinos).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (tmp\Debug\) contains files shared from another project (Pang.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ilib /Isrc /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"tmp\Debug\\" /Fd"tmp\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\dominio\ListaEsferas.cpp src\juego\Juego.cpp src\juego\Mundo.cpp
-         Juego.cpp
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\juego\juego.cpp(4): error C2512: 'Mundo' : no hay disponible un constructor predeterminado adecuado
-         Generando código...
-         Compilando...
-         Mundo.cpp
-         Generando código...
-         Omitiendo... (no se detectaron cambios relevantes)
-         ListaEsferas.cpp
-     1>Compilación del proyecto terminada "C:\Users\Aaron\Desktop\2016\Practicas\Juego\Pang.vcxproj" (Build destinos) -- ERROR.
+     1>Link:
+         Pang.vcxproj -> C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.exe
+     1>Compilación del proyecto terminada "C:\Users\Aaron\Desktop\2016\Practicas\Juego\Pang.vcxproj" (Build destinos).
 
-ERROR al compilar.
+Compilación correcta.
 
-Tiempo transcurrido 00:00:01.00
+Tiempo transcurrido 00:00:00.26

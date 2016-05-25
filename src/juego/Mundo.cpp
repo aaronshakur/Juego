@@ -2,8 +2,6 @@
 #include "..\include\juego\Mundo.h"
 #include "..\..\include\dominio\Interaccion.h"
 #include "..\..\include\dominio\Pared.h"
-#include "..\..\include\dominio\ListaEsferas.h"
-
 
 #include <math.h>
 
@@ -27,8 +25,6 @@ void Mundo::Dibuja()
 	hombre2.Dibuja();
 	bonus.Dibuja();
 	campo.Dibuja();
-	hombres.Dibuja();
-
 
 }
 
@@ -37,14 +33,11 @@ void Mundo::Mueve()
 	hombre1.Mueve(0.075f);
 	hombre2.Mueve(0.075f);
 	balon.Mueve(0.05f);
-
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
 	Interaccion::Rebote(balon, campo);
 	Interaccion::Rebote(balon, hombre1);
 	Interaccion::Rebote(balon, hombre2);
-
-	hombres.Mueve(0.075f);
 
 }
 
@@ -71,12 +64,6 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	balon.SetRadio(0.75f);
 	balon.SetPos(1, 6);
 
- //Aqui se crean variables tipo Hombre y las agregamos 
-	for (int i = 0; i<2; i++)
-	{
-		Hombre* aux = new Hombre(1.8, i, 1 + i, i, i);
-		hombres.Agregar(aux);
-	}
 }
 
 void Mundo::Tecla(unsigned char key)
