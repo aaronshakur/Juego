@@ -7,6 +7,7 @@ Balon::Balon() //constructor de balon. Damos valores iniciales
 	radio = 1.0f;
 	aceleracion.y = -9.8f;
 }
+
 Balon::~Balon()
 {
 }
