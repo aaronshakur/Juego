@@ -42,7 +42,13 @@
     <ClCompile Include="src\dominio\Interaccion.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="src\dominio\ListaEsferas.cpp">
+    <ClCompile Include="src\dominio\ObjetoMovil.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dominio\BonusNormal.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dominio\BonusEspecial.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,7 +77,13 @@
     <ClInclude Include="include\dominio\Interaccion.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\dominio\ListaEsferas.h">
+    <ClInclude Include="include\dominio\ObjetoMovil.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\dominio\BonusNormal.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\dominio\BonusEspecial.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

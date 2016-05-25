@@ -103,7 +103,7 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 	float d = dif.modulo();
 	float dentro = d - (b.radio + h.altura);
 
-	if (dentro < 0.0f)//si hay colision
+	if (dentro<0.0f)//si hay colision
 	{
 		//El modulo y argumento de la velocidad del balon
 		float v1 = b.velocidad.modulo();
@@ -118,7 +118,7 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 
 		//Separamos las esferas, lo que se han incrustado la mitad cada una
 		//Vector con dos componentes que sumo 
-		Vector2D desp(dentro / 2 * (float)cos(angd), dentro / 2 * (float)sin(angd));
+		Vector2D desp(dentro / 2 * (float)cos(angd), dentro / 2 * (float)sin(angd));  
 		b.posicion = b.posicion + desp;
 		h.posicion = h.posicion; //- desp //la posicion del hombre no debe ser modificada
 
@@ -150,7 +150,7 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 		float bb = -2 * py*m2;
 		float c = py*py - m1*ey;
 		float disc = bb*bb - 4 * a*c;
-		if (disc < 0)disc = 0;
+		if (disc<0)disc = 0;
 
 		//las nuevas velocidades segun el eje Y relativo
 		float v2y = (-bb + (float)sqrt(disc)) / (2 * a);
@@ -167,26 +167,26 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 
 		if (b.posicion.y > h.posicion.y) {
 
-			b.velocidad.x = (modv1*(float)cos(fi1));
-			b.velocidad.y = (modv1*(float)sin(fi1)) + 5;
-			h.velocidad.x = h.velocidad.x; //modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
-			h.velocidad.y = h.velocidad.y; //modv2*sin(fi2);
+		b.velocidad.x = (modv1*(float)cos(fi1));
+		b.velocidad.y = (modv1*(float)sin(fi1)) + 5;
+		h.velocidad.x = h.velocidad.x; //modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
+		h.velocidad.y = h.velocidad.y; //modv2*sin(fi2);
 		}
 		else {
 
-			b.velocidad.x = 1.1f*(modv1*(float)cos(fi1));
-			b.velocidad.y = (modv1*(float)sin(fi1)) - 15;
-			h.velocidad.x = modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
-			h.velocidad.y = modv2*sin(fi2);
-			//probar mas adelante a separar h1 y h2. haciendo negativo el rebote de hombre 2
+		b.velocidad.x = 1.1f*(modv1*(float)cos(fi1));
+		b.velocidad.y = (modv1*(float)sin(fi1)) -15;
+		h.velocidad.x = modv2*cos(fi2); //la velocidad del hombre no tiene que cambiar, si lo dejo desaparece el hombre
+		h.velocidad.y = modv2*sin(fi2); 
+		//probar mas adelante a separar h1 y h2. haciendo negativo el rebote de hombre 2
 		}
 
-
-
-		return false;
-
-	}
-
-
+		
+		}
+		
+	return false;
 
 }
+
+
+

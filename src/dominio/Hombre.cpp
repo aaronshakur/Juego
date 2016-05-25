@@ -2,23 +2,12 @@
 #include "..\..\include\comun\glut.h"
 
 
-Hombre::Hombre(/*float alt, float x, float y, float vx, float vy*/)  //constructor de hombre SOBRECARGADO. Damos valores iniciales
+Hombre::Hombre()  //constructor de hombre. Damos valores iniciales
 {
-
-
-		altura = 1.8f;
-		aceleracion.y = -9.8f;
-
-	
-	/*altura = alt;
-	posicion.x = x;
-	posicion.y = y;
-	velocidad.x = vx;
-	velocidad.y = vy;
-	aceleracion.y = -9.8f;
-	*/
+	altura = 1.8f;
 	rojo = verde = azul = 255; //blanco
-	
+	aceleracion.y = -9.8;
+
 }
 
 Hombre::~Hombre()
