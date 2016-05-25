@@ -2,8 +2,6 @@
 #include "..\include\juego\Mundo.h"
 #include "..\..\include\dominio\Interaccion.h"
 #include "..\..\include\dominio\Pared.h"
-#include "..\..\include\dominio\ListaEsferas.h"
-
 
 #include <math.h>
 
@@ -25,10 +23,9 @@ void Mundo::Dibuja()
 	balon.Dibuja();
 	hombre1.Dibuja();
 	hombre2.Dibuja();
-	bonus.Dibuja();
+	bonusesp.Dibuja();
+	bonusnor.Dibuja();
 	campo.Dibuja();
-	hombres.Dibuja();
-
 
 }
 
@@ -37,29 +34,14 @@ void Mundo::Mueve()
 	hombre1.Mueve(0.075f);
 	hombre2.Mueve(0.075f);
 	balon.Mueve(0.05f);
-
+	bonusesp.mueve_esp(0.009f);
+	bonusnor.Mueve(0.009f);
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
 	Interaccion::Rebote(balon, campo);
 	Interaccion::Rebote(balon, hombre1);
 	Interaccion::Rebote(balon, hombre2);
 
-<<<<<<< HEAD
-	if (Interaccion::Rebote(balon, hombre1)){
-
-		balon.SetVel(-10,balon.GetVel_y());
-	
-	}
-
-	if (Interaccion::Rebote(balon, hombre2)){
-
-		balon.SetVel(+10, balon.GetVel_y());
-
-	}
-=======
-	hombres.Mueve(0.075f);
-
->>>>>>> refs/remotes/origin/master
 }
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
@@ -79,18 +61,12 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	hombre2.SetAltura(1.8f);
 	hombre2.SetPos(-6, 1);
 
-	bonus.SetPos(8, 8);
-
+	bonusnor.SetPos(8, 20);
+	bonusesp.SetPos(-8, 20);
 	balon.SetColor(255, 255, 0);
 	balon.SetRadio(0.75f);
 	balon.SetPos(1, 6);
 
- //Aqui se crean variables tipo Hombre y las agregamos 
-	for (int i = 0; i<2; i++)
-	{
-		Hombre* aux = new Hombre(1.8, i, 1 + i, i, i);
-		hombres.Agregar(aux);
-	}
 }
 
 void Mundo::Tecla(unsigned char key)
