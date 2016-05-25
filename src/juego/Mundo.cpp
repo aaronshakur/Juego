@@ -23,7 +23,8 @@ void Mundo::Dibuja()
 	balon.Dibuja();
 	hombre1.Dibuja();
 	hombre2.Dibuja();
-	bonus.Dibuja();
+	bonusesp.Dibuja();
+	bonusnor.Dibuja();
 	campo.Dibuja();
 
 }
@@ -33,6 +34,8 @@ void Mundo::Mueve()
 	hombre1.Mueve(0.075f);
 	hombre2.Mueve(0.075f);
 	balon.Mueve(0.05f);
+	bonusesp.mueve_esp(0.009f);
+	bonusnor.Mueve(0.009f);
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
 	Interaccion::Rebote(balon, campo);
@@ -58,8 +61,8 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	hombre2.SetAltura(1.8f);
 	hombre2.SetPos(-6, 1);
 
-	bonus.SetPos(8, 8);
-
+	bonusnor.SetPos(8, 20);
+	bonusesp.SetPos(-8, 20);
 	balon.SetColor(255, 255, 0);
 	balon.SetRadio(0.75f);
 	balon.SetPos(1, 6);
