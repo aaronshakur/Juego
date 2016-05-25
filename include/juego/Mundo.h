@@ -3,8 +3,6 @@
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\Hombre.h"
 #include "..\..\include\dominio\Balon.h"
-#include "..\..\include\dominio\ListaEsferas.h"
-
 
 class Mundo
 {
@@ -16,10 +14,8 @@ private:
 	Campo campo;		//se instanciaran todos estos objetos.
 	Hombre hombre1, hombre2;  //Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
 	Bonus bonus;
-	ListaEsferas hombres; //Creamos el objeto hombres de ListaEsferas para instanciar todos los hombres 
 
 	friend class campo;
-
 public: 
 	
 	//Metodos
