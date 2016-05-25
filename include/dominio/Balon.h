@@ -1,13 +1,15 @@
 #pragma once
 #include "..\..\include\comun\Vector2D.h"
+#include "ObjetoMovil.h"
 
-class Balon
+
+class Balon :public ObjetoMovil
 {
 private:
 
 	float radio;
 	unsigned char rojo, verde, azul;
-	Vector2D posicion, velocidad, aceleracion;
+	//Vector2D posicion, velocidad, aceleracion;
 public:
 	Balon();
 	~Balon();

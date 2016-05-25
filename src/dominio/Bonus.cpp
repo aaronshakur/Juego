@@ -4,9 +4,11 @@
 
 Bonus::Bonus()    //constructor de bonus. Damos valores iniciales
 {
-	rojo = verde = azul = 255; //Blanco
-	lado = 0.5f;
-	aceleracion.y = 0.0f; //Para que se quede parado por ahora
+	rojo = verde = 0;
+	azul = 255;
+	lado = 1.0f;
+	aceleracion.y = -9.8f; //Para que se quede parado por ahora
+
 }
 
 Bonus::~Bonus()
