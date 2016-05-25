@@ -8,7 +8,7 @@ class Bonus :public ObjetoMovil
 protected:
 
 	float lado;
-	unsigned char rojo, verde, azul;
+	//unsigned char rojo, verde, azul;
 	
 	//Vector2D posicion, velocidad, aceleracion;
 
@@ -18,7 +18,7 @@ public:
 	//Metodos
 	void Dibuja();
 	void Mueve(float);
-	void SetPos(float, float);
+	//void SetPos(float, float);
 
 };
 

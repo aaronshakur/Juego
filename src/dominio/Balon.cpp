@@ -30,20 +30,20 @@ void Balon::Mueve(float t){
 
 }
 
-void Balon::SetColor(unsigned char r, unsigned char g, unsigned char b)
+/*void Balon::SetColor(unsigned char r, unsigned char g, unsigned char b)
 {
 	rojo = r;
 	verde = g;
 	azul = b;
-};
+};*/
 
 void Balon::SetRadio(float rad){
 
 	radio = rad;
 
 }
-void Balon::SetPos(float posx, float posy){
+/*void Balon::SetPos(float posx, float posy){
 
 	posicion.x = posx;
 	posicion.y = posy;
-}
+}*/

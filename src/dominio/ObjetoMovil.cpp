@@ -20,3 +20,15 @@ void ObjetoMovil::Mueve(float t){
 		posicion.y = 0.5;
 }
 */
+
+void ObjetoMovil::SetPos(float posx, float posy){
+
+	posicion.x = posx;
+	posicion.y = posy;
+}
+
+void ObjetoMovil::SetColor(unsigned char r, unsigned char g, unsigned char b){
+		rojo = r;
+		verde = g;
+		azul = b;
+}

@@ -34,8 +34,8 @@ void Bonus::Mueve(float t){
 	velocidad = velocidad + aceleracion*t;
 
 }
-void Bonus::SetPos(float posx, float posy){
+/*void Bonus::SetPos(float posx, float posy){
 
 	posicion.x = posx;
 	posicion.y = posy;
-}
+}*/
