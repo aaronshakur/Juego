@@ -21,7 +21,8 @@ private:
 	friend class campo;
 
 public: 
-	
+	Mundo();
+	~Mundo();
 	//Metodos
 	void Tecla(unsigned char key);
 	void TeclaEspecial(unsigned char key);

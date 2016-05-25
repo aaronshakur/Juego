@@ -4,11 +4,11 @@
 
 
 ListaEsferas::ListaEsferas()    //constructor de ListaEsferas. Damos valores iniciales
-{
+{/*
 	numeroHombres = 0;
 	for (int i = 0; i<MAX_HOMBRES; i++)
 		listaH[i] = 0;
-
+		*/
 /*	numeroBalones = 0;
 	for (int i = 0; i<MAX_BALONES; i++)
 		listaB[i] = 0;

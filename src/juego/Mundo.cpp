@@ -7,6 +7,11 @@
 
 #include <math.h>
 
+Mundo::Mundo()
+{
+
+
+}
 void Mundo::RotarOjo()
 {
 	float dist=sqrt(x_ojo*x_ojo+z_ojo*z_ojo);
@@ -44,7 +49,6 @@ void Mundo::Mueve()
 	Interaccion::Rebote(balon, hombre1);
 	Interaccion::Rebote(balon, hombre2);
 
-<<<<<<< HEAD
 	if (Interaccion::Rebote(balon, hombre1)){
 
 		balon.SetVel(-10,balon.GetVel_y());
@@ -56,10 +60,10 @@ void Mundo::Mueve()
 		balon.SetVel(+10, balon.GetVel_y());
 
 	}
-=======
+
 	hombres.Mueve(0.075f);
 
->>>>>>> refs/remotes/origin/master
+
 }
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
@@ -84,13 +88,19 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	balon.SetColor(255, 255, 0);
 	balon.SetRadio(0.75f);
 	balon.SetPos(1, 6);
-
+	/*
  //Aqui se crean variables tipo Hombre y las agregamos 
 	for (int i = 0; i<2; i++)
 	{
 		Hombre* aux = new Hombre(1.8, i, 1 + i, i, i);
 		hombres.Agregar(aux);
-	}
+	}*/
+	bonus.SetPos(2, 7);
+
+	hombre1.SetPos(5, 0.5);
+	hombre1.SetColor(0, 0, 205);
+	hombre2.SetPos(-5, 0.5);
+	hombre2.SetColor(139, 0, 0);
 }
 
 void Mundo::Tecla(unsigned char key)
