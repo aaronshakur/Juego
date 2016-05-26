@@ -37,7 +37,7 @@ bool Interaccion::Rebote(Hombre &h, Pared p)
 
 {
 	Vector2D dir;
-	float dif = p.Distancia(h.posicion, &dir) - h.altura;
+	float dif = p.Distancia(h.posicion, &dir) - h.radio;
 	if (dif <= 0.0f){
 
 		h.posicion = h.posicion - dir*dif; 
@@ -101,7 +101,7 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 	//Vector que une los centros
 	Vector2D dif = h.posicion - b.posicion;
 	float d = dif.modulo();
-	float dentro = d - (b.radio + h.altura);
+	float dentro = d - (b.radio + h.radio);
 
 	if (dentro<0.0f)//si hay colision
 	{
@@ -141,7 +141,7 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 
 		//en el eje Y, rebote elastico
 		float m1 = b.radio;
-		float m2 = h.altura;
+		float m2 = h.radio;
 		float py = m1*u1y + m2*u2y;//Cantidad de movimiento inicial ejey
 		float ey = m1*u1y*u1y + m2*u2y*u2y;//Energia cinetica inicial ejey
 

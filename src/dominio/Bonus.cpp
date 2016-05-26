@@ -8,7 +8,6 @@ Bonus::Bonus()    //constructor de bonus. Damos valores iniciales
 	azul = 255;
 	lado = 1.0f;
 	aceleracion.y = -9.8f; //Para que se quede parado por ahora
-
 }
 
 Bonus::~Bonus()
@@ -27,15 +26,18 @@ void Bonus::Dibuja(){
 	glPopMatrix();
 
 }
-
 void Bonus::Mueve(float t){
 
 	posicion = posicion + velocidad*t + aceleracion*(t*t*0.5f);
 	velocidad = velocidad + aceleracion*t;
 
+<<<<<<< HEAD
 }
 /*void Bonus::SetPos(float posx, float posy){
 
 	posicion.x = posx;
 	posicion.y = posy;
 }*/
+=======
+}
+>>>>>>> refs/remotes/origin/RamaMiguelHerencia

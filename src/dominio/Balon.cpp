@@ -4,7 +4,7 @@
 Balon::Balon() //constructor de balon. Damos valores iniciales
 {
 	rojo = verde = azul = 255; //blanco
-	radio = 1.0f;
+	//radio = 1.0f;
 	aceleracion.y = -9.8f;
 }
 
@@ -13,12 +13,10 @@ Balon::~Balon()
 }
 
 void Balon::Dibuja(){
-
 	glColor3ub(rojo, verde, azul);
 	glTranslatef(posicion.x, posicion.y, 0);
 	glutSolidSphere(radio, 20, 20);
 	glTranslatef(-posicion.x, -posicion.y, 0);
-
 }
 
 void Balon::Mueve(float t){
@@ -27,9 +25,9 @@ void Balon::Mueve(float t){
 	velocidad= velocidad+ aceleracion*t;
 	if (posicion.y <= 0.5) // para que la pelota no desaparezca nunca.
 		posicion.y = 0.5;
-
 }
 
+<<<<<<< HEAD
 /*void Balon::SetColor(unsigned char r, unsigned char g, unsigned char b)
 {
 	rojo = r;
@@ -47,3 +45,6 @@ void Balon::SetRadio(float rad){
 	posicion.x = posx;
 	posicion.y = posy;
 }*/
+=======
+
+>>>>>>> refs/remotes/origin/RamaMiguelHerencia

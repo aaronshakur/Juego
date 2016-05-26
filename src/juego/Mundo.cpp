@@ -2,6 +2,7 @@
 #include "..\include\juego\Mundo.h"
 #include "..\..\include\dominio\Interaccion.h"
 #include "..\..\include\dominio\Pared.h"
+#include "..\..\include\dominio\ObjetoMovil.h"
 
 #include <math.h>
 
@@ -54,11 +55,11 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	z_ojo = 42;
 
 	hombre1.SetColor(255, 0, 0);
-	hombre1.SetAltura(1.8f);
+	hombre1.SetRadio(1.8f);
 	hombre1.SetPos(6, 1);
 
 	hombre2.SetColor(0, 0, 255);
-	hombre2.SetAltura(1.8f);
+	hombre2.SetRadio(1.8f);
 	hombre2.SetPos(-6, 1);
 
 	bonusnor.SetPos(8, 20);

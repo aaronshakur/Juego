@@ -4,10 +4,8 @@
 
 Hombre::Hombre()  //constructor de hombre. Damos valores iniciales
 {
-	altura = 1.8f;
 	rojo = verde = azul = 255; //blanco
 	aceleracion.y = -9.8;
-
 }
 
 Hombre::~Hombre()
@@ -19,7 +17,7 @@ void Hombre::Dibuja(){
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
 	glColor3ub(rojo, verde, azul);
-	glutSolidSphere(altura, 20, 20);
+	glutSolidSphere(radio, 20, 20);
 	glPopMatrix();
 
 }
@@ -32,6 +30,7 @@ void Hombre::Mueve(float t){
 		posicion.y = 0.9;
 	
 }
+<<<<<<< HEAD
 
 /*void Hombre::SetColor(unsigned char r, unsigned char g, unsigned char b)
 {
@@ -61,3 +60,5 @@ void Hombre::SetAce(float ax, float ay){ //Sera llamado por Mundo cada vez que p
 	aceleracion.x = ax;
 	aceleracion.y = ay;
 }
+=======
+>>>>>>> refs/remotes/origin/RamaMiguelHerencia
