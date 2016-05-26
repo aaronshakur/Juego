@@ -12,6 +12,9 @@ public:
 	void SetPos(float, float);
 	void SetVel(float, float);
 	void SetAce(float, float);
+
+//Polimorfismo de Mueve() para Balon, Hombre y Bonus
+	virtual void Mueve(float){};
 	
 protected:
 	unsigned char rojo, verde, azul;

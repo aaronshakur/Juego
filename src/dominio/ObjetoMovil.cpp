@@ -33,4 +33,3 @@ void ObjetoMovil::SetAce(float ax, float ay){ //Sera llamado por Mundo cada vez 
 	aceleracion.x = ax;
 	aceleracion.y = ay;
 }
-

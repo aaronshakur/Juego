@@ -26,7 +26,7 @@ void Hombre::Mueve(float t){
 
 	posicion = posicion + velocidad*t + aceleracion*(t*t*0.5f);   //no puede ser escalar*vector!!! debe ser Vector2D* escalar!! debido a la declaracion en Vector2D.cpp
 	velocidad = velocidad + aceleracion*t;
-	if (posicion.y <= 0.9) // para que el jugador no desaparezca al ponerle aceleracion negativa para el salto.
+		if (posicion.y <= 0.9) // para que el jugador no desaparezca al ponerle aceleracion negativa para el salto.
 		posicion.y = 0.9;
 	
 }

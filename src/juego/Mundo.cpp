@@ -32,11 +32,31 @@ void Mundo::Dibuja()
 
 void Mundo::Mueve()
 {
-	hombre1.Mueve(0.075f);
-	hombre2.Mueve(0.075f);
-	balon.Mueve(0.05f);
-	bonusesp.mueve_esp(0.009f);
-	bonusnor.Mueve(0.009f);
+	//Polimorfismo
+	ObjetoMovil objetosMoviles,*pobjetosMoviles;
+	
+	pobjetosMoviles = &hombre1;
+	pobjetosMoviles -> Mueve(0.075f);
+
+	pobjetosMoviles = &hombre2;
+	pobjetosMoviles->Mueve(0.075f);
+
+	pobjetosMoviles = &balon;
+	pobjetosMoviles->Mueve(0.05f);
+
+	//hombre1.Mueve(0.075f);
+	//hombre2.Mueve(0.075f);
+	//balon.Mueve(0.05f);
+	
+	pobjetosMoviles = &bonusnor;
+	pobjetosMoviles->Mueve(0.009f);
+
+	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles->Mueve(0.009f);
+
+	//bonusesp.mueve_esp(0.009f);
+	//bonusnor.Mueve(0.009f);
+
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
 	Interaccion::Rebote(balon, campo);
