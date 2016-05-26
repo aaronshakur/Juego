@@ -6,6 +6,9 @@
 
 #include <math.h>
 
+//Polimorfismo
+ObjetoMovil objetosMoviles, *pobjetosMoviles;
+
 void Mundo::RotarOjo()
 {
 	float dist=sqrt(x_ojo*x_ojo+z_ojo*z_ojo);
@@ -21,20 +24,33 @@ void Mundo::Dibuja()
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
 	//aqui es donde hay que poner el codigo de dibujo
-	balon.Dibuja();
-	hombre1.Dibuja();
-	hombre2.Dibuja();
-	bonusesp.Dibuja();
-	bonusnor.Dibuja();
-	campo.Dibuja();
+	pobjetosMoviles = &balon;
+	pobjetosMoviles->Dibuja();
 
+	pobjetosMoviles = &hombre1;
+	pobjetosMoviles->Dibuja();
+	
+	pobjetosMoviles = &hombre2;
+	pobjetosMoviles->Dibuja();
+	
+	//balon.Dibuja();
+	//hombre1.Dibuja();
+	//hombre2.Dibuja();
+
+	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles->Dibuja();
+
+	pobjetosMoviles = &bonusnor;
+	pobjetosMoviles->Dibuja();
+
+	//bonusesp.Dibuja();
+	//bonusnor.Dibuja();
+
+	campo.Dibuja();
 }
 
 void Mundo::Mueve()
 {
-	//Polimorfismo
-	ObjetoMovil objetosMoviles,*pobjetosMoviles;
-	
 	pobjetosMoviles = &hombre1;
 	pobjetosMoviles -> Mueve(0.075f);
 

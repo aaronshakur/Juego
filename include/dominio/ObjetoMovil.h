@@ -15,6 +15,9 @@ public:
 
 //Polimorfismo de Mueve() para Balon, Hombre y Bonus
 	virtual void Mueve(float){};
+
+//Polimorfismo de Dibuja() para Balon, Hombre y Bonus
+	virtual void Dibuja(){};
 	
 protected:
 	unsigned char rojo, verde, azul;
