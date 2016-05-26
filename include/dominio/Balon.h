@@ -7,8 +7,6 @@ class Balon :public ObjetoMovil
 {
 private:
 
-	float radio;
-
 public:
 	Balon();
 	~Balon();
@@ -16,7 +14,6 @@ public:
 	//Metodos
 	void Dibuja();
 	void Mueve(float);
-	void SetRadio(float);
 	
 	friend class Interaccion;
 };

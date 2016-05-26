@@ -27,8 +27,3 @@ void Balon::Mueve(float t){
 		posicion.y = 0.5;
 }
 
-void Balon::SetRadio(float rad){
-
-	radio = rad;
-
-}

@@ -31,19 +31,4 @@ void Hombre::Mueve(float t){
 	
 }
 
-void Hombre::SetAltura(float rad){ //ALTURA=RADIO ESFERAS HOMBRES
 
-	altura = rad;
-
-}
-
-void Hombre::SetVel(float vx, float vy){ //Sera llamado por Mundo cada vez que pulsemos una tecla para mover a los jugadores
-
-	velocidad.x = vx;
-	velocidad.y = vy;
-}
-void Hombre::SetAce(float ax, float ay){ //Sera llamado por Mundo cada vez que pulsemos una tecla para mover a los jugadores
-
-	aceleracion.x = ax;
-	aceleracion.y = ay;
-}
