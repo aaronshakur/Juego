@@ -15,7 +15,6 @@ BonusEspecial::~BonusEspecial()
 
 void BonusEspecial::mueve_esp(float t)
 {
-	
 	Bonus::Mueve(t);
 	if (lado>ladomax)
 		pulso = -pulso;
