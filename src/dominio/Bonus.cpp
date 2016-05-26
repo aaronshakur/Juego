@@ -31,13 +31,4 @@ void Bonus::Mueve(float t){
 	posicion = posicion + velocidad*t + aceleracion*(t*t*0.5f);
 	velocidad = velocidad + aceleracion*t;
 
-<<<<<<< HEAD
 }
-/*void Bonus::SetPos(float posx, float posy){
-
-	posicion.x = posx;
-	posicion.y = posy;
-}*/
-=======
-}
->>>>>>> refs/remotes/origin/RamaMiguelHerencia

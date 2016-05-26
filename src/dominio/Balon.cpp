@@ -27,24 +27,8 @@ void Balon::Mueve(float t){
 		posicion.y = 0.5;
 }
 
-<<<<<<< HEAD
-/*void Balon::SetColor(unsigned char r, unsigned char g, unsigned char b)
-{
-	rojo = r;
-	verde = g;
-	azul = b;
-};*/
-
 void Balon::SetRadio(float rad){
 
 	radio = rad;
 
 }
-/*void Balon::SetPos(float posx, float posy){
-
-	posicion.x = posx;
-	posicion.y = posy;
-}*/
-=======
-
->>>>>>> refs/remotes/origin/RamaMiguelHerencia

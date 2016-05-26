@@ -30,25 +30,12 @@ void Hombre::Mueve(float t){
 		posicion.y = 0.9;
 	
 }
-<<<<<<< HEAD
-
-/*void Hombre::SetColor(unsigned char r, unsigned char g, unsigned char b)
-{
-	rojo = r;
-	verde = g;
-	azul = b;
-};*/
 
 void Hombre::SetAltura(float rad){ //ALTURA=RADIO ESFERAS HOMBRES
 
 	altura = rad;
 
 }
-/*void Hombre::SetPos(float posx, float posy){
-
-	posicion.x = posx;
-	posicion.y = posy;
-}*/
 
 void Hombre::SetVel(float vx, float vy){ //Sera llamado por Mundo cada vez que pulsemos una tecla para mover a los jugadores
 
@@ -60,5 +47,3 @@ void Hombre::SetAce(float ax, float ay){ //Sera llamado por Mundo cada vez que p
 	aceleracion.x = ax;
 	aceleracion.y = ay;
 }
-=======
->>>>>>> refs/remotes/origin/RamaMiguelHerencia
