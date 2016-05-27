@@ -17,9 +17,11 @@ private:
 	Hombre hombre1, hombre2;//Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
 	BonusEspecial bonusesp;
 	BonusNormal bonusnor;
+	
 
 
 	friend class campo;
+
 public: 
 	
 	//Metodos
@@ -29,6 +31,8 @@ public:
 	void RotarOjo();
 	void Mueve();
 	void Dibuja();
+	int ContadorBotes();
+
 	
 
 	

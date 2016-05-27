@@ -3,11 +3,12 @@
 #include "..\..\include\dominio\Interaccion.h"
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\ObjetoMovil.h"
-
+#include "..\include\comun\ETSIDI.h"
+#include <stdlib.h>
 #include <math.h>
 
 //Polimorfismo
-ObjetoMovil objetosMoviles, *pobjetosMoviles;
+ObjetoMovil  *pobjetosMoviles;
 
 void Mundo::RotarOjo()
 {
@@ -32,10 +33,6 @@ void Mundo::Dibuja()
 	
 	pobjetosMoviles = &hombre2;
 	pobjetosMoviles->Dibuja();
-	
-	//balon.Dibuja();
-	//hombre1.Dibuja();
-	//hombre2.Dibuja();
 
 	pobjetosMoviles = &bonusesp;
 	pobjetosMoviles->Dibuja();
@@ -43,10 +40,8 @@ void Mundo::Dibuja()
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Dibuja();
 
-	//bonusesp.Dibuja();
-	//bonusnor.Dibuja();
-
 	campo.Dibuja();
+
 }
 
 void Mundo::Mueve()
@@ -59,10 +54,6 @@ void Mundo::Mueve()
 
 	pobjetosMoviles = &balon;
 	pobjetosMoviles->Mueve(0.05f);
-
-	//hombre1.Mueve(0.075f);
-	//hombre2.Mueve(0.075f);
-	//balon.Mueve(0.05f);
 	
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Mueve(0.009f);
@@ -72,7 +63,8 @@ void Mundo::Mueve()
 
 	//bonusesp.mueve_esp(0.009f);
 	//bonusnor.Mueve(0.009f);
-
+	
+	
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
 	Interaccion::Rebote(balon, campo);
@@ -143,9 +135,22 @@ void Mundo::TeclaEspecial(unsigned char key)
 					if (Interaccion::Rebote(hombre1,campo.suelo)) //para que solo pueda saltar una vez
 						hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
 					break;
+		}
 		case GLUT_KEY_DOWN:
 			hombre1.SetVel(0.0f, 0.0f);
 			break;
+	
 	}
-	}
+}
+
+int ContadorBotes(){
+
+	Pared suelo;
+	Balon balon;
+
+	int contadorBotes = 0;
+	if (Interaccion::ReboteSuelo(balon,suelo))
+		contadorBotes++;
+
+	return contadorBotes;
 }

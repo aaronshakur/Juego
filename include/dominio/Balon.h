@@ -6,7 +6,7 @@
 class Balon :public ObjetoMovil
 {
 private:
-
+	
 public:
 	Balon();
 	~Balon();

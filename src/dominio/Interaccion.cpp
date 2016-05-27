@@ -33,8 +33,6 @@ void Interaccion::Rebote(Hombre &h, Campo c)
 bool Interaccion::Rebote(Hombre &h, Pared p) 
 
 //Se pasa el parametro hombre por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
-
-
 {
 	Vector2D dir;
 	float dif = p.Distancia(h.posicion, &dir) - h.radio;
@@ -49,6 +47,7 @@ bool Interaccion::Rebote(Hombre &h, Pared p)
 //Este metodo llama a cada rebote individual del balon con las 5 paredes.
 //Posteriormente, llamaremos a este metodo desde mundo.
 //Se pasa el parametro balon por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
+
 
 void Interaccion::Rebote(Balon &b, Campo c)
 {
@@ -81,6 +80,7 @@ bool Interaccion::Rebote(Balon &b, Pared p)
 bool Interaccion::ReboteSuelo(Balon &b, Pared suelo) {
 
 	Vector2D dir;
+	//int contadorBotes = 0;
 
 	float dif = suelo.Distancia(b.posicion, &dir) - b.radio;
 	if (dif <= 0.0f){
@@ -88,7 +88,8 @@ bool Interaccion::ReboteSuelo(Balon &b, Pared suelo) {
 		Vector2D v_inicial = b.velocidad;
 		b.velocidad = v_inicial - dir*2.0*(v_inicial*dir);
 		b.posicion = b.posicion - dir*dif;
-		b.velocidad = b.velocidad - b.velocidad*0.25f;      
+		b.velocidad = b.velocidad - b.velocidad*0.25f;   
+		//contadorBotes++;
 		return true;
 	}
 	return false;

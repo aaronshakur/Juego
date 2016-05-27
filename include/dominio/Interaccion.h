@@ -17,7 +17,7 @@ public:
 	static bool Rebote(Balon &b, Pared p);
 	static bool ReboteSuelo(Balon &b, Pared suelo);
 	static bool Rebote(Balon &b, Hombre &h);
-
+	
 private:
 
 
