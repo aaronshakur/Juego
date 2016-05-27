@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+
 //Polimorfismo
 ObjetoMovil  *pobjetosMoviles;
 
@@ -96,6 +97,7 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	balon.SetRadio(0.75f);
 	balon.SetPos(1, 6);
 
+	
 }
 
 void Mundo::Tecla(unsigned char key)
@@ -143,14 +145,3 @@ void Mundo::TeclaEspecial(unsigned char key)
 	}
 }
 
-int ContadorBotes(){
-
-	Pared suelo;
-	Balon balon;
-
-	int contadorBotes = 0;
-	if (Interaccion::ReboteSuelo(balon,suelo))
-		contadorBotes++;
-
-	return contadorBotes;
-}

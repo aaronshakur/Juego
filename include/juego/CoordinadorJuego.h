@@ -14,7 +14,13 @@ public:
 
 protected:
 	Mundo mundo;
-	enum Estado { INICIO, JUEGO, PUNTO, FIN };
+	enum Estado { INICIO, PREPARADO, JUEGO, PUNTO, FIN };
 	Estado estado;
+private:
+
+	float x_ojo;
+	float y_ojo;
+	float z_ojo;
+
 };
 

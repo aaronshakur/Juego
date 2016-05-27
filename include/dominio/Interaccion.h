@@ -4,6 +4,7 @@
 #include "Balon.h"
 
 
+
 class Interaccion {
 
 public:
@@ -17,7 +18,9 @@ public:
 	static bool Rebote(Balon &b, Pared p);
 	static bool ReboteSuelo(Balon &b, Pared suelo);
 	static bool Rebote(Balon &b, Hombre &h);
-	
+
+	//static int ContadorBotes(Balon &balon, Pared suelo);
+	//int ContadorPuntos(int);
 private:
 
 
