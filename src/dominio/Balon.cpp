@@ -26,5 +26,9 @@ void Balon::Mueve(float t){
 	if (posicion.y <= 0.5) // para que la pelota no desaparezca nunca.
 		posicion.y = 0.5;
 }
-
-
+/*
+Esfera *aux = esferas.colision(hombre);
+if (aux != 0){
+	esferas.eliminar(aux);
+	ETSIDI::play("sonidos/impacto.wav");
+}*/ //Para cuando caiga el balon dos veces que haga in sonido, moficiar este codigo

@@ -51,6 +51,9 @@
     <ClCompile Include="src\dominio\BonusEspecial.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
+    <ClCompile Include="src\juego\CoordinadorJuego.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\comun\Vector2D.h">
@@ -84,6 +87,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="include\dominio\BonusEspecial.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\comun\ETSIDI.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\juego\CoordinadorJuego.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,6 +9,7 @@
 class Mundo
 {
 private:
+
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
@@ -17,11 +18,16 @@ private:
 	Hombre hombre1, hombre2;//Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
 	BonusEspecial bonusesp;
 	BonusNormal bonusnor;
-
+	Pared suelo;
+	int contadorBotes;
+	int contadorPuntos;
 
 	friend class campo;
-public: 
+	friend class interaccion;
 	
+
+public: 
+
 	//Metodos
 	void Tecla(unsigned char key);
 	void TeclaEspecial(unsigned char key);
@@ -30,6 +36,8 @@ public:
 	void Mueve();
 	void Dibuja();
 	
+	bool GetBote();
+	bool GetPunto();
 
 	
 };
