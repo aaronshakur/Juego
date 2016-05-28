@@ -7,7 +7,7 @@ class BonusEspecial :public Bonus
 public:
 	BonusEspecial();
 	~BonusEspecial();
-	void mueve_esp(float t);
+	void Mueve(float t);// Sin polimorfismo se llamaba 'mueve_esp'. Ahora se llama tambien Mueve()
 
 private:
 	float pulso, ladomax, ladomin;

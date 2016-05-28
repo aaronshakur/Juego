@@ -6,6 +6,7 @@ BonusEspecial::BonusEspecial()
 	pulso = 2.5f;
 	ladomax = 2.0f;
 	ladomin = 0.5f;
+	
 }
 
 
@@ -13,9 +14,10 @@ BonusEspecial::~BonusEspecial()
 {
 }
 
-void BonusEspecial::mueve_esp(float t)
+void BonusEspecial::Mueve(float t) // Sin polimorfismo se llamaba 'mueve_esp'. Ahora se llama tambien Mueve()
 {
-	Bonus::Mueve(t);
+	Bonus::Mueve(t);  //Es una herencia de Bonus y tiene sus atributos pero un 'Mueve' diferente.
+	
 	if (lado>ladomax)
 		pulso = -pulso;
 	if (lado<ladomin)

@@ -6,7 +6,7 @@
 class Hombre :public ObjetoMovil
 {
 private:
-
+	
 public:
 	Hombre();
 	~Hombre();

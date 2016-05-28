@@ -3,8 +3,14 @@
 #include "..\..\include\dominio\Interaccion.h"
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\ObjetoMovil.h"
-
+#include "..\include\comun\ETSIDI.h"
+#include <stdlib.h>
 #include <math.h>
+#define maxBotes 3
+
+
+//Polimorfismo
+ObjetoMovil  *pobjetosMoviles;
 
 void Mundo::RotarOjo()
 {
@@ -21,22 +27,42 @@ void Mundo::Dibuja()
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
 	//aqui es donde hay que poner el codigo de dibujo
-	balon.Dibuja();
-	hombre1.Dibuja();
-	hombre2.Dibuja();
-	bonusesp.Dibuja();
-	bonusnor.Dibuja();
+	pobjetosMoviles = &balon;
+	pobjetosMoviles->Dibuja();
+
+	pobjetosMoviles = &hombre1;
+	pobjetosMoviles->Dibuja();
+	
+	pobjetosMoviles = &hombre2;
+	pobjetosMoviles->Dibuja();
+
+	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles->Dibuja();
+
+	pobjetosMoviles = &bonusnor;
+	pobjetosMoviles->Dibuja();
+
 	campo.Dibuja();
 
 }
 
 void Mundo::Mueve()
 {
-	hombre1.Mueve(0.075f);
-	hombre2.Mueve(0.075f);
-	balon.Mueve(0.05f);
-	bonusesp.mueve_esp(0.009f);
-	bonusnor.Mueve(0.009f);
+	pobjetosMoviles = &hombre1;
+	pobjetosMoviles -> Mueve(0.075f);
+
+	pobjetosMoviles = &hombre2;
+	pobjetosMoviles->Mueve(0.075f);
+
+	pobjetosMoviles = &balon;
+	pobjetosMoviles->Mueve(0.05f);
+	
+	pobjetosMoviles = &bonusnor;
+	pobjetosMoviles->Mueve(0.009f);
+
+	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles->Mueve(0.009f);
+
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
 	Interaccion::Rebote(balon, campo);
@@ -48,6 +74,9 @@ void Mundo::Mueve()
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
+	contadorBotes = 0;
+	contadorPuntos = 0;
+	
 	x_ojo = 1.5;
 
 	y_ojo = 9;
@@ -67,7 +96,6 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	balon.SetColor(255, 255, 0);
 	balon.SetRadio(0.75f);
 	balon.SetPos(1, 6);
-
 }
 
 void Mundo::Tecla(unsigned char key)
@@ -107,9 +135,37 @@ void Mundo::TeclaEspecial(unsigned char key)
 					if (Interaccion::Rebote(hombre1,campo.suelo)) //para que solo pueda saltar una vez
 						hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
 					break;
+		}
 		case GLUT_KEY_DOWN:
 			hombre1.SetVel(0.0f, 0.0f);
 			break;
+	
 	}
-	}
+}
+
+//Esta funcion cuenta el numero de colisiones del balon con el suelo y devuelve '1' si llega al maximo de rebotes permitido
+//o devuelve '0' si aun se puede seguir jugando
+bool Mundo::GetBote(){
+
+	if (Interaccion::ReboteSuelo(balon, suelo))
+		contadorBotes++;
+
+	if (contadorBotes == maxBotes)
+		return true;
+
+	return false;
+}
+//Esta funcion cuenta el numero de puntos. Esto es, las veces que se ha llegado al maximo de rebotes.
+//devuelve '1' si llega a 7 puntos o devuelve '0' si aun quedan puntos por jugar
+bool Mundo::GetPunto(){
+
+	if (GetBote()==1)
+		contadorPuntos++;
+
+	if (contadorPuntos == 7)
+		return true;
+
+	return false;
+
+
 }
