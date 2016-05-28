@@ -11,7 +11,7 @@ public:
 	void Mueve();
 	void Dibuja();
 	void Inicializa();
-
+	
 protected:
 	Mundo mundo;
 	enum Estado { INICIO, PREPARADO, JUEGO, PUNTO, FIN };
@@ -22,5 +22,6 @@ private:
 	float y_ojo;
 	float z_ojo;
 
+	
 };
 

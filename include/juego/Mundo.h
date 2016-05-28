@@ -9,6 +9,7 @@
 class Mundo
 {
 private:
+
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
@@ -18,12 +19,15 @@ private:
 	BonusEspecial bonusesp;
 	BonusNormal bonusnor;
 	Pared suelo;
+	int contadorBotes;
+	int contadorPuntos;
 
 	friend class campo;
+	friend class interaccion;
 	
 
 public: 
-	
+
 	//Metodos
 	void Tecla(unsigned char key);
 	void TeclaEspecial(unsigned char key);
@@ -31,6 +35,9 @@ public:
 	void RotarOjo();
 	void Mueve();
 	void Dibuja();
+	
+	bool GetBote();
+	bool GetPunto();
 
 	
 };

@@ -6,6 +6,7 @@
 #include "..\include\comun\ETSIDI.h"
 #include <stdlib.h>
 #include <math.h>
+#define maxBotes 3
 
 
 //Polimorfismo
@@ -62,10 +63,6 @@ void Mundo::Mueve()
 	pobjetosMoviles = &bonusesp;
 	pobjetosMoviles->Mueve(0.009f);
 
-	//bonusesp.mueve_esp(0.009f);
-	//bonusnor.Mueve(0.009f);
-	
-	
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
 	Interaccion::Rebote(balon, campo);
@@ -77,6 +74,9 @@ void Mundo::Mueve()
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
+	contadorBotes = 0;
+	contadorPuntos = 0;
+	
 	x_ojo = 1.5;
 
 	y_ojo = 9;
@@ -96,8 +96,6 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	balon.SetColor(255, 255, 0);
 	balon.SetRadio(0.75f);
 	balon.SetPos(1, 6);
-
-	
 }
 
 void Mundo::Tecla(unsigned char key)
@@ -145,3 +143,29 @@ void Mundo::TeclaEspecial(unsigned char key)
 	}
 }
 
+//Esta funcion cuenta el numero de colisiones del balon con el suelo y devuelve '1' si llega al maximo de rebotes permitido
+//o devuelve '0' si aun se puede seguir jugando
+bool Mundo::GetBote(){
+
+	if (Interaccion::ReboteSuelo(balon, suelo))
+		contadorBotes++;
+
+	if (contadorBotes == maxBotes)
+		return true;
+
+	return false;
+}
+//Esta funcion cuenta el numero de puntos. Esto es, las veces que se ha llegado al maximo de rebotes.
+//devuelve '1' si llega a 7 puntos o devuelve '0' si aun quedan puntos por jugar
+bool Mundo::GetPunto(){
+
+	if (GetBote()==1)
+		contadorPuntos++;
+
+	if (contadorPuntos == 7)
+		return true;
+
+	return false;
+
+
+}

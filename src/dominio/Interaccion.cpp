@@ -2,7 +2,6 @@
 #include "..\..\include\dominio\Interaccion.h"
 
 #include "math.h"
-#define maxBotes 3
 
 //En esta clase no se van a generar objetos. Va a reunir todos los metodos de interaccion entre parejas de objetos.
 //Ademas, todos los objetos que interaccionen, necesitaran ser amigos de esta clase, ya que estamos intentando acceder a sus
@@ -94,32 +93,7 @@ bool Interaccion::ReboteSuelo(Balon &b, Pared suelo) {
 	}
 	return false;
 }
-/*
-int Interaccion::ContadorBotes(Balon &balon, Pared suelo){
 
-	int contadorBotes = 0;
-	int punto;
-	if (Interaccion::ReboteSuelo(balon, suelo))
-		contadorBotes++;
-
-	if (contadorBotes == maxBotes){
-		punto++;
-		return punto;
-	}
-}
-
-int ContadorPuntos(int punto){
-
-	Interaccion::ContadorBotes(balon,suelo);
-
-	int contadorPuntos = 0;
-
-	if (contadorPuntos == 7)
-		contadorPuntos++;
-
-	return contadorPuntos;
-}
-*/
 //Codigo rebote dos esferas 
 
 bool Interaccion::Rebote(Balon &b, Hombre &h) {
