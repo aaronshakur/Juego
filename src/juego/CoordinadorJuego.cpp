@@ -94,7 +94,6 @@ void CoordinadorJuego::Dibuja()
 	else if (estado == JUEGO)
 	{
 		mundo.Dibuja();
-		mundo.GetBote();
 	
 
 	}

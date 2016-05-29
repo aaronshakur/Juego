@@ -23,6 +23,7 @@ private:
 
 	Pared suelo;
 
+	int contadorBotes;
 	int contadorPuntos;
 	bool punto;
 	bool bote;
@@ -40,7 +41,6 @@ public:
 	void RotarOjo();
 	void Mueve();
 	void Dibuja();
-	
 	int GetBote(){ return contadorBotes; }
 	int GetPunto(){ return contadorPuntos ; }
 	void SetPuntos();

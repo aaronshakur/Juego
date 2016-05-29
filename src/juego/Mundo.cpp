@@ -177,34 +177,6 @@ void Mundo::TeclaEspecial(unsigned char key)
 }
 
 
-//Esta funcion cuenta el numero de colisiones del balon con el suelo y devuelve '1' si llega al maximo de rebotes permitido
-//o devuelve '0' si aun se puede seguir jugando
-bool Mundo::GetBote(){
-
-	if (Interaccion::ReboteSuelo(balon, suelo))
-		contadorBotes++;
-	printf("%f", contadorBotes);
-
-	if (contadorBotes == maxBotes){
-		return true;
-	}
-		
-	
-}
-//Esta funcion cuenta el numero de puntos. Esto es, las veces que se ha llegado al maximo de rebotes.
-//devuelve '1' si llega a 7 puntos o devuelve '0' si aun quedan puntos por jugar
-/*void Mundo::GetPunto(){
-
-	if (GetBote(bool bote) == 1)
-		contadorPuntos++;
-
-		if (contadorPuntos == 7)
-			return true;
-		
-		return false;
-
-
-}*/
 
 //Funcion que resetea los puntos cuando acaba una partida
 void Mundo::SetPuntos(){
