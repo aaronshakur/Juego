@@ -20,13 +20,9 @@ private:
 	Hombre hombre1, hombre2;//Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
 	BonusEspecial bonusesp;
 	BonusNormal bonusnor;
-<<<<<<< HEAD
+
 	Pared suelo;
-	float contadorBotes = 0;
-=======
-	
-	int contadorBotes;
->>>>>>> refs/remotes/origin/RamaAaron
+
 	int contadorPuntos;
 	bool punto;
 	bool bote;
@@ -45,13 +41,9 @@ public:
 	void Mueve();
 	void Dibuja();
 	
-<<<<<<< HEAD
-	bool GetBote();
-	//void GetPunto();
-=======
 	int GetBote(){ return contadorBotes; }
 	int GetPunto(){ return contadorPuntos ; }
 	void SetPuntos();
->>>>>>> refs/remotes/origin/RamaAaron
+
 
 };

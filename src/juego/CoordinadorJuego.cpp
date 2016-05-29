@@ -94,12 +94,9 @@ void CoordinadorJuego::Dibuja()
 	else if (estado == JUEGO)
 	{
 		mundo.Dibuja();
-<<<<<<< HEAD
 		mundo.GetBote();
-//		mundo.GetPunto();
-=======
-		
->>>>>>> refs/remotes/origin/RamaAaron
+	
+
 	}
 	else if (estado == PUNTO)
 	{
@@ -131,12 +128,12 @@ void CoordinadorJuego::Mueve()
 		{
 			estado = PREPARADO;
 		}
-<<<<<<< HEAD
+
 		//if (mundo.GetPunto()==1)
 		//{
 		//	estado = FIN;
 		//}
-=======
+
 
 		int puntos = mundo.GetPunto();
 		if (puntos==maxPuntos)
@@ -145,6 +142,5 @@ void CoordinadorJuego::Mueve()
 			estado = FIN;
 
 		}
->>>>>>> refs/remotes/origin/RamaAaron
 	}
 }

@@ -94,13 +94,13 @@ void Mundo::Mueve()
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
-<<<<<<< HEAD
+
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	//contadorBotes = 0;
 	//contadorPuntos = 0;
-=======
+
 	contadorBotes = 0;
->>>>>>> refs/remotes/origin/RamaAaron
+
 	
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	x_ojo = 1.5;
@@ -176,7 +176,7 @@ void Mundo::TeclaEspecial(unsigned char key)
 	}
 }
 
-<<<<<<< HEAD
+
 //Esta funcion cuenta el numero de colisiones del balon con el suelo y devuelve '1' si llega al maximo de rebotes permitido
 //o devuelve '0' si aun se puede seguir jugando
 bool Mundo::GetBote(){
@@ -205,10 +205,9 @@ bool Mundo::GetBote(){
 
 
 }*/
-=======
+
 //Funcion que resetea los puntos cuando acaba una partida
 void Mundo::SetPuntos(){
 	if (contadorPuntos == maxPuntos)
 		contadorPuntos = 0;
 }
->>>>>>> refs/remotes/origin/RamaAaron
