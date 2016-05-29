@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <math.h>
 #define maxBotes 3
-
+#define maxPuntos 3
 
 //Polimorfismo
 ObjetoMovil  *pobjetosMoviles;
@@ -74,46 +74,50 @@ void Mundo::Mueve()
 	//for (int i=0; i <maxBotes; i++){
 
 	if (Interaccion::Colision(balon, campo.suelo)){
-	contadorBotes++;
-	printf("Botes: ");
-	printf("%d\n", contadorBotes);
+		contadorBotes++;
+		printf("Botes: ");
+		printf("%d\n", contadorBotes);
 	}
 
 	if (contadorBotes == maxBotes){
 		contadorPuntos++;
 		printf("Puntos: ");
 		printf("%d\n", contadorPuntos);
+		
 	}
-	
-			
 }
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
-	
 	contadorBotes = 0;
-	//contadorPuntos = 0;
-
+	
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	x_ojo = 1.5;
-
 	y_ojo = 9;
-
 	z_ojo = 42;
 
-	hombre1.SetColor(255, 0, 0);
-	hombre1.SetRadio(1.8f);
-	hombre1.SetPos(6, 1);
+	pobjetosMoviles = &hombre1;
+	pobjetosMoviles->SetColor(255, 0, 0);
+	pobjetosMoviles->SetRadio(1.8f);
+	pobjetosMoviles->SetPos(6, 1);
 
-	hombre2.SetColor(0, 0, 255);
-	hombre2.SetRadio(1.8f);
-	hombre2.SetPos(-6, 1);
+	pobjetosMoviles = &hombre2;
+	pobjetosMoviles->SetColor(0, 0, 255);
+	pobjetosMoviles->SetRadio(1.8f);
+	pobjetosMoviles->SetPos(-6, 1);
+	
+	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles->SetPos(-8, 20);
 
-	bonusnor.SetPos(8, 20);
-	bonusesp.SetPos(-8, 20);
-	balon.SetColor(255, 255, 0);
-	balon.SetRadio(0.75f);
-	balon.SetPos(1, 6);
+	pobjetosMoviles = &bonusnor;
+	pobjetosMoviles->SetPos(8, 20);
+	
+	pobjetosMoviles = &balon;
+	pobjetosMoviles->SetColor(255, 255, 0);
+	pobjetosMoviles->SetRadio(0.75f);
+	pobjetosMoviles->SetPos(5, 7);
+	
+	
 }
 
 void Mundo::Tecla(unsigned char key)
@@ -161,4 +165,8 @@ void Mundo::TeclaEspecial(unsigned char key)
 	}
 }
 
-
+//Funcion que resetea los puntos cuando acaba una partida
+void Mundo::SetPuntos(){
+	if (contadorPuntos == maxPuntos)
+		contadorPuntos = 0;
+}

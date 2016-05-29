@@ -39,7 +39,7 @@ public:
 	void Dibuja();
 	
 	int GetBote(){ return contadorBotes; }
-	int GetPunto(){return contadorPuntos ; }
+	int GetPunto(){ return contadorPuntos ; }
+	void SetPuntos();
 
-	
 };

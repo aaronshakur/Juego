@@ -2,10 +2,12 @@
 #include "..\include\comun\ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 #define maxBotes 3
+#define maxPuntos 3
 
 CoordinadorJuego::CoordinadorJuego()
 {
 	estado = INICIO;
+	
 }
 
 
@@ -62,6 +64,7 @@ void CoordinadorJuego::Inicializa(){
 	y_ojo = 9;
 	z_ojo = 42;
 
+	
 	mundo.Inicializa();
 	
 }
@@ -125,9 +128,11 @@ void CoordinadorJuego::Mueve()
 		}
 
 		int puntos = mundo.GetPunto();
-		if (puntos==7)
+		if (puntos==maxPuntos)
 		{
+			mundo.SetPuntos();
 			estado = FIN;
+
 		}
 	}
 }
