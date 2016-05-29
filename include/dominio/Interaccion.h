@@ -18,8 +18,11 @@ public:
 	static bool Rebote(Balon &b, Pared p);
 	static bool ReboteSuelo(Balon &b, Pared suelo);
 	static bool Rebote(Balon &b, Hombre &h);
+	
+	//funciones de informacion, no cambian los objetos, solo devuelven true si hay colision
+	static bool Colision(Balon, Pared);
 
 private:
-
+	
 
 };

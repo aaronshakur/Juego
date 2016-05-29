@@ -5,6 +5,7 @@
 #include "..\..\include\dominio\ObjetoMovil.h"
 #include "..\include\comun\ETSIDI.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
 #define maxBotes 3
 
@@ -48,15 +49,16 @@ void Mundo::Dibuja()
 
 void Mundo::Mueve()
 {
+	
 	pobjetosMoviles = &hombre1;
-	pobjetosMoviles -> Mueve(0.075f);
+	pobjetosMoviles->Mueve(0.075f);
 
 	pobjetosMoviles = &hombre2;
 	pobjetosMoviles->Mueve(0.075f);
 
 	pobjetosMoviles = &balon;
 	pobjetosMoviles->Mueve(0.05f);
-	
+
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Mueve(0.009f);
 
@@ -69,14 +71,30 @@ void Mundo::Mueve()
 	Interaccion::Rebote(balon, hombre1);
 	Interaccion::Rebote(balon, hombre2);
 
+	//for (int i=0; i <maxBotes; i++){
+
+	if (Interaccion::Colision(balon, campo.suelo)){
+	contadorBotes++;
+	printf("Botes: ");
+	printf("%d\n", contadorBotes);
+	}
+
+	if (contadorBotes == maxBotes){
+		contadorPuntos++;
+		printf("Puntos: ");
+		printf("%d\n", contadorPuntos);
+	}
+	
+			
 }
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
-	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
-	contadorBotes = 0;
-	contadorPuntos = 0;
 	
+	contadorBotes = 0;
+	//contadorPuntos = 0;
+
+	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	x_ojo = 1.5;
 
 	y_ojo = 9;
@@ -143,29 +161,4 @@ void Mundo::TeclaEspecial(unsigned char key)
 	}
 }
 
-//Esta funcion cuenta el numero de colisiones del balon con el suelo y devuelve '1' si llega al maximo de rebotes permitido
-//o devuelve '0' si aun se puede seguir jugando
-bool Mundo::GetBote(){
 
-	if (Interaccion::ReboteSuelo(balon, suelo))
-		contadorBotes++;
-
-	if (contadorBotes == maxBotes)
-		return true;
-
-	return false;
-}
-//Esta funcion cuenta el numero de puntos. Esto es, las veces que se ha llegado al maximo de rebotes.
-//devuelve '1' si llega a 7 puntos o devuelve '0' si aun quedan puntos por jugar
-bool Mundo::GetPunto(){
-
-	if (GetBote()==1)
-		contadorPuntos++;
-
-	if (contadorPuntos == 7)
-		return true;
-
-	return false;
-
-
-}

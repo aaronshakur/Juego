@@ -1,25 +1,14 @@
-﻿Compilación iniciada a las 5/28/2016 2:08:13 PM.
+﻿Compilación iniciada a las 5/29/2016 6:44:11 PM.
      1>Proyecto "C:\Users\Aaron\Desktop\2016\Practicas\Juego\Pang.vcxproj" en el nodo 2 (Build destinos).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (tmp\Debug\) contains files shared from another project (Pang.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ilib /Isrc /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"tmp\Debug\\" /Fd"tmp\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\dominio\Campo.cpp src\juego\CoordinadorJuego.cpp
-         CoordinadorJuego.cpp
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\juego\coordinadorjuego.cpp(76): warning C4129: '.' : secuencia de escape de carácter no reconocida
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\juego\coordinadorjuego.cpp(76): warning C4129: 'B' : secuencia de escape de carácter no reconocida
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\juego\coordinadorjuego.cpp(80): warning C4129: '.' : secuencia de escape de carácter no reconocida
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\juego\coordinadorjuego.cpp(80): warning C4129: 'B' : secuencia de escape de carácter no reconocida
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\juego\coordinadorjuego.cpp(100): warning C4129: '.' : secuencia de escape de carácter no reconocida
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\juego\coordinadorjuego.cpp(100): warning C4129: 'B' : secuencia de escape de carácter no reconocida
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\juego\coordinadorjuego.cpp(107): warning C4129: '.' : secuencia de escape de carácter no reconocida
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\juego\coordinadorjuego.cpp(107): warning C4129: 'B' : secuencia de escape de carácter no reconocida
-         Campo.cpp
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\dominio\campo.cpp(38): warning C4129: '.' : secuencia de escape de carácter no reconocida
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\dominio\campo.cpp(38): warning C4129: 'i' : secuencia de escape de carácter no reconocida
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\dominio\campo.cpp(43): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\dominio\campo.cpp(44): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\dominio\campo.cpp(45): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\dominio\campo.cpp(46): warning C4305: 'argumento' : truncamiento de 'double' a 'GLfloat'
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ilib /Isrc /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"tmp\Debug\\" /Fd"tmp\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\dominio\Interaccion.cpp src\juego\CoordinadorJuego.cpp src\juego\Juego.cpp src\juego\Mundo.cpp
+         Mundo.cpp
+         Interaccion.cpp
          Generando código...
+         Omitiendo... (no se detectaron cambios relevantes)
+         Juego.cpp
+         CoordinadorJuego.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.exe" /INCREMENTAL /NOLOGO /LIBPATH:lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Aaron\Desktop\2016\Practicas\Juego\bin\Juego.lib" /MACHINE:X86 tmp\Debug\Vector2D.obj
          tmp\Debug\Balon.obj
@@ -39,4 +28,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:01.80
+Tiempo transcurrido 00:00:01.11

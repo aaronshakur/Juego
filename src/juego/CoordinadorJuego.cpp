@@ -1,7 +1,7 @@
 #include "..\include\juego\CoordinadorJuego.h"
 #include "..\include\comun\ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
-
+#define maxBotes 3
 
 CoordinadorJuego::CoordinadorJuego()
 {
@@ -73,11 +73,11 @@ void CoordinadorJuego::Dibuja()
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) 
 
 		ETSIDI::setTextColor(1, 1, 0);
-		ETSIDI::setFont("..\..\bin\fuentes\Bitwise.ttf", 16);
+		ETSIDI::setFont("Bitwise.ttf", 16);
 		ETSIDI::printxy("CABEZONES", -5, 8);
 
 		ETSIDI::setTextColor(1, 1, 1);
-		ETSIDI::setFont("..\..\bin\fuentes\Bitwise.ttf", 12);
+		ETSIDI::setFont("Bitwise.ttf", 12);
 		ETSIDI::printxy("PULSE LA TECLA -e- PARA EMPEZAR", -5, 7);
 		ETSIDI::printxy("PULSE LA TECLA -s- PARA SALIR", -5, 6);
 		ETSIDI::printxy("Aaron Marin & Miguel Angel Huerta", 2, 1);
@@ -91,20 +91,22 @@ void CoordinadorJuego::Dibuja()
 	else if (estado == JUEGO)
 	{
 		mundo.Dibuja();
-		mundo.GetPunto();
+		
 	}
 	else if (estado == PUNTO)
 	{
 		mundo.Dibuja();
+
 		ETSIDI::setTextColor(1, 0, 0);
-		ETSIDI::setFont("..\..\bin\fuentes\Bitwise.ttf", 16);
+		ETSIDI::setFont("Bitwise.ttf", 16);
 		ETSIDI::printxy("PUNTO!!", -5, 10);
 		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA VOLVER SACAR", -5, 7);
-	}
+	}	
 	else if (estado == FIN)
 	{
 		mundo.Dibuja();
-		ETSIDI::setFont("..\..\bin\fuentes\Bitwise.ttf", 16);
+
+		ETSIDI::setFont("Bitwise.ttf", 16);
 		ETSIDI::printxy("FIN DEL PARTIDO!", -5, 10);
 		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA LA REVANCHA!", -5, 9);
 	}
@@ -116,12 +118,14 @@ void CoordinadorJuego::Mueve()
 	if (estado == JUEGO)
 	{
 		mundo.Mueve();
-
-		if (mundo.GetBote()==1)
+		int botes = mundo.GetBote();
+		if (botes==maxBotes)
 		{
 			estado = PREPARADO;
 		}
-		if (mundo.GetPunto()==1)
+
+		int puntos = mundo.GetPunto();
+		if (puntos==7)
 		{
 			estado = FIN;
 		}
