@@ -6,6 +6,8 @@
 #include "..\..\include\dominio\BonusEspecial.h"
 #include "..\..\include\dominio\BonusNormal.h"
 
+
+
 class Mundo
 {
 private:
@@ -18,10 +20,14 @@ private:
 	Hombre hombre1, hombre2;//Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
 	BonusEspecial bonusesp;
 	BonusNormal bonusnor;
+
 	Pared suelo;
+
 	int contadorBotes;
 	int contadorPuntos;
-
+	bool punto;
+	bool bote;
+	bool mivariable;
 	friend class campo;
 	friend class interaccion;
 	
@@ -35,9 +41,9 @@ public:
 	void RotarOjo();
 	void Mueve();
 	void Dibuja();
-	
-	bool GetBote();
-	bool GetPunto();
+	int GetBote(){ return contadorBotes; }
+	int GetPunto(){ return contadorPuntos ; }
+	void SetPuntos();
 
-	
+
 };
