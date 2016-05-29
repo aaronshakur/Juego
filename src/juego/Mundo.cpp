@@ -1,3 +1,4 @@
+
 #include "..\include\comun\glut.h"
 #include "..\include\juego\Mundo.h"
 #include "..\..\include\dominio\Interaccion.h"
@@ -6,6 +7,10 @@
 #include "..\include\comun\ETSIDI.h"
 #include <stdlib.h>
 #include <math.h>
+#include <stdio.h>
+
+
+
 #define maxBotes 3
 
 
@@ -74,8 +79,8 @@ void Mundo::Mueve()
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
-	contadorBotes = 0;
-	contadorPuntos = 0;
+	//contadorBotes = 0;
+	//contadorPuntos = 0;
 	
 	x_ojo = 1.5;
 
@@ -149,23 +154,25 @@ bool Mundo::GetBote(){
 
 	if (Interaccion::ReboteSuelo(balon, suelo))
 		contadorBotes++;
+	printf("%f", contadorBotes);
 
-	if (contadorBotes == maxBotes)
+	if (contadorBotes == maxBotes){
 		return true;
-
-	return false;
+	}
+		
+	
 }
 //Esta funcion cuenta el numero de puntos. Esto es, las veces que se ha llegado al maximo de rebotes.
 //devuelve '1' si llega a 7 puntos o devuelve '0' si aun quedan puntos por jugar
-bool Mundo::GetPunto(){
+/*void Mundo::GetPunto(){
 
-	if (GetBote()==1)
+	if (GetBote(bool bote) == 1)
 		contadorPuntos++;
 
-	if (contadorPuntos == 7)
-		return true;
+		if (contadorPuntos == 7)
+			return true;
+		
+		return false;
 
-	return false;
 
-
-}
+}*/

@@ -91,7 +91,8 @@ void CoordinadorJuego::Dibuja()
 	else if (estado == JUEGO)
 	{
 		mundo.Dibuja();
-		mundo.GetPunto();
+		mundo.GetBote();
+//		mundo.GetPunto();
 	}
 	else if (estado == PUNTO)
 	{
@@ -121,9 +122,9 @@ void CoordinadorJuego::Mueve()
 		{
 			estado = PREPARADO;
 		}
-		if (mundo.GetPunto()==1)
-		{
-			estado = FIN;
-		}
+		//if (mundo.GetPunto()==1)
+		//{
+		//	estado = FIN;
+		//}
 	}
 }

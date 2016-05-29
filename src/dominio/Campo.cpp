@@ -33,6 +33,7 @@ void Campo::Dibuja(){
 	red.Dibuja();
 
 	//dibujo del fondo
+	/*
 	glEnable(GL_TEXTURE_2D);
 
 	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("..\..\bin\imagenes\fondo.png").id);
@@ -48,5 +49,5 @@ void Campo::Dibuja(){
 
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
-
+	*/
 }

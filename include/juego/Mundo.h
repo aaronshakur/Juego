@@ -19,9 +19,11 @@ private:
 	BonusEspecial bonusesp;
 	BonusNormal bonusnor;
 	Pared suelo;
-	int contadorBotes;
+	float contadorBotes = 0;
 	int contadorPuntos;
-
+	bool punto;
+	bool bote;
+	bool mivariable;
 	friend class campo;
 	friend class interaccion;
 	
@@ -37,7 +39,7 @@ public:
 	void Dibuja();
 	
 	bool GetBote();
-	bool GetPunto();
+	//void GetPunto();
 
 	
 };
