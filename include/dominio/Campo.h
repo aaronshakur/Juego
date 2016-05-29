@@ -5,7 +5,7 @@ class Campo
 {
 private:
 
-	Pared suelo, techo, pared_izq, pared_dcha,red; //MAS ADELANTE ANADIR PLATAFORMAS PARA QUE REBOTE EL BALON
+	Pared suelo_d,suelo_i, techo, pared_izq, pared_dcha,red; //MAS ADELANTE ANADIR PLATAFORMAS PARA QUE REBOTE EL BALON
 
 public:
 	Campo();
