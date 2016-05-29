@@ -1,7 +1,8 @@
-#include "..\include\comun\glut.h"
+#include "math.h"
+#include "glut.h"
 #include "..\..\include\dominio\Interaccion.h"
 
-#include "math.h"
+
 
 //En esta clase no se van a generar objetos. Va a reunir todos los metodos de interaccion entre parejas de objetos.
 //Ademas, todos los objetos que interaccionen, necesitaran ser amigos de esta clase, ya que estamos intentando acceder a sus
@@ -201,3 +202,14 @@ bool Interaccion::Colision(Balon b, Pared suelo){
 
 }
 
+bool Interaccion::Colision(Bonus b, Hombre h){
+
+	Vector2D pos = h.GetPos(); //la posicion del hombre 
+	pos.y += h.radio/ 2.0f; //posicion del centro del hombre
+
+	float distancia = (b.GetPos()- pos).modulo();
+	if (distancia<b.GetLado())
+		return true;
+	return false;
+
+}

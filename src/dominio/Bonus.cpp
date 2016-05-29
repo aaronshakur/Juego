@@ -1,6 +1,7 @@
-#include "..\..\include\dominio\Bonus.h"
-#include "..\..\include\comun\glut.h"
 #include <stdlib.h>
+#include "..\..\include\dominio\Bonus.h"
+#include "glut.h"
+
 
 Bonus::Bonus()    //constructor de bonus. Damos valores iniciales
 {

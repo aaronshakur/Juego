@@ -1,15 +1,14 @@
+#include <stdlib.h>
 #include "..\include\juego\CoordinadorJuego.h"
-#include "..\include\comun\ETSIDI.h"
+#include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 #define maxBotes 3
 #define maxPuntos 3
 
 CoordinadorJuego::CoordinadorJuego()
 {
-	estado = INICIO;
-	
+	estado = INICIO;	
 }
-
 
 CoordinadorJuego::~CoordinadorJuego(){}
 
@@ -64,7 +63,6 @@ void CoordinadorJuego::Inicializa(){
 	y_ojo = 9;
 	z_ojo = 42;
 
-	
 	mundo.Inicializa();
 	
 }
@@ -75,6 +73,7 @@ void CoordinadorJuego::Dibuja()
 			0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) 
 
+		
 		ETSIDI::setTextColor(1, 1, 0);
 		ETSIDI::setFont("Bitwise.ttf", 16);
 		ETSIDI::printxy("CABEZONES", -5, 8);
@@ -83,7 +82,7 @@ void CoordinadorJuego::Dibuja()
 		ETSIDI::setFont("Bitwise.ttf", 12);
 		ETSIDI::printxy("PULSE LA TECLA -e- PARA EMPEZAR", -5, 7);
 		ETSIDI::printxy("PULSE LA TECLA -s- PARA SALIR", -5, 6);
-		ETSIDI::printxy("Aaron Marin & Miguel Angel Huerta", 2, 1);
+		ETSIDI::printxy("Aaron Marin & Miguel Angel Huerta", 2, 1); 
 	}
 	else if (estado == PREPARADO)
 	{

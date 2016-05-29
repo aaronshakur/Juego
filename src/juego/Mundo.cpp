@@ -1,12 +1,14 @@
-#include "..\include\comun\glut.h"
+#include <stdlib.h>
+#include "glut.h"
+#include <stdio.h>
+#include <math.h>
+#include "ETSIDI.h"
+
 #include "..\include\juego\Mundo.h"
 #include "..\..\include\dominio\Interaccion.h"
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\ObjetoMovil.h"
-#include "..\include\comun\ETSIDI.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
+
 #define maxBotes 3
 #define maxPuntos 3
 
@@ -83,8 +85,8 @@ void Mundo::Mueve()
 		contadorPuntos++;
 		printf("Puntos: ");
 		printf("%d\n", contadorPuntos);
-		
 	}
+
 }
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
@@ -124,16 +126,28 @@ void Mundo::Tecla(unsigned char key)
 {
 	switch (key)
 	{
-		case 'a':
-			hombre2.SetVel(-5.0f, 0.0f);
+	case 'a':{
+		hombre2.SetVel(-5.0f, 0.0f);
+		if (Interaccion::Colision(bonusesp, hombre2)){
+			printf("Colision Hombre2 ");
+			pobjetosMoviles = &hombre2;
+			pobjetosMoviles->SetVel(-8.0f,0.0f);
+		}
+	}
 			break;
-		case 'd':
-			hombre2.SetVel(5.0f, 0.0f);
-			break;
+	case 'd':{
+				 hombre2.SetVel(5.0f, 0.0f);
+			 if (Interaccion::Colision(bonusesp, hombre2)){
+					 pobjetosMoviles = &hombre2;
+					 pobjetosMoviles->SetVel(8.0f, 0.0f);
+				 }
+	}break;
 		case 'w':
 		{
 					if(Interaccion::Rebote(hombre2,campo.suelo)) // para que solo pueda saltar una vez
 					hombre2.SetVel(hombre2.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad	
+					ETSIDI::play("sonidos/disparo.wav");
+
 				    break;
 		}
 		case 's':
@@ -156,6 +170,9 @@ void Mundo::TeclaEspecial(unsigned char key)
 		{
 					if (Interaccion::Rebote(hombre1,campo.suelo)) //para que solo pueda saltar una vez
 						hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
+					ETSIDI::play("sonidos/disparo.wav");
+
+
 					break;
 		}
 		case GLUT_KEY_DOWN:

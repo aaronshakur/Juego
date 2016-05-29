@@ -33,3 +33,13 @@ void ObjetoMovil::SetAce(float ax, float ay){ //Sera llamado por Mundo cada vez 
 	aceleracion.x = ax;
 	aceleracion.y = ay;
 }
+
+void ObjetoMovil::SetPos(Vector2D pos)
+{
+	posicion = pos;
+}
+
+Vector2D ObjetoMovil::GetPos()
+{
+	return posicion;
+}

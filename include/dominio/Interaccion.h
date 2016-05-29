@@ -2,8 +2,7 @@
 #include "Hombre.h"
 #include "Campo.h"
 #include "Balon.h"
-
-
+#include "Bonus.h"
 
 class Interaccion {
 
@@ -19,9 +18,10 @@ public:
 	static bool ReboteSuelo(Balon &b, Pared suelo);
 	static bool Rebote(Balon &b, Hombre &h);
 	
+	
 	//funciones de informacion, no cambian los objetos, solo devuelven true si hay colision
 	static bool Colision(Balon, Pared);
-
+	static bool Colision(Bonus , Hombre );
 private:
 	
 

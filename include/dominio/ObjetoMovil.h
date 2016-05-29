@@ -12,6 +12,10 @@ public:
 	void SetPos(float, float);
 	void SetVel(float, float);
 	void SetAce(float, float);
+	void SetPos(Vector2D pos);
+	Vector2D GetPos();
+
+
 
 //Polimorfismo de Mueve() para Balon, Hombre y Bonus
 	virtual void Mueve(float){};

@@ -1,4 +1,4 @@
-#include "..\include\comun\glut.h"
+#include "glut.h"
 #include "..\include\juego\CoordinadorJuego.h"
 
 CoordinadorJuego juego;

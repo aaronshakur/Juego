@@ -15,6 +15,7 @@ public:
 	//Metodos
 	void Dibuja();
 	void Mueve(float);
+	float GetLado(){ return lado; };
 
 };
 
