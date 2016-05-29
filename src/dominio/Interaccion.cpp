@@ -25,6 +25,7 @@ void Interaccion::Rebote(Hombre &h, Campo c)
 	Interaccion::Rebote(h, c.pared_dcha);
 	Interaccion::Rebote(h, c.pared_izq);
 	Interaccion::Rebote(h, c.red);
+
 }
 
 //En este metodo, interaccionamos los hombres con las paredes, en funcion de la Distancia calculada en otro metodo de Pared.
@@ -50,11 +51,13 @@ bool Interaccion::Rebote(Hombre &h, Pared p)
 
 void Interaccion::Rebote(Balon &b, Campo c)
 {
+	
 	Interaccion::ReboteSuelo(b, c.suelo);
 	Interaccion::Rebote(b, c.techo);
 	Interaccion::Rebote(b, c.pared_dcha);
 	Interaccion::Rebote(b, c.pared_izq);
 	Interaccion::Rebote(b, c.red);
+
 }
 
 //En este metodo, interaccionamos el balon con las paredes, en funcion de la Distancia calculada en otro metodo de Pared.
@@ -79,7 +82,6 @@ bool Interaccion::Rebote(Balon &b, Pared p)
 bool Interaccion::ReboteSuelo(Balon &b, Pared suelo) {
 
 	Vector2D dir;
-	//int contadorBotes = 0;
 
 	float dif = suelo.Distancia(b.posicion, &dir) - b.radio;
 	if (dif <= 0.0f){
@@ -88,7 +90,7 @@ bool Interaccion::ReboteSuelo(Balon &b, Pared suelo) {
 		b.velocidad = v_inicial - dir*2.0*(v_inicial*dir);
 		b.posicion = b.posicion - dir*dif;
 		b.velocidad = b.velocidad - b.velocidad*0.25f;   
-		//contadorBotes++;
+		
 		return true;
 	}
 	return false;
@@ -188,5 +190,14 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 
 }
 
+//funcion de informacion, solo devuelven true si hay bote
 
+bool Interaccion::Colision(Balon b, Pared suelo){
+
+	if (Interaccion::ReboteSuelo(b, suelo))
+		return true;
+	else
+		return false;
+
+}
 

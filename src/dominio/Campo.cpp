@@ -31,7 +31,7 @@ void Campo::Dibuja(){
 	pared_dcha.Dibuja();
 	pared_izq.Dibuja();
 	red.Dibuja();
-
+	/*
 	//dibujo del fondo
 	/*
 	glEnable(GL_TEXTURE_2D);
@@ -49,5 +49,9 @@ void Campo::Dibuja(){
 
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/RamaAaron
 	*/
 }
