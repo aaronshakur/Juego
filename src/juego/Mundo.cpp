@@ -92,14 +92,14 @@ void Mundo::Mueve()
 		contadorBotes_d++;
 		printf("Botes derecha : ");
 		printf("%d\n", contadorBotes_d);
-
-		if (Interaccion::Colision(balon, campo.suelo_i)){
-			contadorBotes_i++;
-			printf("Botes izquierda: ");
-			printf("%d\n", contadorBotes_i);
+	}
+	
+	if (Interaccion::Colision(balon, campo.suelo_i)){
+		contadorBotes_i++;
+		printf("Botes izquierda: ");
+		printf("%d\n", contadorBotes_i);
 		}
 
-<<<<<<< HEAD
 		if (contadorBotes_d == maxBotes){
 			contadorPuntos_d++;
 			printf("Puntos derecha: ");
@@ -111,7 +111,7 @@ void Mundo::Mueve()
 			printf("Puntos izquierda: ");
 			printf("%d\n", contadorPuntos_d);
 		}
-=======
+
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
 		printf("Puntos izquierda: ");
@@ -122,15 +122,11 @@ void Mundo::Mueve()
 		contadorPuntos_d++;
 		printf("Puntos derecha: ");
 		printf("%d\n", contadorPuntos_d);
->>>>>>> refs/remotes/origin/RamaMiguel
+
 	}
 }
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/RamaMiguel
 		contadorBotes_d = 0;
 		contadorBotes_i = 0;
 
@@ -159,7 +155,7 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 		pobjetosMoviles->SetColor(255, 255, 0);
 		pobjetosMoviles->SetRadio(0.75f);
 		pobjetosMoviles->SetPos(0, 9);
-		pobjetosMoviles->SetVel(pobjetosMoviles->VelRandom());
+		pobjetosMoviles->SetVel(pobjetosMoviles->VelxRandom(),9);
 
 }
 
@@ -191,7 +187,7 @@ void Mundo::Tecla(unsigned char key)
 
 void Mundo::TeclaEspecial(unsigned char key)
 {
-<<<<<<< HEAD
+
 	switch (key)
 	{
 	case GLUT_KEY_LEFT:
@@ -211,7 +207,6 @@ void Mundo::TeclaEspecial(unsigned char key)
 		hombre1.SetVel(0.0f, 0.0f);
 		break;
 	}
-=======
 		switch (key)
 		{
 		case GLUT_KEY_LEFT:
@@ -231,20 +226,15 @@ void Mundo::TeclaEspecial(unsigned char key)
 							   hombre1.SetVel(0.0f, 0.0f);
 							   break;
 		}
->>>>>>> refs/remotes/origin/RamaMiguel
+
 }
 
 	//Funcion que resetea los puntos cuando acaba una partida
-<<<<<<< HEAD
-void Mundo::SetPuntos(){
-		if (contadorPuntos_i == maxPuntos || contadorPuntos_d==maxPuntos)
-			contadorPuntos_i = 0;
-			contadorPuntos_d = 0;
-=======
+
 void Mundo::SetPuntosI(){
 		if (contadorPuntos_i == maxPuntos)
 			contadorPuntos_i = 0;			
->>>>>>> refs/remotes/origin/RamaMiguel
+
 }
 
 void Mundo::SetPuntosD(){

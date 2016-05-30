@@ -13,31 +13,26 @@ void ObjetoMovil::SetPos(float posx, float posy){
 	posicion.x = posx;
 	posicion.y = posy;
 }
-
 void ObjetoMovil::SetColor(unsigned char r, unsigned char g, unsigned char b){
 
 		rojo = r;
 		verde = g;
 		azul = b;
 }
-
 void ObjetoMovil::SetRadio(float rad){
 
 	radio = rad;
 }
-
 void ObjetoMovil::SetVel(float vx, float vy){ //Sera llamado por Mundo cada vez que pulsemos una tecla para mover a los jugadores
 
 	velocidad.x = vx;
 	velocidad.y = vy;
 }
-
 void ObjetoMovil::SetAce(float ax, float ay){ //Sera llamado por Mundo cada vez que pulsemos una tecla para mover a los jugadores
 
 	aceleracion.x = ax;
 	aceleracion.y = ay;
 }
-
 void ObjetoMovil::SetPos(Vector2D pos)
 {
 	posicion = pos;
@@ -64,10 +59,10 @@ int ObjetoMovil::PosxRandom(){
 	xrandom = (-19 + (rand() % 38)); //rellena con numeros aleatorios en el eje X dentro del campo
 	return xrandom;
 }
-Vector2D ObjetoMovil::VelRandom(){
-	
-	Vector2D RandomVel;
+
+int ObjetoMovil::VelxRandom(){
+	int velxrandom;
 	srand(time(NULL)); //semilla 
-	RandomVel = (-15 + (rand() % 15), -15 + (rand() % 15)); //rellena con numeros aleatorios en el eje X dentro del campo
-	return RandomVel;
+	velxrandom = (-8 + (rand() % 15)); //rellena con numeros aleatorios en el eje X dentro del campo
+	return velxrandom;
 }
