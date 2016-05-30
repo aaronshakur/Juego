@@ -121,18 +121,27 @@ void CoordinadorJuego::Mueve()
 	if (estado == JUEGO)
 	{
 		mundo.Mueve();
-		int botes = mundo.GetBote();
-		if (botes==maxBotes)
+		int botes_d = mundo.GetBoteD();
+		int botes_i = mundo.GetBoteI();
+		if ((botes_d == maxBotes) || (botes_i == maxBotes))
 		{
 			estado = PREPARADO;
 		}
 
-		int puntos = mundo.GetPunto();
-		if (puntos==maxPuntos)
+		int puntos_d = mundo.GetPuntoD();
+		int puntos_i = mundo.GetPuntoI();
+		if (puntos_d == maxPuntos) 
 		{
-			mundo.SetPuntos();
+			
+			mundo.SetPuntosI();
 			estado = FIN;
 
+
+		}
+		else if (puntos_i == maxPuntos){
+			mundo.SetPuntosD();
+			estado = FIN;
 		}
 	}
+
 }

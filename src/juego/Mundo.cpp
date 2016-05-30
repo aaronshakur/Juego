@@ -107,15 +107,15 @@ void Mundo::Mueve()
 
 
 	if (contadorBotes_d == maxBotes){
-		contadorPuntos_d++;
-		printf("Puntos derecha: ");
-		printf("%d\n", contadorPuntos_d);
-
-	}
-	if (contadorBotes_i == maxBotes){
 		contadorPuntos_i++;
 		printf("Puntos izquierda: ");
 		printf("%d\n", contadorPuntos_i);
+
+	}
+	if (contadorBotes_i == maxBotes){
+		contadorPuntos_d++;
+		printf("Puntos derecha: ");
+		printf("%d\n", contadorPuntos_d);
 	}
 }
 
@@ -124,7 +124,7 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 
 		//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 		//contadorBotes = 0;
-		//contadorPuntos = 0;
+		
 
 		contadorBotes_d = 0;
 		contadorBotes_i = 0;
@@ -210,8 +210,13 @@ void Mundo::TeclaEspecial(unsigned char key)
 
 
 	//Funcion que resetea los puntos cuando acaba una partida
-void Mundo::SetPuntos(){
-		if (contadorPuntos_i == maxPuntos || contadorPuntos_d)
+void Mundo::SetPuntosI(){
+		if (contadorPuntos_i == maxPuntos)
 			contadorPuntos_i = 0;
+			
+}
+
+void Mundo::SetPuntosD(){
+	if (contadorPuntos_d == maxPuntos)
 		contadorPuntos_d = 0;
 }
