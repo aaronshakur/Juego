@@ -99,7 +99,7 @@ void Mundo::Mueve()
 		printf("Botes izquierda: ");
 		printf("%d\n", contadorBotes_i);
 		}
-	}
+	
 
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
@@ -111,20 +111,14 @@ void Mundo::Mueve()
 		contadorPuntos_d++;
 		printf("Puntos derecha: ");
 		printf("%d\n", contadorPuntos_d);
-<<<<<<< HEAD
+
 
 	}
 }
+
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
 
-=======
-		}
-
-}
-void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
-{
->>>>>>> refs/remotes/origin/RamaAaron
 		contadorBotes_d = 0;
 		contadorBotes_i = 0;
 
@@ -186,8 +180,7 @@ void Mundo::Tecla(unsigned char key)
 void Mundo::TeclaEspecial(unsigned char key)
 {
 
-<<<<<<< HEAD
-=======
+
 	switch (key)
 	{
 	case GLUT_KEY_LEFT:
@@ -204,10 +197,11 @@ void Mundo::TeclaEspecial(unsigned char key)
 						break;
 	}
 	case GLUT_KEY_DOWN:
-		hombre1.SetVel(0.0f, 0.0f);
-		break;
+	{
+						  hombre1.SetVel(0.0f, 0.0f);
+						  break;
 	}
->>>>>>> refs/remotes/origin/RamaAaron
+
 		switch (key)
 		{
 		case GLUT_KEY_LEFT:
@@ -224,49 +218,27 @@ void Mundo::TeclaEspecial(unsigned char key)
 							break;
 		}
 		case GLUT_KEY_DOWN:
-							   hombre1.SetVel(0.0f, 0.0f);
-							   break;
+			hombre1.SetVel(0.0f, 0.0f);
+			break;
 		}
 
-<<<<<<< HEAD
-	switch (key)
-	{
-	case GLUT_KEY_LEFT:
-		hombre1.SetVel(-5.0f, 0.0f);
-		break;
-	case GLUT_KEY_RIGHT:
-		hombre1.SetVel(5.0f, 0.0f);
-		break;
-	case GLUT_KEY_UP:
-	{
-						if (Interaccion::Rebote(hombre1, campo.suelo_d)) //para que solo pueda saltar una vez
-							hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
-						ETSIDI::play("sonidos/disparo.wav");
-						break;
-	}
-	case GLUT_KEY_DOWN:
-		hombre1.SetVel(0.0f, 0.0f);
-		break;
+
+
+
 	}
 
-=======
->>>>>>> refs/remotes/origin/RamaAaron
 }
-
 	//Funcion que resetea los puntos cuando acaba una partida
 
 void Mundo::SetPuntosI(){
+
 		if (contadorPuntos_i == maxPuntos)
 			contadorPuntos_i = 0;			
-<<<<<<< HEAD
-		}
-
-=======
-
 }
->>>>>>> refs/remotes/origin/RamaAaron
+
 
 void Mundo::SetPuntosD(){
+
 	if (contadorPuntos_d == maxPuntos)
 		contadorPuntos_d = 0;
 }

@@ -63,12 +63,8 @@ int ObjetoMovil::PosxRandom(){
 int ObjetoMovil::VelxRandom(){
 	int velxrandom;
 	srand(time(NULL)); //semilla 
-<<<<<<< HEAD
-	RandomVel = (-3 + (rand() % 6), -5 + (rand() % 10)); //rellena con numeros aleatorios en el eje X dentro del campo;
-	return RandomVel;
-}
-=======
+
 	velxrandom = (-8 + (rand() % 15)); //rellena con numeros aleatorios en el eje X dentro del campo
 	return velxrandom;
 }
->>>>>>> refs/remotes/origin/RamaAaron
+
