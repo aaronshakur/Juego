@@ -92,11 +92,18 @@ void Mundo::Mueve()
 	Interaccion::Rebote(balon, hombre1);
 	Interaccion::Rebote(balon, hombre2);
 
+<<<<<<< HEAD
 
 	if (Interaccion::Colision(balon, campo.suelo_d)){
 		contadorBotes_d++;
 		printf("Botes derecha : ");
 		printf("%d\n", contadorBotes_d);
+=======
+	if (Interaccion::Colision(balon, campo.suelo)){
+		contadorBotes++;
+		printf("Botes: ");
+		printf("%d\n", contadorBotes);
+>>>>>>> origin/RamaAaron
 	}
 
 	if (Interaccion::Colision(balon, campo.suelo_i)){
@@ -164,6 +171,7 @@ void Mundo::Tecla(unsigned char key)
 	{
 	case 'a':
 		hombre2.SetVel(-5.0f, 0.0f);
+<<<<<<< HEAD
 		break;
 	case 'd':
 		hombre2.SetVel(5.0f, 0.0f);
@@ -171,6 +179,17 @@ void Mundo::Tecla(unsigned char key)
 	case 'w':
 	{
 				if (Interaccion::Rebote(hombre2, campo.suelo_i)) // para que solo pueda saltar una vez
+=======
+		
+			break;
+	case 'd':
+				 hombre2.SetVel(5.0f, 0.0f);
+		
+	break;
+		case 'w':
+		{
+					if(Interaccion::Rebote(hombre2,campo.suelo)) // para que solo pueda saltar una vez
+>>>>>>> origin/RamaAaron
 					hombre2.SetVel(hombre2.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad	
 				ETSIDI::play("sonidos/disparo.wav");
 				break;
