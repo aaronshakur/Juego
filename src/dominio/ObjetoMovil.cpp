@@ -1,4 +1,8 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
 #include "..\..\include\dominio\ObjetoMovil.h"
+#include <time.h>
 
 ObjetoMovil::ObjetoMovil(){}
 
@@ -49,3 +53,9 @@ float ObjetoMovil::GetRadio()
 	return radio;
 }
 
+/*int PosxRandom(){
+	int xrandom;
+	srand(time(NULL)); //semilla 
+	xrandom = -19 + (rand() % 38); //rellena con numeros aleatorios en el eje X dentro del campo
+	return xrandom;
+}*/
