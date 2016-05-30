@@ -11,5 +11,7 @@ public:
 
 private:
 	float pulso, ladomax, ladomin;
+
+	friend class Interaccion;
 };
 

@@ -7,5 +7,6 @@ public:
 	BonusNormal();
 	~BonusNormal();
 	void mueve_nor(float t);
+
 };
 

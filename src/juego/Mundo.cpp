@@ -9,7 +9,7 @@
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\ObjetoMovil.h"
 
-#define maxBotes 3
+#define maxBotes 5
 #define maxPuntos 3
 
 //Polimorfismo
@@ -64,8 +64,24 @@ void Mundo::Mueve()
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Mueve(0.009f);
 
+	//Metodo Interaccion general Bonus?
+	if (Interaccion::Colision(bonusnor, hombre1)){
+
+		pobjetosMoviles = &bonusnor;
+		pobjetosMoviles-> SetPos(8, 30);
+		pobjetosMoviles = &hombre1;
+		pobjetosMoviles->SetRadio(3.0f);
+	}
+
 	pobjetosMoviles = &bonusesp;
 	pobjetosMoviles->Mueve(0.009f);
+	if (Interaccion::Colision(bonusesp, hombre2)){
+		pobjetosMoviles = &bonusesp;
+		pobjetosMoviles->SetPos(-8, 30);
+		pobjetosMoviles = &hombre2;
+		pobjetosMoviles->SetRadio(1.0f);
+	}
+
 
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
@@ -126,22 +142,21 @@ void Mundo::Tecla(unsigned char key)
 {
 	switch (key)
 	{
-	case 'a':{
+	case 'a':
 		hombre2.SetVel(-5.0f, 0.0f);
-		if (Interaccion::Colision(bonusesp, hombre2)){
+		/*if (Interaccion::Colision(bonusesp, hombre2)){
 			printf("Colision Hombre2 ");
 			pobjetosMoviles = &hombre2;
-			pobjetosMoviles->SetVel(-8.0f,0.0f);
-		}
-	}
+			pobjetosMoviles->SetVel(-8.0f,0.0f);*/
+		
 			break;
-	case 'd':{
+	case 'd':
 				 hombre2.SetVel(5.0f, 0.0f);
-			 if (Interaccion::Colision(bonusesp, hombre2)){
+			/* if (Interaccion::Colision(bonusesp, hombre2)){
 					 pobjetosMoviles = &hombre2;
 					 pobjetosMoviles->SetVel(8.0f, 0.0f);
-				 }
-	}break;
+				 }*/
+	break;
 		case 'w':
 		{
 					if(Interaccion::Rebote(hombre2,campo.suelo)) // para que solo pueda saltar una vez

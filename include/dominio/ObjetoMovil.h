@@ -13,7 +13,10 @@ public:
 	void SetVel(float, float);
 	void SetAce(float, float);
 	void SetPos(Vector2D pos);
-	Vector2D GetPos();
+
+	float GetRadio();
+	Vector2D GetPos();	
+
 
 
 
@@ -25,6 +28,7 @@ public:
 	
 protected:
 	unsigned char rojo, verde, azul;
-	Vector2D posicion, velocidad, aceleracion;
+	Vector2D posicion,velocidad, aceleracion;
 	float radio;
+
 };

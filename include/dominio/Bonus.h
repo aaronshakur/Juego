@@ -8,7 +8,7 @@ class Bonus :public ObjetoMovil
 protected:
 
 	float lado;
-
+	
 public:
 	Bonus();
 	~Bonus();
@@ -17,5 +17,6 @@ public:
 	void Mueve(float);
 	float GetLado(){ return lado; };
 
+	friend class Interaccion; //Para la interaccion;
 };
 

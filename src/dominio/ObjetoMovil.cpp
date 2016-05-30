@@ -43,3 +43,9 @@ Vector2D ObjetoMovil::GetPos()
 {
 	return posicion;
 }
+
+float ObjetoMovil::GetRadio()
+{
+	return radio;
+}
+
