@@ -127,12 +127,6 @@ void CoordinadorJuego::Mueve()
 			estado = PREPARADO;
 		}
 
-		//if (mundo.GetPunto()==1)
-		//{
-		//	estado = FIN;
-		//}
-
-
 		int puntos = mundo.GetPunto();
 		if (puntos==maxPuntos)
 		{
