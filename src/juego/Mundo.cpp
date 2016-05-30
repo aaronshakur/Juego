@@ -88,20 +88,18 @@ void Mundo::Mueve()
 	Interaccion::Rebote(balon, hombre1);
 	Interaccion::Rebote(balon, hombre2);
 
-
 	if (Interaccion::Colision(balon, campo.suelo_d)){
 		contadorBotes_d++;
 		printf("Botes derecha : ");
 		printf("%d\n", contadorBotes_d);
-	}
 
-	if (Interaccion::Colision(balon, campo.suelo_i)){
-		contadorBotes_i++;
-		printf("Botes izquierda: ");
-		printf("%d\n", contadorBotes_i);
-	}
+		if (Interaccion::Colision(balon, campo.suelo_i)){
+			contadorBotes_i++;
+			printf("Botes izquierda: ");
+			printf("%d\n", contadorBotes_i);
+		}
 
-
+<<<<<<< HEAD
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
 		printf("Puntos izquierda: ");
@@ -112,11 +110,27 @@ void Mundo::Mueve()
 		contadorPuntos_d++;
 		printf("Puntos derecha: ");
 		printf("%d\n", contadorPuntos_d);
+=======
+		if (contadorBotes_d == maxBotes){
+			contadorPuntos_d++;
+			printf("Puntos derecha: ");
+			printf("%d\n", contadorPuntos_i);
+
+		}
+		if (contadorBotes_i == maxBotes){
+			contadorPuntos_i++;
+			printf("Puntos izquierda: ");
+			printf("%d\n", contadorPuntos_d);
+		}
+>>>>>>> refs/remotes/origin/RamaAaron
 	}
 }
-
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/RamaAaron
 		contadorBotes_d = 0;
 		contadorBotes_i = 0;
 
@@ -147,7 +161,6 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 		pobjetosMoviles->SetPos(0, 9);
 		pobjetosMoviles->SetVel(pobjetosMoviles->VelRandom());
 
-
 }
 
 void Mundo::Tecla(unsigned char key)
@@ -157,17 +170,20 @@ void Mundo::Tecla(unsigned char key)
 	case 'a':
 		hombre2.SetVel(-5.0f, 0.0f);
 		break;
+
 	case 'd':
 		hombre2.SetVel(5.0f, 0.0f);
 		break;
-	case 'w':
-	{
-				if (Interaccion::Rebote(hombre2, campo.suelo_i)) // para que solo pueda saltar una vez
-					hombre2.SetVel(hombre2.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad	
-				ETSIDI::play("sonidos/disparo.wav");
-				break;
+
+	case 'w':{
+
+				 if (Interaccion::Rebote(hombre2, campo.suelo_i)) // para que solo pueda saltar una vez
+					 hombre2.SetVel(hombre2.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad	
+				 ETSIDI::play("sonidos/disparo.wav");
+				 break;
 	}
 	case 's':
+
 		hombre2.SetVel(0.0f, 0.0f);
 		break;
 	}
@@ -175,6 +191,7 @@ void Mundo::Tecla(unsigned char key)
 
 void Mundo::TeclaEspecial(unsigned char key)
 {
+<<<<<<< HEAD
 		switch (key)
 		{
 		case GLUT_KEY_LEFT:
@@ -194,13 +211,40 @@ void Mundo::TeclaEspecial(unsigned char key)
 							   hombre1.SetVel(0.0f, 0.0f);
 							   break;
 		}
+=======
+	switch (key)
+	{
+	case GLUT_KEY_LEFT:
+		hombre1.SetVel(-5.0f, 0.0f);
+		break;
+	case GLUT_KEY_RIGHT:
+		hombre1.SetVel(5.0f, 0.0f);
+		break;
+	case GLUT_KEY_UP:
+	{
+						if (Interaccion::Rebote(hombre1, campo.suelo_d)) //para que solo pueda saltar una vez
+							hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
+						ETSIDI::play("sonidos/disparo.wav");
+						break;
+	}
+	case GLUT_KEY_DOWN:
+		hombre1.SetVel(0.0f, 0.0f);
+		break;
+	}
+>>>>>>> refs/remotes/origin/RamaAaron
 }
 
-
 	//Funcion que resetea los puntos cuando acaba una partida
+<<<<<<< HEAD
 void Mundo::SetPuntosI(){
 		if (contadorPuntos_i == maxPuntos)
 			contadorPuntos_i = 0;			
+=======
+void Mundo::SetPuntos(){
+		if (contadorPuntos_i == maxPuntos || contadorPuntos_d==maxPuntos)
+			contadorPuntos_i = 0;
+			contadorPuntos_d = 0;
+>>>>>>> refs/remotes/origin/RamaAaron
 }
 
 void Mundo::SetPuntosD(){
