@@ -16,6 +16,7 @@ public:
 	static void Rebote(Balon &b, Campo c);
 	static bool Rebote(Balon &b, Pared p);
 	static bool ReboteSuelo(Balon &b, Pared suelo);
+
 	static bool Rebote(Balon &b, Hombre &h);
 
 	//Metodos de colision

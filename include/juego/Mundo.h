@@ -20,10 +20,16 @@ private:
 	Hombre hombre1, hombre2;//Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
 	BonusEspecial bonusesp;
 	BonusNormal bonusnor;
-	
-	int contadorBotes;
-	int contadorPuntos;
 
+	Pared suelo;
+
+	int contadorBotes_d;
+	int contadorPuntos_d;
+	int contadorBotes_i;
+	int contadorPuntos_i;
+	bool punto;
+	bool bote;
+	bool mivariable;
 	friend class campo;
 	friend class interaccion;
 	
@@ -37,9 +43,9 @@ public:
 	void RotarOjo();
 	void Mueve();
 	void Dibuja();
-	
-	int GetBote(){ return contadorBotes; }
-	int GetPunto(){ return contadorPuntos ; }
+	int GetBote(){ return contadorBotes_d; return contadorBotes_i; }
+	int GetPunto(){ return contadorPuntos_i; return contadorPuntos_d; }
 	void SetPuntos();
+
 
 };

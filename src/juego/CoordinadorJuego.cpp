@@ -93,7 +93,8 @@ void CoordinadorJuego::Dibuja()
 	else if (estado == JUEGO)
 	{
 		mundo.Dibuja();
-		
+	
+
 	}
 	else if (estado == PUNTO)
 	{
