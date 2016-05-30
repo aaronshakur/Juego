@@ -100,30 +100,18 @@ void Mundo::Mueve()
 		printf("%d\n", contadorBotes_i);
 		}
 
-		if (contadorBotes_d == maxBotes){
-			contadorPuntos_d++;
-			printf("Puntos derecha: ");
-			printf("%d\n", contadorPuntos_i);
-
-		}
-		if (contadorBotes_i == maxBotes){
-			contadorPuntos_i++;
-			printf("Puntos izquierda: ");
-			printf("%d\n", contadorPuntos_d);
-		}
-
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
 		printf("Puntos izquierda: ");
 		printf("%d\n", contadorPuntos_i);
 
-	}
+		}
 	if (contadorBotes_i == maxBotes){
 		contadorPuntos_d++;
 		printf("Puntos derecha: ");
 		printf("%d\n", contadorPuntos_d);
+		}
 
-	}
 }
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
