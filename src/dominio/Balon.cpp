@@ -1,5 +1,5 @@
 #include "..\..\include\dominio\Balon.h"
-#include "..\..\include\comun\glut.h"
+#include "glut.h"
 
 Balon::Balon() //constructor de balon. Damos valores iniciales
 {

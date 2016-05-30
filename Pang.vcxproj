@@ -26,7 +26,6 @@
     <ClCompile Include="src\juego\Mundo.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\comun\ETSIDI.h" />
     <ClInclude Include="include\comun\Vector2D.h" />
     <ClInclude Include="include\dominio\Balon.h" />
     <ClInclude Include="include\dominio\Bonus.h" />
@@ -39,6 +38,7 @@
     <ClInclude Include="include\dominio\Pared.h" />
     <ClInclude Include="include\juego\CoordinadorJuego.h" />
     <ClInclude Include="include\juego\Mundo.h" />
+    <ClInclude Include="lib\OpenGL.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A1A2E73C-0D77-49EA-91DD-052F22CA7DC0}</ProjectGuid>

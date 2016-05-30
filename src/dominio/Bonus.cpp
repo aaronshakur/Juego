@@ -1,13 +1,15 @@
-#include "..\..\include\dominio\Bonus.h"
-#include "..\..\include\comun\glut.h"
 #include <stdlib.h>
+#include "..\..\include\dominio\Bonus.h"
+#include "glut.h"
+
 
 Bonus::Bonus()    //constructor de bonus. Damos valores iniciales
 {
 	rojo = verde = 0;
 	azul = 255;
 	lado = 1.0f;
-	aceleracion.y = -9.8f; //Para que se quede parado por ahora
+	//aceleracion.y = -9.8f; 
+	velocidad.y = -15.0f;
 }
 
 Bonus::~Bonus()
@@ -32,3 +34,4 @@ void Bonus::Mueve(float t){
 	velocidad = velocidad + aceleracion*t;
 
 }
+
