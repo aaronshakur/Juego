@@ -1,9 +1,19 @@
+<<<<<<< HEAD
 
 #include "..\include\comun\glut.h"
+=======
+#include <stdlib.h>
+#include "glut.h"
+#include <stdio.h>
+#include <math.h>
+#include "ETSIDI.h"
+
+>>>>>>> refs/remotes/origin/RamaAaron
 #include "..\include\juego\Mundo.h"
 #include "..\..\include\dominio\Interaccion.h"
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\ObjetoMovil.h"
+<<<<<<< HEAD
 #include "..\include\comun\ETSIDI.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -13,6 +23,10 @@
 
 
 #define maxBotes 3
+=======
+
+#define maxBotes 5
+>>>>>>> refs/remotes/origin/RamaAaron
 #define maxPuntos 3
 
 //Polimorfismo
@@ -67,8 +81,24 @@ void Mundo::Mueve()
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Mueve(0.009f);
 
+	//Metodo Interaccion general Bonus?
+	if (Interaccion::Colision(bonusnor, hombre1)){
+
+		pobjetosMoviles = &bonusnor;
+		pobjetosMoviles-> SetPos(8, 30);
+		pobjetosMoviles = &hombre1;
+		pobjetosMoviles->SetRadio(3.0f);
+	}
+
 	pobjetosMoviles = &bonusesp;
 	pobjetosMoviles->Mueve(0.009f);
+	if (Interaccion::Colision(bonusesp, hombre2)){
+		pobjetosMoviles = &bonusesp;
+		pobjetosMoviles->SetPos(-8, 30);
+		pobjetosMoviles = &hombre2;
+		pobjetosMoviles->SetRadio(1.0f);
+	}
+
 
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
@@ -90,6 +120,7 @@ void Mundo::Mueve()
 		printf("%d\n", contadorBotes_i);
 	}
 
+<<<<<<< HEAD
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_d++;
 		printf("Puntos derecha: ");
@@ -102,6 +133,14 @@ void Mundo::Mueve()
 		printf("%d\n", contadorPuntos_i);
 
 	}
+=======
+	if (contadorBotes == maxBotes){
+		contadorPuntos++;
+		printf("Puntos: ");
+		printf("%d\n", contadorPuntos);
+	}
+
+>>>>>>> refs/remotes/origin/RamaAaron
 }
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
@@ -147,16 +186,27 @@ void Mundo::Tecla(unsigned char key)
 {
 	switch (key)
 	{
-		case 'a':
-			hombre2.SetVel(-5.0f, 0.0f);
+	case 'a':
+		hombre2.SetVel(-5.0f, 0.0f);
+		/*if (Interaccion::Colision(bonusesp, hombre2)){
+			printf("Colision Hombre2 ");
+			pobjetosMoviles = &hombre2;
+			pobjetosMoviles->SetVel(-8.0f,0.0f);*/
+		
 			break;
-		case 'd':
-			hombre2.SetVel(5.0f, 0.0f);
-			break;
+	case 'd':
+				 hombre2.SetVel(5.0f, 0.0f);
+			/* if (Interaccion::Colision(bonusesp, hombre2)){
+					 pobjetosMoviles = &hombre2;
+					 pobjetosMoviles->SetVel(8.0f, 0.0f);
+				 }*/
+	break;
 		case 'w':
 		{
 					if (Interaccion::Rebote(hombre2, campo.suelo_i)) // para que solo pueda saltar una vez
 					hombre2.SetVel(hombre2.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad	
+					ETSIDI::play("sonidos/disparo.wav");
+
 				    break;
 		}
 		case 's':
@@ -179,6 +229,9 @@ void Mundo::TeclaEspecial(unsigned char key)
 		{
 					if (Interaccion::Rebote(hombre1,campo.suelo_d)) //para que solo pueda saltar una vez
 						hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
+					ETSIDI::play("sonidos/disparo.wav");
+
+
 					break;
 		}
 		case GLUT_KEY_DOWN:

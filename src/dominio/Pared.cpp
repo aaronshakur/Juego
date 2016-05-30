@@ -1,5 +1,5 @@
 #include "..\..\include\dominio\Pared.h"
-#include "..\..\include\comun\glut.h"
+#include "glut.h"
 
 Pared::Pared()   //constructor de pared. Damos valores iniciales
 {

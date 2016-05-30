@@ -1,7 +1,10 @@
-#include "..\include\comun\glut.h"
+#include <stdio.h>
+#include "math.h"
+#include "glut.h"
 #include "..\..\include\dominio\Interaccion.h"
 
-#include "math.h"
+ObjetoMovil *pobjetosmoviles;
+
 
 //En esta clase no se van a generar objetos. Va a reunir todos los metodos de interaccion entre parejas de objetos.
 //Ademas, todos los objetos que interaccionen, necesitaran ser amigos de esta clase, ya que estamos intentando acceder a sus
@@ -26,11 +29,9 @@ void Interaccion::Rebote(Hombre &h, Campo c)
 	Interaccion::Rebote(h, c.pared_dcha);
 	Interaccion::Rebote(h, c.pared_izq);
 	Interaccion::Rebote(h, c.red);
-
 }
 
 //En este metodo, interaccionamos los hombres con las paredes, en funcion de la Distancia calculada en otro metodo de Pared.
-
 bool Interaccion::Rebote(Hombre &h, Pared p) 
 
 //Se pasa el parametro hombre por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
@@ -202,4 +203,52 @@ bool Interaccion::Colision(Balon b, Pared suelo){
 		return false;
 
 }
+ //Este metodo solo sirve para ver si han colisionado bonus y hombres. No modifica.
+bool Interaccion::Colision(Bonus bon, Hombre h){
 
+	Vector2D pos = h.GetPos(); //la posicion del hombre 
+	pos.y += h.GetRadio()/ 2.0f; //posicion del centro del hombre
+
+	float distancia = (bon.posicion- pos).modulo();
+	if (distancia < bon.lado){
+		printf("\nHa habido colision");
+		return true;
+	}
+	return false;
+}
+
+/*void Interaccion::Colision(Bonus &bon, Hombre &h){
+
+		Vector2D pos = h.GetPos(); //la posicion del hombre 
+		pos.y += h.GetRadio() / 2.0f; //posicion del centro del hombre
+
+		float distancia = (bon.posicion - pos).modulo();
+
+		if (distancia < bon.radio)
+		{
+			//Algo para que mande a la posicion inicial de cada bonus (normal o especial)
+			//********************************************************
+			bon.SetPos(8,30);
+			//pobjetosMoviles = &bon;
+			//pobjetosMoviles->bonus.SetPos(8,30);
+			//********************************************************
+
+			if (h.radio < 5.0f)
+				h.radio = h.radio + 0.2f;
+			else h.radio = 5.0f;
+		}
+		printf("Ha habido colision");
+}*/
+/*
+void Interaccion::Colision2(Bonus &b, Hombre &h){
+
+	float dist = ((b.posicion) - (h.posicion)).modulo();
+	if (dist<h.radio)
+	{
+		b.posicion.y = 150.0f;
+		if (h.radio>1.0f)
+			h.radio = h.radio - 0.5f;
+		else h.radio = 1.0f;
+	}
+
+}*/

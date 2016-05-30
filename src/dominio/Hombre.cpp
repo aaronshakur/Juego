@@ -1,5 +1,5 @@
 #include "..\..\include\dominio\Hombre.h"
-#include "..\..\include\comun\glut.h"
+#include "glut.h"
 
 
 Hombre::Hombre()  //constructor de hombre. Damos valores iniciales

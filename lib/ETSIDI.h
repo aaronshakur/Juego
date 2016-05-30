@@ -1,7 +1,6 @@
 
 #define USE_ETSIDI
 #pragma comment(lib,"ETSIDI.lib")
-
 //Cabecera Publica de ETSIDI. GENERADA AUTOMATICAMENTE
 //#ifdef _DEBUG
 //#pragma comment(lib,"lib/ETSIDI_d.lib")
