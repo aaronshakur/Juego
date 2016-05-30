@@ -1,7 +1,9 @@
-#include "..\include\comun\glut.h"
+#include <stdio.h>
+#include "math.h"
+#include "glut.h"
 #include "..\..\include\dominio\Interaccion.h"
 
-#include "math.h"
+ObjetoMovil *pobjetosmoviles;
 
 
 //En esta clase no se van a generar objetos. Va a reunir todos los metodos de interaccion entre parejas de objetos.
@@ -29,15 +31,12 @@ void Interaccion::Rebote(Hombre &h, Campo c)
 }
 
 //En este metodo, interaccionamos los hombres con las paredes, en funcion de la Distancia calculada en otro metodo de Pared.
-
 bool Interaccion::Rebote(Hombre &h, Pared p) 
 
 //Se pasa el parametro hombre por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
-
-
 {
 	Vector2D dir;
-	float dif = p.Distancia(h.posicion, &dir) - h.altura;
+	float dif = p.Distancia(h.posicion, &dir) - h.radio;
 	if (dif <= 0.0f){
 
 		h.posicion = h.posicion - dir*dif; 
@@ -50,13 +49,16 @@ bool Interaccion::Rebote(Hombre &h, Pared p)
 //Posteriormente, llamaremos a este metodo desde mundo.
 //Se pasa el parametro balon por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
 
+
 void Interaccion::Rebote(Balon &b, Campo c)
 {
+	
 	Interaccion::ReboteSuelo(b, c.suelo);
 	Interaccion::Rebote(b, c.techo);
 	Interaccion::Rebote(b, c.pared_dcha);
 	Interaccion::Rebote(b, c.pared_izq);
 	Interaccion::Rebote(b, c.red);
+
 }
 
 //En este metodo, interaccionamos el balon con las paredes, en funcion de la Distancia calculada en otro metodo de Pared.
@@ -88,7 +90,8 @@ bool Interaccion::ReboteSuelo(Balon &b, Pared suelo) {
 		Vector2D v_inicial = b.velocidad;
 		b.velocidad = v_inicial - dir*2.0*(v_inicial*dir);
 		b.posicion = b.posicion - dir*dif;
-		b.velocidad = b.velocidad - b.velocidad*0.25f;      
+		b.velocidad = b.velocidad - b.velocidad*0.25f;   
+		
 		return true;
 	}
 	return false;
@@ -101,7 +104,7 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 	//Vector que une los centros
 	Vector2D dif = h.posicion - b.posicion;
 	float d = dif.modulo();
-	float dentro = d - (b.radio + h.altura);
+	float dentro = d - (b.radio + h.radio);
 
 	if (dentro<0.0f)//si hay colision
 	{
@@ -141,7 +144,7 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 
 		//en el eje Y, rebote elastico
 		float m1 = b.radio;
-		float m2 = h.altura;
+		float m2 = h.radio;
 		float py = m1*u1y + m2*u2y;//Cantidad de movimiento inicial ejey
 		float ey = m1*u1y*u1y + m2*u2y*u2y;//Energia cinetica inicial ejey
 
@@ -188,5 +191,62 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 
 }
 
+//funcion de informacion, solo devuelven true si hay bote
 
+bool Interaccion::Colision(Balon b, Pared suelo){
 
+	if (Interaccion::ReboteSuelo(b, suelo))
+		return true;
+	else
+		return false;
+
+}
+ //Este metodo solo sirve para ver si han colisionado bonus y hombres. No modifica.
+bool Interaccion::Colision(Bonus bon, Hombre h){
+
+	Vector2D pos = h.GetPos(); //la posicion del hombre 
+	pos.y += h.GetRadio()/ 2.0f; //posicion del centro del hombre
+
+	float distancia = (bon.posicion- pos).modulo();
+	if (distancia < bon.lado){
+		printf("\nHa habido colision");
+		return true;
+	}
+	return false;
+}
+
+/*void Interaccion::Colision(Bonus &bon, Hombre &h){
+
+		Vector2D pos = h.GetPos(); //la posicion del hombre 
+		pos.y += h.GetRadio() / 2.0f; //posicion del centro del hombre
+
+		float distancia = (bon.posicion - pos).modulo();
+
+		if (distancia < bon.radio)
+		{
+			//Algo para que mande a la posicion inicial de cada bonus (normal o especial)
+			//********************************************************
+			bon.SetPos(8,30);
+			//pobjetosMoviles = &bon;
+			//pobjetosMoviles->bonus.SetPos(8,30);
+			//********************************************************
+
+			if (h.radio < 5.0f)
+				h.radio = h.radio + 0.2f;
+			else h.radio = 5.0f;
+		}
+		printf("Ha habido colision");
+}*/
+/*
+void Interaccion::Colision2(Bonus &b, Hombre &h){
+
+	float dist = ((b.posicion) - (h.posicion)).modulo();
+	if (dist<h.radio)
+	{
+		b.posicion.y = 150.0f;
+		if (h.radio>1.0f)
+			h.radio = h.radio - 0.5f;
+		else h.radio = 1.0f;
+	}
+
+}*/

@@ -20,6 +20,7 @@ public:
 
 
 friend class Interaccion;
+friend class Mundo;
 
 };
 

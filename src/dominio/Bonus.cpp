@@ -1,12 +1,15 @@
-#include "..\..\include\dominio\Bonus.h"
-#include "..\..\include\comun\glut.h"
 #include <stdlib.h>
+#include "..\..\include\dominio\Bonus.h"
+#include "glut.h"
+
 
 Bonus::Bonus()    //constructor de bonus. Damos valores iniciales
 {
-	rojo = verde = azul = 255; //Blanco
-	lado = 0.5f;
-	aceleracion.y = 0.0f; //Para que se quede parado por ahora
+	rojo = verde = 0;
+	azul = 255;
+	lado = 1.0f;
+	//aceleracion.y = -9.8f; 
+	velocidad.y = -15.0f;
 }
 
 Bonus::~Bonus()
@@ -25,15 +28,10 @@ void Bonus::Dibuja(){
 	glPopMatrix();
 
 }
-
 void Bonus::Mueve(float t){
 
 	posicion = posicion + velocidad*t + aceleracion*(t*t*0.5f);
 	velocidad = velocidad + aceleracion*t;
 
 }
-void Bonus::SetPos(float posx, float posy){
 
-	posicion.x = posx;
-	posicion.y = posy;
-}

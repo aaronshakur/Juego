@@ -3,21 +3,33 @@
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\Hombre.h"
 #include "..\..\include\dominio\Balon.h"
+#include "..\..\include\dominio\BonusEspecial.h"
+#include "..\..\include\dominio\BonusNormal.h"
+
+
 
 class Mundo
 {
 private:
+
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
 	Balon balon;		//Creamos los objetos para instanciarlos en Mundo. De esta manera, cuando se instancie el objeto Mundo, 
 	Campo campo;		//se instanciaran todos estos objetos.
-	Hombre hombre1, hombre2;  //Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
-	Bonus bonus;
+	Hombre hombre1, hombre2;//Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
+	BonusEspecial bonusesp;
+	BonusNormal bonusnor;
+	
+	int contadorBotes;
+	int contadorPuntos;
 
 	friend class campo;
-public: 
+	friend class interaccion;
 	
+
+public: 
+
 	//Metodos
 	void Tecla(unsigned char key);
 	void TeclaEspecial(unsigned char key);
@@ -26,6 +38,8 @@ public:
 	void Mueve();
 	void Dibuja();
 	
+	int GetBote(){ return contadorBotes; }
+	int GetPunto(){ return contadorPuntos ; }
+	void SetPuntos();
 
-	
 };

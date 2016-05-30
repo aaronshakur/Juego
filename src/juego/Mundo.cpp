@@ -1,9 +1,19 @@
-#include "..\include\comun\glut.h"
+#include <stdlib.h>
+#include "glut.h"
+#include <stdio.h>
+#include <math.h>
+#include "ETSIDI.h"
+
 #include "..\include\juego\Mundo.h"
 #include "..\..\include\dominio\Interaccion.h"
 #include "..\..\include\dominio\Pared.h"
+#include "..\..\include\dominio\ObjetoMovil.h"
 
-#include <math.h>
+#define maxBotes 5
+#define maxPuntos 3
+
+//Polimorfismo
+ObjetoMovil  *pobjetosMoviles;
 
 void Mundo::RotarOjo()
 {
@@ -20,66 +30,139 @@ void Mundo::Dibuja()
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 
 	//aqui es donde hay que poner el codigo de dibujo
-	balon.Dibuja();
-	hombre1.Dibuja();
-	hombre2.Dibuja();
-	bonus.Dibuja();
+	pobjetosMoviles = &balon;
+	pobjetosMoviles->Dibuja();
+
+	pobjetosMoviles = &hombre1;
+	pobjetosMoviles->Dibuja();
+	
+	pobjetosMoviles = &hombre2;
+	pobjetosMoviles->Dibuja();
+
+	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles->Dibuja();
+
+	pobjetosMoviles = &bonusnor;
+	pobjetosMoviles->Dibuja();
+
 	campo.Dibuja();
 
 }
 
 void Mundo::Mueve()
 {
-	hombre1.Mueve(0.075f);
-	hombre2.Mueve(0.075f);
-	balon.Mueve(0.05f);
+	
+	pobjetosMoviles = &hombre1;
+	pobjetosMoviles->Mueve(0.075f);
+
+	pobjetosMoviles = &hombre2;
+	pobjetosMoviles->Mueve(0.075f);
+
+	pobjetosMoviles = &balon;
+	pobjetosMoviles->Mueve(0.05f);
+
+	pobjetosMoviles = &bonusnor;
+	pobjetosMoviles->Mueve(0.009f);
+
+	//Metodo Interaccion general Bonus?
+	if (Interaccion::Colision(bonusnor, hombre1)){
+
+		pobjetosMoviles = &bonusnor;
+		pobjetosMoviles-> SetPos(8, 30);
+		pobjetosMoviles = &hombre1;
+		pobjetosMoviles->SetRadio(3.0f);
+	}
+
+	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles->Mueve(0.009f);
+	if (Interaccion::Colision(bonusesp, hombre2)){
+		pobjetosMoviles = &bonusesp;
+		pobjetosMoviles->SetPos(-8, 30);
+		pobjetosMoviles = &hombre2;
+		pobjetosMoviles->SetRadio(1.0f);
+	}
+
+
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
 	Interaccion::Rebote(balon, campo);
 	Interaccion::Rebote(balon, hombre1);
 	Interaccion::Rebote(balon, hombre2);
 
+	//for (int i=0; i <maxBotes; i++){
+
+	if (Interaccion::Colision(balon, campo.suelo)){
+		contadorBotes++;
+		printf("Botes: ");
+		printf("%d\n", contadorBotes);
+	}
+
+	if (contadorBotes == maxBotes){
+		contadorPuntos++;
+		printf("Puntos: ");
+		printf("%d\n", contadorPuntos);
+	}
+
 }
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
+	contadorBotes = 0;
+	
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	x_ojo = 1.5;
-
 	y_ojo = 9;
-
 	z_ojo = 42;
 
-	hombre1.SetColor(255, 0, 0);
-	hombre1.SetAltura(1.8f);
-	hombre1.SetPos(6, 1);
+	pobjetosMoviles = &hombre1;
+	pobjetosMoviles->SetColor(255, 0, 0);
+	pobjetosMoviles->SetRadio(1.8f);
+	pobjetosMoviles->SetPos(6, 1);
 
-	hombre2.SetColor(0, 0, 255);
-	hombre2.SetAltura(1.8f);
-	hombre2.SetPos(-6, 1);
+	pobjetosMoviles = &hombre2;
+	pobjetosMoviles->SetColor(0, 0, 255);
+	pobjetosMoviles->SetRadio(1.8f);
+	pobjetosMoviles->SetPos(-6, 1);
+	
+	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles->SetPos(-8, 20);
 
-	bonus.SetPos(8, 8);
-
-	balon.SetColor(255, 255, 0);
-	balon.SetRadio(0.75f);
-	balon.SetPos(1, 6);
-
+	pobjetosMoviles = &bonusnor;
+	pobjetosMoviles->SetPos(8, 20);
+	
+	pobjetosMoviles = &balon;
+	pobjetosMoviles->SetColor(255, 255, 0);
+	pobjetosMoviles->SetRadio(0.75f);
+	pobjetosMoviles->SetPos(5, 7);
+	
+	
 }
 
 void Mundo::Tecla(unsigned char key)
 {
 	switch (key)
 	{
-		case 'a':
-			hombre2.SetVel(-5.0f, 0.0f);
+	case 'a':
+		hombre2.SetVel(-5.0f, 0.0f);
+		/*if (Interaccion::Colision(bonusesp, hombre2)){
+			printf("Colision Hombre2 ");
+			pobjetosMoviles = &hombre2;
+			pobjetosMoviles->SetVel(-8.0f,0.0f);*/
+		
 			break;
-		case 'd':
-			hombre2.SetVel(5.0f, 0.0f);
-			break;
+	case 'd':
+				 hombre2.SetVel(5.0f, 0.0f);
+			/* if (Interaccion::Colision(bonusesp, hombre2)){
+					 pobjetosMoviles = &hombre2;
+					 pobjetosMoviles->SetVel(8.0f, 0.0f);
+				 }*/
+	break;
 		case 'w':
 		{
 					if(Interaccion::Rebote(hombre2,campo.suelo)) // para que solo pueda saltar una vez
 					hombre2.SetVel(hombre2.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad	
+					ETSIDI::play("sonidos/disparo.wav");
+
 				    break;
 		}
 		case 's':
@@ -102,10 +185,20 @@ void Mundo::TeclaEspecial(unsigned char key)
 		{
 					if (Interaccion::Rebote(hombre1,campo.suelo)) //para que solo pueda saltar una vez
 						hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
+					ETSIDI::play("sonidos/disparo.wav");
+
+
 					break;
+		}
 		case GLUT_KEY_DOWN:
 			hombre1.SetVel(0.0f, 0.0f);
 			break;
+	
 	}
-	}
+}
+
+//Funcion que resetea los puntos cuando acaba una partida
+void Mundo::SetPuntos(){
+	if (contadorPuntos == maxPuntos)
+		contadorPuntos = 0;
 }
