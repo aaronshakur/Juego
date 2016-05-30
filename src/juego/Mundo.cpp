@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "glut.h"
@@ -66,11 +64,10 @@ void Mundo::Mueve()
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Mueve(0.009f);
 
-	//Metodo Interaccion general Bonus?
 	if (Interaccion::Colision(bonusnor, hombre1)){
 
 		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(8, 30);
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
 		pobjetosMoviles = &hombre1;
 		pobjetosMoviles->SetRadio(3.0f);
 	}
@@ -80,11 +77,10 @@ void Mundo::Mueve()
 
 	if (Interaccion::Colision(bonusesp, hombre2)){
 		pobjetosMoviles = &bonusesp;
-		pobjetosMoviles->SetPos(-8, 30);
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
 		pobjetosMoviles = &hombre2;
 		pobjetosMoviles->SetRadio(1.0f);
 	}
-
 
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
@@ -121,18 +117,13 @@ void Mundo::Mueve()
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
-
-		//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
-		//contadorBotes = 0;
-		
-
 		contadorBotes_d = 0;
 		contadorBotes_i = 0;
 
 		//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 		x_ojo = 1.5;
 		y_ojo = 9;
-		z_ojo = 42;
+		z_ojo = 70;
 
 		pobjetosMoviles = &hombre1;
 		pobjetosMoviles->SetColor(255, 0, 0);
@@ -145,15 +136,16 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 		pobjetosMoviles->SetPos(-6, 1);
 
 		pobjetosMoviles = &bonusesp;
-		pobjetosMoviles->SetPos(-8, 20);
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
 
 		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(8, 20);
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
 
 		pobjetosMoviles = &balon;
 		pobjetosMoviles->SetColor(255, 255, 0);
 		pobjetosMoviles->SetRadio(0.75f);
-		pobjetosMoviles->SetPos(5, 7);
+		pobjetosMoviles->SetPos(0, 9);
+		pobjetosMoviles->SetVel(pobjetosMoviles->VelRandom());
 
 
 }
@@ -196,15 +188,11 @@ void Mundo::TeclaEspecial(unsigned char key)
 							if (Interaccion::Rebote(hombre1, campo.suelo_d)) //para que solo pueda saltar una vez
 								hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
 							ETSIDI::play("sonidos/disparo.wav");
-
-
 							break;
 		}
 		case GLUT_KEY_DOWN:
 							   hombre1.SetVel(0.0f, 0.0f);
 							   break;
-
-		
 		}
 }
 
@@ -212,8 +200,7 @@ void Mundo::TeclaEspecial(unsigned char key)
 	//Funcion que resetea los puntos cuando acaba una partida
 void Mundo::SetPuntosI(){
 		if (contadorPuntos_i == maxPuntos)
-			contadorPuntos_i = 0;
-			
+			contadorPuntos_i = 0;			
 }
 
 void Mundo::SetPuntosD(){

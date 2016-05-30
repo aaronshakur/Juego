@@ -13,12 +13,11 @@ public:
 	void SetVel(float, float);
 	void SetAce(float, float);
 	void SetPos(Vector2D pos);
-
+	void SetVel(Vector2D vel);
+	int PosxRandom();
+	Vector2D VelRandom();
 	float GetRadio();
 	Vector2D GetPos();	
-
-
-
 
 //Polimorfismo de Mueve() para Balon, Hombre y Bonus
 	virtual void Mueve(float){};
