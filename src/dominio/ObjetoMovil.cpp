@@ -68,6 +68,6 @@ Vector2D ObjetoMovil::VelRandom(){
 	
 	Vector2D RandomVel;
 	srand(time(NULL)); //semilla 
-	RandomVel = (-15 + (rand() % 15), -15 + (rand() % 15)); //rellena con numeros aleatorios en el eje X dentro del campo
+	RandomVel = (-3 + (rand() % 6), -5 + (rand() % 10)); //rellena con numeros aleatorios en el eje X dentro del campo;
 	return RandomVel;
 }

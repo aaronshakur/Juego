@@ -1,12 +1,28 @@
-﻿Compilación iniciada a las 5/31/2016 12:06:53 AM.
-     1>Proyecto "C:\Users\Aaron\Desktop\2016\Practicas\Juego\Pang.vcxproj" en el nodo 2 (Build destinos).
+﻿Compilación iniciada a las 31/05/2016 0:51:23.
+     1>Proyecto "C:\Users\Windows 7\Desktop\Juego\Pang.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ilib /Isrc /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"tmp\Debug\\" /Fd"tmp\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\juego\Mundo.cpp
-         Mundo.cpp
-     1>c:\users\aaron\desktop\2016\practicas\juego\src\juego\mundo.cpp(148): error C2664: 'void ObjetoMovil::SetVel(Vector2D)' : el argumento 1 no puede convertirse de 'Vector2D' a 'float'
-                 No hay disponible ningún operador de conversión definido por el usuario que pueda realizar esta conversión, o bien no se puede llamar al operador
-     1>Compilación del proyecto terminada "C:\Users\Aaron\Desktop\2016\Practicas\Juego\Pang.vcxproj" (Build destinos) -- ERROR.
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ilib /Isrc /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"tmp\Debug\\" /Fd"tmp\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\dominio\ObjetoMovil.cpp
+         ObjetoMovil.cpp
+     1>c:\users\windows 7\desktop\juego\src\dominio\objetomovil.cpp(63): warning C4244: 'argumento' : conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+     1>c:\users\windows 7\desktop\juego\src\dominio\objetomovil.cpp(70): warning C4244: 'argumento' : conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+     1>c:\users\windows 7\desktop\juego\src\dominio\objetomovil.cpp(71): warning C4244: 'argumento' : conversión de 'int' a 'float'; posible pérdida de datos
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Windows 7\Desktop\Juego\bin\Juego.exe" /INCREMENTAL /NOLOGO /LIBPATH:lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Windows 7\Desktop\Juego\bin\Juego.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Windows 7\Desktop\Juego\bin\Juego.lib" /MACHINE:X86 tmp\Debug\Vector2D.obj
+         tmp\Debug\Balon.obj
+         tmp\Debug\Bonus.obj
+         tmp\Debug\BonusEspecial.obj
+         tmp\Debug\BonusNormal.obj
+         tmp\Debug\Campo.obj
+         tmp\Debug\Hombre.obj
+         tmp\Debug\Interaccion.obj
+         tmp\Debug\ObjetoMovil.obj
+         tmp\Debug\Pared.obj
+         tmp\Debug\CoordinadorJuego.obj
+         tmp\Debug\Juego.obj
+         tmp\Debug\Mundo.obj
+         Pang.vcxproj -> C:\Users\Windows 7\Desktop\Juego\bin\Juego.exe
+     1>Compilación del proyecto terminada "C:\Users\Windows 7\Desktop\Juego\Pang.vcxproj" (Build destinos).
 
-ERROR al compilar.
+Compilación correcta.
 
-Tiempo transcurrido 00:00:00.75
+Tiempo transcurrido 00:00:01.26
