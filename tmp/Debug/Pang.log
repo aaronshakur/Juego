@@ -1,4 +1,4 @@
-﻿Compilación iniciada a las 30/05/2016 19:20:38.
+﻿Compilación iniciada a las 30/05/2016 19:53:29.
      1>Proyecto "C:\Users\Windows 7\Desktop\Juego\Pang.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ilib /Isrc /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"tmp\Debug\\" /Fd"tmp\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\juego\Mundo.cpp
@@ -17,10 +17,9 @@
          tmp\Debug\CoordinadorJuego.obj
          tmp\Debug\Juego.obj
          tmp\Debug\Mundo.obj
-         LINK : no se encontró C:\Users\Windows 7\Desktop\Juego\bin\Juego.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
          Pang.vcxproj -> C:\Users\Windows 7\Desktop\Juego\bin\Juego.exe
      1>Compilación del proyecto terminada "C:\Users\Windows 7\Desktop\Juego\Pang.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:01.17
+Tiempo transcurrido 00:00:00.31
