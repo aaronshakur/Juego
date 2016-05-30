@@ -43,6 +43,11 @@ void ObjetoMovil::SetPos(Vector2D pos)
 	posicion = pos;
 }
 
+void ObjetoMovil::SetVel(Vector2D vel)
+{
+	velocidad = vel;
+}
+
 Vector2D ObjetoMovil::GetPos()
 {
 	return posicion;
@@ -53,9 +58,16 @@ float ObjetoMovil::GetRadio()
 	return radio;
 }
 
-/*int PosxRandom(){
+int ObjetoMovil::PosxRandom(){
 	int xrandom;
 	srand(time(NULL)); //semilla 
-	xrandom = -19 + (rand() % 38); //rellena con numeros aleatorios en el eje X dentro del campo
+	xrandom = (-19 + (rand() % 38)); //rellena con numeros aleatorios en el eje X dentro del campo
 	return xrandom;
-}*/
+}
+Vector2D ObjetoMovil::VelRandom(){
+	
+	Vector2D RandomVel;
+	srand(time(NULL)); //semilla 
+	RandomVel = (-15 + (rand() % 15), -15 + (rand() % 15)); //rellena con numeros aleatorios en el eje X dentro del campo
+	return RandomVel;
+}

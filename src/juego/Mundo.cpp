@@ -64,11 +64,10 @@ void Mundo::Mueve()
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Mueve(0.009f);
 
-	//Metodo Interaccion general Bonus?
 	if (Interaccion::Colision(bonusnor, hombre1)){
 
 		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(8, 30);
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
 		pobjetosMoviles = &hombre1;
 		pobjetosMoviles->SetRadio(3.0f);
 	}
@@ -78,7 +77,7 @@ void Mundo::Mueve()
 
 	if (Interaccion::Colision(bonusesp, hombre2)){
 		pobjetosMoviles = &bonusesp;
-		pobjetosMoviles->SetPos(-8, 30);
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
 		pobjetosMoviles = &hombre2;
 		pobjetosMoviles->SetRadio(1.0f);
 	}
@@ -100,6 +99,7 @@ void Mundo::Mueve()
 			printf("%d\n", contadorBotes_i);
 		}
 
+<<<<<<< HEAD
 		if (contadorBotes_d == maxBotes){
 			contadorPuntos_d++;
 			printf("Puntos derecha: ");
@@ -111,18 +111,33 @@ void Mundo::Mueve()
 			printf("Puntos izquierda: ");
 			printf("%d\n", contadorPuntos_d);
 		}
+=======
+	if (contadorBotes_d == maxBotes){
+		contadorPuntos_i++;
+		printf("Puntos izquierda: ");
+		printf("%d\n", contadorPuntos_i);
+
+	}
+	if (contadorBotes_i == maxBotes){
+		contadorPuntos_d++;
+		printf("Puntos derecha: ");
+		printf("%d\n", contadorPuntos_d);
+>>>>>>> refs/remotes/origin/RamaMiguel
 	}
 }
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/RamaMiguel
 		contadorBotes_d = 0;
 		contadorBotes_i = 0;
 
 		//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 		x_ojo = 1.5;
 		y_ojo = 9;
-		z_ojo = 42;
+		z_ojo = 70;
 
 		pobjetosMoviles = &hombre1;
 		pobjetosMoviles->SetColor(255, 0, 0);
@@ -135,15 +150,16 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 		pobjetosMoviles->SetPos(-6, 1);
 
 		pobjetosMoviles = &bonusesp;
-		pobjetosMoviles->SetPos(-8, 20);
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
 
 		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(8, 20);
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
 
 		pobjetosMoviles = &balon;
 		pobjetosMoviles->SetColor(255, 255, 0);
 		pobjetosMoviles->SetRadio(0.75f);
-		pobjetosMoviles->SetPos(5, 7);
+		pobjetosMoviles->SetPos(0, 9);
+		pobjetosMoviles->SetVel(pobjetosMoviles->VelRandom());
 
 }
 
@@ -175,6 +191,7 @@ void Mundo::Tecla(unsigned char key)
 
 void Mundo::TeclaEspecial(unsigned char key)
 {
+<<<<<<< HEAD
 	switch (key)
 	{
 	case GLUT_KEY_LEFT:
@@ -194,11 +211,43 @@ void Mundo::TeclaEspecial(unsigned char key)
 		hombre1.SetVel(0.0f, 0.0f);
 		break;
 	}
+=======
+		switch (key)
+		{
+		case GLUT_KEY_LEFT:
+			hombre1.SetVel(-5.0f, 0.0f);
+			break;
+		case GLUT_KEY_RIGHT:
+			hombre1.SetVel(5.0f, 0.0f);
+			break;
+		case GLUT_KEY_UP:
+		{
+							if (Interaccion::Rebote(hombre1, campo.suelo_d)) //para que solo pueda saltar una vez
+								hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
+							ETSIDI::play("sonidos/disparo.wav");
+							break;
+		}
+		case GLUT_KEY_DOWN:
+							   hombre1.SetVel(0.0f, 0.0f);
+							   break;
+		}
+>>>>>>> refs/remotes/origin/RamaMiguel
 }
 
 	//Funcion que resetea los puntos cuando acaba una partida
+<<<<<<< HEAD
 void Mundo::SetPuntos(){
 		if (contadorPuntos_i == maxPuntos || contadorPuntos_d==maxPuntos)
 			contadorPuntos_i = 0;
 			contadorPuntos_d = 0;
+=======
+void Mundo::SetPuntosI(){
+		if (contadorPuntos_i == maxPuntos)
+			contadorPuntos_i = 0;			
+>>>>>>> refs/remotes/origin/RamaMiguel
+}
+
+void Mundo::SetPuntosD(){
+	if (contadorPuntos_d == maxPuntos)
+		contadorPuntos_d = 0;
 }
