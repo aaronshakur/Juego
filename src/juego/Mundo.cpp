@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "glut.h"
@@ -85,53 +83,38 @@ void Mundo::Mueve()
 		pobjetosMoviles->SetRadio(1.0f);
 	}
 
-
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
 	Interaccion::Rebote(balon, campo);
 	Interaccion::Rebote(balon, hombre1);
 	Interaccion::Rebote(balon, hombre2);
 
-<<<<<<< HEAD
-
 	if (Interaccion::Colision(balon, campo.suelo_d)){
 		contadorBotes_d++;
 		printf("Botes derecha : ");
 		printf("%d\n", contadorBotes_d);
-=======
-	if (Interaccion::Colision(balon, campo.suelo)){
-		contadorBotes++;
-		printf("Botes: ");
-		printf("%d\n", contadorBotes);
->>>>>>> origin/RamaAaron
-	}
 
-	if (Interaccion::Colision(balon, campo.suelo_i)){
-		contadorBotes_i++;
-		printf("Botes izquierda: ");
-		printf("%d\n", contadorBotes_i);
-	}
+		if (Interaccion::Colision(balon, campo.suelo_i)){
+			contadorBotes_i++;
+			printf("Botes izquierda: ");
+			printf("%d\n", contadorBotes_i);
+		}
 
+		if (contadorBotes_d == maxBotes){
+			contadorPuntos_d++;
+			printf("Puntos derecha: ");
+			printf("%d\n", contadorPuntos_i);
 
-	if (contadorBotes_d == maxBotes){
-		contadorPuntos_d++;
-		printf("Puntos derecha: ");
-		printf("%d\n", contadorPuntos_d);
-
-	}
-	if (contadorBotes_i == maxBotes){
-		contadorPuntos_i++;
-		printf("Puntos izquierda: ");
-		printf("%d\n", contadorPuntos_i);
+		}
+		if (contadorBotes_i == maxBotes){
+			contadorPuntos_i++;
+			printf("Puntos izquierda: ");
+			printf("%d\n", contadorPuntos_d);
+		}
 	}
 }
-
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
-
-		//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
-		//contadorBotes = 0;
-		//contadorPuntos = 0;
 
 		contadorBotes_d = 0;
 		contadorBotes_i = 0;
@@ -162,7 +145,6 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 		pobjetosMoviles->SetRadio(0.75f);
 		pobjetosMoviles->SetPos(5, 7);
 
-
 }
 
 void Mundo::Tecla(unsigned char key)
@@ -171,30 +153,21 @@ void Mundo::Tecla(unsigned char key)
 	{
 	case 'a':
 		hombre2.SetVel(-5.0f, 0.0f);
-<<<<<<< HEAD
 		break;
+
 	case 'd':
 		hombre2.SetVel(5.0f, 0.0f);
 		break;
-	case 'w':
-	{
-				if (Interaccion::Rebote(hombre2, campo.suelo_i)) // para que solo pueda saltar una vez
-=======
-		
-			break;
-	case 'd':
-				 hombre2.SetVel(5.0f, 0.0f);
-		
-	break;
-		case 'w':
-		{
-					if(Interaccion::Rebote(hombre2,campo.suelo)) // para que solo pueda saltar una vez
->>>>>>> origin/RamaAaron
-					hombre2.SetVel(hombre2.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad	
-				ETSIDI::play("sonidos/disparo.wav");
-				break;
+
+	case 'w':{
+
+				 if (Interaccion::Rebote(hombre2, campo.suelo_i)) // para que solo pueda saltar una vez
+					 hombre2.SetVel(hombre2.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad	
+				 ETSIDI::play("sonidos/disparo.wav");
+				 break;
 	}
 	case 's':
+
 		hombre2.SetVel(0.0f, 0.0f);
 		break;
 	}
@@ -202,35 +175,30 @@ void Mundo::Tecla(unsigned char key)
 
 void Mundo::TeclaEspecial(unsigned char key)
 {
-		switch (key)
-		{
-		case GLUT_KEY_LEFT:
-			hombre1.SetVel(-5.0f, 0.0f);
-			break;
-		case GLUT_KEY_RIGHT:
-			hombre1.SetVel(5.0f, 0.0f);
-			break;
-		case GLUT_KEY_UP:
-		{
-							if (Interaccion::Rebote(hombre1, campo.suelo_d)) //para que solo pueda saltar una vez
-								hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
-							ETSIDI::play("sonidos/disparo.wav");
-
-
-							break;
-		}
-		case GLUT_KEY_DOWN:
-							   hombre1.SetVel(0.0f, 0.0f);
-							   break;
-
-		
-		}
+	switch (key)
+	{
+	case GLUT_KEY_LEFT:
+		hombre1.SetVel(-5.0f, 0.0f);
+		break;
+	case GLUT_KEY_RIGHT:
+		hombre1.SetVel(5.0f, 0.0f);
+		break;
+	case GLUT_KEY_UP:
+	{
+						if (Interaccion::Rebote(hombre1, campo.suelo_d)) //para que solo pueda saltar una vez
+							hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
+						ETSIDI::play("sonidos/disparo.wav");
+						break;
+	}
+	case GLUT_KEY_DOWN:
+		hombre1.SetVel(0.0f, 0.0f);
+		break;
+	}
 }
-
 
 	//Funcion que resetea los puntos cuando acaba una partida
 void Mundo::SetPuntos(){
-		if (contadorPuntos_i == maxPuntos || contadorPuntos_d)
+		if (contadorPuntos_i == maxPuntos || contadorPuntos_d==maxPuntos)
 			contadorPuntos_i = 0;
-		contadorPuntos_d = 0;
+			contadorPuntos_d = 0;
 }

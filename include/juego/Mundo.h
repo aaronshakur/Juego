@@ -6,8 +6,6 @@
 #include "..\..\include\dominio\BonusEspecial.h"
 #include "..\..\include\dominio\BonusNormal.h"
 
-
-
 class Mundo
 {
 private:
@@ -30,6 +28,7 @@ private:
 	bool punto;
 	bool bote;
 	bool mivariable;
+
 	friend class campo;
 	friend class interaccion;
 	
