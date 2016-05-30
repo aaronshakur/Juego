@@ -78,17 +78,29 @@ void Mundo::Mueve()
 
 	//for (int i=0; i <maxBotes; i++){
 
-	if (Interaccion::Colision(balon, campo.suelo)){
-		contadorBotes++;
-		printf("Botes: ");
-		printf("%d\n", contadorBotes);
+	if (Interaccion::Colision(balon, campo.suelo_d)){
+		contadorBotes_d++;
+		printf("Botes derecha : ");
+		printf("%d\n", contadorBotes_d);
 	}
 
-	if (contadorBotes == maxBotes){
-		contadorPuntos++;
-		printf("Puntos: ");
-		printf("%d\n", contadorPuntos);
+	if (Interaccion::Colision(balon, campo.suelo_i)){
+		contadorBotes_i++;
+		printf("Botes izquierda: ");
+		printf("%d\n", contadorBotes_i);
+	}
+
+	if (contadorBotes_d == maxBotes){
+		contadorPuntos_d++;
+		printf("Puntos derecha: ");
+		printf("%d\n", contadorPuntos_d);
 		
+	}
+	if (contadorBotes_i == maxBotes){
+		contadorPuntos_i++;
+		printf("Puntos izquierda: ");
+		printf("%d\n", contadorPuntos_i);
+
 	}
 }
 
@@ -99,8 +111,8 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	//contadorBotes = 0;
 	//contadorPuntos = 0;
 
-	contadorBotes = 0;
-
+	contadorBotes_d = 0;
+	contadorBotes_i = 0;
 	
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	x_ojo = 1.5;
@@ -143,7 +155,7 @@ void Mundo::Tecla(unsigned char key)
 			break;
 		case 'w':
 		{
-					if(Interaccion::Rebote(hombre2,campo.suelo)) // para que solo pueda saltar una vez
+					if (Interaccion::Rebote(hombre2, campo.suelo_i)) // para que solo pueda saltar una vez
 					hombre2.SetVel(hombre2.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad	
 				    break;
 		}
@@ -165,7 +177,7 @@ void Mundo::TeclaEspecial(unsigned char key)
 			break;
 		case GLUT_KEY_UP:
 		{
-					if (Interaccion::Rebote(hombre1,campo.suelo)) //para que solo pueda saltar una vez
+					if (Interaccion::Rebote(hombre1,campo.suelo_d)) //para que solo pueda saltar una vez
 						hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
 					break;
 		}
@@ -180,6 +192,7 @@ void Mundo::TeclaEspecial(unsigned char key)
 
 //Funcion que resetea los puntos cuando acaba una partida
 void Mundo::SetPuntos(){
-	if (contadorPuntos == maxPuntos)
-		contadorPuntos = 0;
+	if (contadorPuntos_i == maxPuntos || contadorPuntos_d)
+		contadorPuntos_i = 0;
+		contadorPuntos_d = 0;
 }

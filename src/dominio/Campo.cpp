@@ -3,8 +3,12 @@
 
 Campo::Campo()  //constructor de campo. Damos valores iniciales
 {
-	suelo.SetLim(20.0f, 0.0f, -20.0f, 0.0f);//(x1,y1,x2,y2)
-	suelo.SetColor(45, 100, 25);
+	suelo_d.SetLim(0.0f, 0.0f, 20.0f, 0.0f);//(x1,y1,x2,y2)
+	suelo_d.SetColor(100, 100, 25);
+
+	suelo_i.SetLim(-20.0f, 0.0f, 0.0f, 0.0f);//(x1,y1,x2,y2)
+	suelo_i.SetColor(45, 100, 25);
+	
 	
 	techo.SetLim(20.0f, 20.0f, -20.0f, 20.0f);//(x1,y1,x2,y2)
 	techo.SetColor(45, 100, 25);
@@ -26,7 +30,8 @@ Campo::~Campo()
 
 void Campo::Dibuja(){
 
-	suelo.Dibuja();
+	suelo_d.Dibuja();
+	suelo_i.Dibuja();
 	techo.Dibuja();
 	pared_dcha.Dibuja();
 	pared_izq.Dibuja();

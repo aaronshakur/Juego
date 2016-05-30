@@ -20,7 +20,8 @@ Interaccion::~Interaccion()
 //Se pasa el parametro hombre por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
 void Interaccion::Rebote(Hombre &h, Campo c)   
 {
-	Interaccion::Rebote(h, c.suelo);
+	Interaccion::Rebote(h, c.suelo_d);
+	Interaccion::Rebote(h, c.suelo_i);
 	Interaccion::Rebote(h, c.techo);
 	Interaccion::Rebote(h, c.pared_dcha);
 	Interaccion::Rebote(h, c.pared_izq);
@@ -52,7 +53,8 @@ bool Interaccion::Rebote(Hombre &h, Pared p)
 void Interaccion::Rebote(Balon &b, Campo c)
 {
 	
-	Interaccion::ReboteSuelo(b, c.suelo);
+	Interaccion::ReboteSuelo(b, c.suelo_i);
+	Interaccion::ReboteSuelo(b, c.suelo_d);
 	Interaccion::Rebote(b, c.techo);
 	Interaccion::Rebote(b, c.pared_dcha);
 	Interaccion::Rebote(b, c.pared_izq);
