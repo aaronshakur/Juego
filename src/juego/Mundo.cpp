@@ -89,8 +89,6 @@ void Mundo::Mueve()
 	Interaccion::Rebote(balon, hombre1);
 	Interaccion::Rebote(balon, hombre2);
 
-	//for (int i=0; i <maxBotes; i++){
-
 	if (Interaccion::Colision(balon, campo.suelo)){
 		contadorBotes++;
 		printf("Botes: ");
@@ -144,18 +142,11 @@ void Mundo::Tecla(unsigned char key)
 	{
 	case 'a':
 		hombre2.SetVel(-5.0f, 0.0f);
-		/*if (Interaccion::Colision(bonusesp, hombre2)){
-			printf("Colision Hombre2 ");
-			pobjetosMoviles = &hombre2;
-			pobjetosMoviles->SetVel(-8.0f,0.0f);*/
 		
 			break;
 	case 'd':
 				 hombre2.SetVel(5.0f, 0.0f);
-			/* if (Interaccion::Colision(bonusesp, hombre2)){
-					 pobjetosMoviles = &hombre2;
-					 pobjetosMoviles->SetVel(8.0f, 0.0f);
-				 }*/
+		
 	break;
 		case 'w':
 		{
