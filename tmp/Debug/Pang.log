@@ -1,26 +1,8 @@
-﻿Compilación iniciada a las 31/05/2016 1:32:30.
-     1>Proyecto "C:\Users\Windows 7\Desktop\Juego\Pang.vcxproj" en el nodo 2 (Rebuild destinos).
+﻿Compilación iniciada a las 31/05/2016 10:41:54.
+     1>Proyecto "C:\Users\Windows 7\Desktop\Juego\Pang.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ilib /Isrc /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"tmp\Debug\\" /Fd"tmp\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\comun\Vector2D.cpp src\dominio\Balon.cpp src\dominio\Bonus.cpp src\dominio\BonusEspecial.cpp src\dominio\BonusNormal.cpp src\dominio\Campo.cpp src\dominio\Hombre.cpp src\dominio\Interaccion.cpp src\dominio\ObjetoMovil.cpp src\dominio\Pared.cpp src\juego\CoordinadorJuego.cpp src\juego\Juego.cpp src\juego\Mundo.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Ilib /Isrc /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"tmp\Debug\\" /Fd"tmp\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\juego\Mundo.cpp
          Mundo.cpp
-         Juego.cpp
-         CoordinadorJuego.cpp
-         Pared.cpp
-         ObjetoMovil.cpp
-     1>c:\users\windows 7\desktop\juego\src\dominio\objetomovil.cpp(58): warning C4244: 'argumento' : conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-     1>c:\users\windows 7\desktop\juego\src\dominio\objetomovil.cpp(65): warning C4244: 'argumento' : conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-         Interaccion.cpp
-         Hombre.cpp
-         Campo.cpp
-         BonusNormal.cpp
-         BonusEspecial.cpp
-     1>c:\users\windows 7\desktop\juego\src\dominio\bonusespecial.cpp(26): warning C4244: '=' : conversión de 'float' a 'unsigned char'; posible pérdida de datos
-     1>c:\users\windows 7\desktop\juego\src\dominio\bonusespecial.cpp(27): warning C4244: '=' : conversión de 'float' a 'unsigned char'; posible pérdida de datos
-     1>c:\users\windows 7\desktop\juego\src\dominio\bonusespecial.cpp(28): warning C4244: '=' : conversión de 'float' a 'unsigned char'; posible pérdida de datos
-         Bonus.cpp
-         Balon.cpp
-         Vector2D.cpp
-         Generando código...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Windows 7\Desktop\Juego\bin\Juego.exe" /INCREMENTAL /NOLOGO /LIBPATH:lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Windows 7\Desktop\Juego\bin\Juego.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Windows 7\Desktop\Juego\bin\Juego.lib" /MACHINE:X86 tmp\Debug\Vector2D.obj
          tmp\Debug\Balon.obj
@@ -36,8 +18,8 @@
          tmp\Debug\Juego.obj
          tmp\Debug\Mundo.obj
          Pang.vcxproj -> C:\Users\Windows 7\Desktop\Juego\bin\Juego.exe
-     1>Compilación del proyecto terminada "C:\Users\Windows 7\Desktop\Juego\Pang.vcxproj" (Rebuild destinos).
+     1>Compilación del proyecto terminada "C:\Users\Windows 7\Desktop\Juego\Pang.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:02.00
+Tiempo transcurrido 00:00:00.71

@@ -39,12 +39,13 @@ void Mundo::Dibuja()
 	pobjetosMoviles = &hombre2;
 	pobjetosMoviles->Dibuja();
 
+
 	pobjetosMoviles = &bonusesp;
 	pobjetosMoviles->Dibuja();
 
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Dibuja();
-
+	
 	campo.Dibuja();
 
 }
@@ -72,6 +73,13 @@ void Mundo::Mueve()
 		pobjetosMoviles->SetRadio(3.0f);
 	}
 
+	if (Interaccion::Colision(bonusnor, hombre2)){
+
+		pobjetosMoviles = &bonusnor;
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 15);
+		pobjetosMoviles = &hombre2;
+		pobjetosMoviles->SetRadio(3.0f);
+	}
 	pobjetosMoviles = &bonusesp;
 	pobjetosMoviles->Mueve(0.009f);
 
@@ -81,6 +89,14 @@ void Mundo::Mueve()
 		pobjetosMoviles = &hombre2;
 		pobjetosMoviles->SetRadio(1.0f);
 	}
+	if (Interaccion::Colision(bonusesp, hombre1)){
+		pobjetosMoviles = &bonusesp;
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 15);
+		pobjetosMoviles = &hombre1;
+		pobjetosMoviles->SetRadio(1.0f);
+	}
+
+
 
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
@@ -221,9 +237,6 @@ void Mundo::TeclaEspecial(unsigned char key)
 			hombre1.SetVel(0.0f, 0.0f);
 			break;
 		}
-
-
-
 
 	}
 
