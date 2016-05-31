@@ -2,6 +2,7 @@
 #include "math.h"
 #include "glut.h"
 #include "..\..\include\dominio\Interaccion.h"
+#include <time.h>
 
 ObjetoMovil *pobjetosmoviles;
 
@@ -211,44 +212,9 @@ bool Interaccion::Colision(Bonus bon, Hombre h){
 
 	float distancia = (bon.posicion- pos).modulo();
 	if (distancia < bon.lado){
-		printf("\nHa habido colision");
+		//printf("\nHa habido colision hombre-bonus");
 		return true;
 	}
 	return false;
 }
 
-/*void Interaccion::Colision(Bonus &bon, Hombre &h){
-
-		Vector2D pos = h.GetPos(); //la posicion del hombre 
-		pos.y += h.GetRadio() / 2.0f; //posicion del centro del hombre
-
-		float distancia = (bon.posicion - pos).modulo();
-
-		if (distancia < bon.radio)
-		{
-			//Algo para que mande a la posicion inicial de cada bonus (normal o especial)
-			//********************************************************
-			bon.SetPos(8,30);
-			//pobjetosMoviles = &bon;
-			//pobjetosMoviles->bonus.SetPos(8,30);
-			//********************************************************
-
-			if (h.radio < 5.0f)
-				h.radio = h.radio + 0.2f;
-			else h.radio = 5.0f;
-		}
-		printf("Ha habido colision");
-}*/
-/*
-void Interaccion::Colision2(Bonus &b, Hombre &h){
-
-	float dist = ((b.posicion) - (h.posicion)).modulo();
-	if (dist<h.radio)
-	{
-		b.posicion.y = 150.0f;
-		if (h.radio>1.0f)
-			h.radio = h.radio - 0.5f;
-		else h.radio = 1.0f;
-	}
-
-}*/
