@@ -16,7 +16,8 @@ public:
 	void SetPos(Vector2D pos);
 	void SetVel(Vector2D vel);
 
-	int PosxRandom();
+	int PosxRandom1();
+	int PosxRandom2();
 	int VelxRandom();
 
 	Vector2D GetPos();	

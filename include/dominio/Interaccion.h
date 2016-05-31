@@ -25,5 +25,6 @@ public:
 	//funciones de informacion, no cambian los objetos (no referencias), solo devuelven true si hay colision
 	static bool Colision(Balon b, Pared suelo);
 	static bool Colision(Bonus bon , Hombre h );
-
+	static bool Colision(Bonus bon, Pared suelo);
+	static void Colision(Bonus bon, Campo c);
 };

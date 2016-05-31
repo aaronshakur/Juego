@@ -9,7 +9,7 @@
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\ObjetoMovil.h"
 
-#define maxBotes 5
+#define maxBotes 10
 #define maxPuntos 3
 
 //Polimorfismo
@@ -39,7 +39,6 @@ void Mundo::Dibuja()
 	pobjetosMoviles = &hombre2;
 	pobjetosMoviles->Dibuja();
 
-
 	pobjetosMoviles = &bonusesp;
 	pobjetosMoviles->Dibuja();
 
@@ -65,37 +64,46 @@ void Mundo::Mueve()
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Mueve(0.009f);
 
+	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles->Mueve(0.009f);
+
 	if (Interaccion::Colision(bonusnor, hombre1)){
 
-		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
 		pobjetosMoviles = &hombre1;
 		pobjetosMoviles->SetRadio(3.0f);
 	}
 
 	if (Interaccion::Colision(bonusnor, hombre2)){
 
-		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 15);
+
 		pobjetosMoviles = &hombre2;
 		pobjetosMoviles->SetRadio(3.0f);
 	}
-	pobjetosMoviles = &bonusesp;
-	pobjetosMoviles->Mueve(0.009f);
 
 	if (Interaccion::Colision(bonusesp, hombre2)){
-		pobjetosMoviles = &bonusesp;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
+
 		pobjetosMoviles = &hombre2;
 		pobjetosMoviles->SetRadio(1.0f);
 	}
 	if (Interaccion::Colision(bonusesp, hombre1)){
-		pobjetosMoviles = &bonusesp;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 15);
+
 		pobjetosMoviles = &hombre1;
 		pobjetosMoviles->SetRadio(1.0f);
 	}
+	
+	Vector2D posbonusesp = bonusesp.GetPos();
+	if (posbonusesp.y < -5.0f){
 
+		pobjetosMoviles = &bonusesp;
+		pobjetosMoviles->SetPos(-19 + (rand() % 38), 30.0f);
+	}
+
+	Vector2D posbonusnor = bonusnor.GetPos();
+	if (posbonusnor.y < -5.0f){
+
+		pobjetosMoviles = &bonusnor;
+		pobjetosMoviles->SetPos(-19 + (rand() % 38), 30.0f);
+	}
 
 
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
@@ -127,8 +135,6 @@ void Mundo::Mueve()
 		contadorPuntos_d++;
 		printf("Puntos derecha: ");
 		printf("%d\n", contadorPuntos_d);
-
-
 	}
 }
 
@@ -154,10 +160,11 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 		pobjetosMoviles->SetPos(-6, 1);
 
 		pobjetosMoviles = &bonusesp;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom2(), 30);
 
 		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom1(), 30);
+
 
 		pobjetosMoviles = &balon;
 		pobjetosMoviles->SetColor(255, 255, 0);
