@@ -3,12 +3,11 @@
 #include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 
-#define maxBotes 10
+#define maxBotes 100
 #define maxPuntos 3
 
-CoordinadorJuego::CoordinadorJuego()
-{
-	estado = INICIO;	
+CoordinadorJuego::CoordinadorJuego(){
+	estado = INICIO;
 }
 
 CoordinadorJuego::~CoordinadorJuego(){}
@@ -74,20 +73,13 @@ void CoordinadorJuego::Dibuja()
 			0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) 
 
-		
-		ETSIDI::setTextColor(1, 1, 0);
-		ETSIDI::setFont("Bitwise.ttf", 16);
-		ETSIDI::printxy("CABEZONES", -5, 8);
+		DibujaPortada();
+		DibujaLetras();
 
-		ETSIDI::setTextColor(1, 1, 1);
-		ETSIDI::setFont("Bitwise.ttf", 12);
-		ETSIDI::printxy("PULSE LA TECLA -e- PARA EMPEZAR", -5, 7);
-		ETSIDI::printxy("PULSE LA TECLA -s- PARA SALIR", -5, 6);
-		ETSIDI::printxy("Aaron Marin & Miguel Angel Huerta", 2, 1); 
 	}
 	else if (estado == PREPARADO)
 	{
-		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA SACAR", -5, 7);
+		//ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA SACAR", -5, 7);
 		mundo.Inicializa();
 		mundo.Dibuja();
 	}
@@ -100,19 +92,19 @@ void CoordinadorJuego::Dibuja()
 	else if (estado == PUNTO)
 	{
 		mundo.Dibuja();
-
+		/*
 		ETSIDI::setTextColor(1, 0, 0);
 		ETSIDI::setFont("Bitwise.ttf", 16);
 		ETSIDI::printxy("PUNTO!!", -5, 10);
-		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA VOLVER SACAR", -5, 7);
+		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA VOLVER SACAR", -5, 7);*/
 	}	
 	else if (estado == FIN)
 	{
 		mundo.Dibuja();
 
-		ETSIDI::setFont("Bitwise.ttf", 16);
+	/*	ETSIDI::setFont("Bitwise.ttf", 16);
 		ETSIDI::printxy("FIN DEL PARTIDO!", -5, 10);
-		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA LA REVANCHA!", -5, 9);
+		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA LA REVANCHA!", -5, 9);*/
 	}
 }
 
@@ -147,4 +139,36 @@ void CoordinadorJuego::Mueve()
 		}
 	}
 
+}
+
+void CoordinadorJuego::DibujaPortada(){
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/portada.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1); glVertex3f(-20.0f, 0.0f, 0.0f);
+	glTexCoord2d(1, 1); glVertex3f(20.0f, 0.0f, 0.0f);
+	glTexCoord2d(1, 0); glVertex3f(20.0f, 20.0f, 0.0f);
+	glTexCoord2d(0, 0); glVertex3f(-20.0f, 20.0f, 0.0f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+
+}
+
+void CoordinadorJuego::DibujaLetras(){
+
+	glTranslatef(-18.0f, 8.0f, 1.0f); //traslada posicion relativa
+	ETSIDI::setTextColor(0, 0, 1);
+	ETSIDI::print("Pulse (e) para empezar", "fuentes/Bitwise.ttf", 10);
+
+	glTranslatef(28.0f, 0.0f, 1.0f);
+	ETSIDI::setTextColor(1, 0, 0);
+	ETSIDI::print("Pulse (s) para salir", "fuentes/Bitwise.ttf");
+
+	glTranslatef(-18.5f, -6.0f, 1.0f);
+	ETSIDI::setTextColor(0, 0, 0);
+	ETSIDI::print("Aaron Marin   &   Miguel Angel Huerta", "fuentes/Bitwise.ttf", 16);
 }

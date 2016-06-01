@@ -18,7 +18,16 @@ public:
 
 	int PosxRandom1();
 	int PosxRandom2();
+	int PosxRandom3();
+	int PosxRandom4();
+
+	int PosyRandom1();
+	int PosyRandom2();
+	int PosyRandom3();
+	int PosyRandom4();
+
 	int VelxRandom();
+
 
 	Vector2D GetPos();	
 

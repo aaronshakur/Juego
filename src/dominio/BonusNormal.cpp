@@ -4,6 +4,8 @@
 
 BonusNormal::BonusNormal()
 {
+	rojo = verde = 255;
+	azul = 255;
 }
 BonusNormal::~BonusNormal()
 {

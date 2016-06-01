@@ -1,3 +1,5 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "glut.h"
 #include "..\include\juego\CoordinadorJuego.h"
 

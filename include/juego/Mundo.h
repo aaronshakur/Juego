@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "..\..\include\dominio\Bonus.h"
 #include "..\..\include\dominio\Campo.h"
 #include "..\..\include\dominio\Pared.h"
@@ -5,6 +6,9 @@
 #include "..\..\include\dominio\Balon.h"
 #include "..\..\include\dominio\BonusEspecial.h"
 #include "..\..\include\dominio\BonusNormal.h"
+#include"ETSIDI.h"
+
+using ETSIDI::Sprite;
 
 class Mundo
 {
@@ -16,9 +20,13 @@ private:
 	Balon balon;		//Creamos los objetos para instanciarlos en Mundo. De esta manera, cuando se instancie el objeto Mundo, 
 	Campo campo;		//se instanciaran todos estos objetos.
 	Hombre hombre1, hombre2;//Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
-	BonusEspecial bonusesp;
+	BonusEspecial bonusespgran;
+	BonusEspecial bonusesppeq;
+
 	BonusNormal bonusnor;
+	BonusNormal bonusnorpelota;
 	Pared suelo;
+	Sprite sprite;
 
 	int contadorBotes_d;
 	int contadorPuntos_d;
@@ -33,7 +41,7 @@ private:
 	
 
 public: 
-
+	Mundo();
 	//Metodos
 	void Tecla(unsigned char key);
 	void TeclaEspecial(unsigned char key);
@@ -41,6 +49,10 @@ public:
 	void RotarOjo();
 	void Mueve();
 	void Dibuja();
+	void DibujaFondo();
+	void DibujaSuelo();
+	void DibujaPared_D();
+	void DibujaPared_I();
 	int GetBoteD(){ return contadorBotes_d; }
 	int GetBoteI(){ return contadorBotes_i; }
 	int GetPuntoD(){ return contadorPuntos_i;  }
