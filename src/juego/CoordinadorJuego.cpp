@@ -3,7 +3,7 @@
 #include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 
-#define maxBotes 5
+#define maxBotes 1000
 #define maxPuntos 3
 
 CoordinadorJuego::CoordinadorJuego()
