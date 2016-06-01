@@ -28,6 +28,7 @@ void Bonus::Dibuja(){
 	glPopMatrix();
 
 }
+
 void Bonus::Mueve(float t){
 
 	posicion = posicion + velocidad*t + aceleracion*(t*t*0.5f);
