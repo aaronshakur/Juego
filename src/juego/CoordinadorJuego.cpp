@@ -3,7 +3,11 @@
 #include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 
+<<<<<<< HEAD
 #define maxBotes 1000
+=======
+#define maxBotes 10
+>>>>>>> refs/remotes/origin/RamaMiguel
 #define maxPuntos 3
 
 CoordinadorJuego::CoordinadorJuego()
@@ -124,6 +128,7 @@ void CoordinadorJuego::Mueve()
 		mundo.Mueve();
 		int botes_d = mundo.GetBoteD();
 		int botes_i = mundo.GetBoteI();
+
 		if ((botes_d == maxBotes) || (botes_i == maxBotes))
 		{
 			estado = PREPARADO;
@@ -131,6 +136,7 @@ void CoordinadorJuego::Mueve()
 
 		int puntos_d = mundo.GetPuntoD();
 		int puntos_i = mundo.GetPuntoI();
+
 		if (puntos_d == maxPuntos) 
 		{
 			

@@ -9,7 +9,11 @@
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\ObjetoMovil.h"
 
+<<<<<<< HEAD
 #define maxBotes 1000
+=======
+#define maxBotes 10
+>>>>>>> refs/remotes/origin/RamaMiguel
 #define maxPuntos 3
 
 //Polimorfismo
@@ -44,7 +48,7 @@ void Mundo::Dibuja()
 
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Dibuja();
-
+	
 	campo.Dibuja();
 
 }
@@ -66,24 +70,34 @@ void Mundo::Mueve()
 
 	pobjetosMoviles = &bonusesp;
 	pobjetosMoviles->Mueve(0.009f);
+<<<<<<< HEAD
 //---------------------COLISIONES HOMBRES CON BONUS-------------------------------
 
 	//En cuanto hay colision con el primero de los dos bonus, el otro despues no hace efecto
+=======
+
+>>>>>>> refs/remotes/origin/RamaMiguel
 	if (Interaccion::Colision(bonusnor, hombre1)){
 
-		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
 		pobjetosMoviles = &hombre1;
 		pobjetosMoviles->SetRadio(3.0f);
 	}
 
 	if (Interaccion::Colision(bonusnor, hombre2)){
+<<<<<<< HEAD
 		pobjetosMoviles = &bonusnor;
 		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
 		pobjetosMoviles = &hombre2;
 		pobjetosMoviles->SetRadio(3.0f);
 	}
 	if (Interaccion::Colision(bonusesp, hombre1)){
+=======
+
+
+		pobjetosMoviles = &hombre2;
+		pobjetosMoviles->SetRadio(3.0f);
+	}
+>>>>>>> refs/remotes/origin/RamaMiguel
 
 		pobjetosMoviles = &bonusesp;
 		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
@@ -91,12 +105,34 @@ void Mundo::Mueve()
 		pobjetosMoviles->SetRadio(1.0f);
 	}
 	if (Interaccion::Colision(bonusesp, hombre2)){
-		pobjetosMoviles = &bonusesp;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
+
 		pobjetosMoviles = &hombre2;
 		pobjetosMoviles->SetRadio(1.0f);
 	}
+<<<<<<< HEAD
 	//---------------------REBOTES OBJETOS-------------------------------
+=======
+	if (Interaccion::Colision(bonusesp, hombre1)){
+
+		pobjetosMoviles = &hombre1;
+		pobjetosMoviles->SetRadio(1.0f);
+	}
+	
+	Vector2D posbonusesp = bonusesp.GetPos();
+	if (posbonusesp.y < -5.0f){
+
+		pobjetosMoviles = &bonusesp;
+		pobjetosMoviles->SetPos(-19 + (rand() % 38), 30.0f);
+	}
+
+	Vector2D posbonusnor = bonusnor.GetPos();
+	if (posbonusnor.y < -5.0f){
+
+		pobjetosMoviles = &bonusnor;
+		pobjetosMoviles->SetPos(-19 + (rand() % 38), 30.0f);
+	}
+
+>>>>>>> refs/remotes/origin/RamaMiguel
 
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
@@ -115,6 +151,7 @@ void Mundo::Mueve()
 		printf("Botes izquierda: ");
 		printf("%d\n", contadorBotes_i);
 		}
+	
 
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
@@ -126,11 +163,12 @@ void Mundo::Mueve()
 		contadorPuntos_d++;
 		printf("Puntos derecha: ");
 		printf("%d\n", contadorPuntos_d);
-		}
-
+	}
 }
+
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
+
 		contadorBotes_d = 0;
 		contadorBotes_i = 0;
 
@@ -150,10 +188,15 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 		pobjetosMoviles->SetPos(-6, 1);
 
 		pobjetosMoviles = &bonusesp;
+<<<<<<< HEAD
 		pobjetosMoviles->SetPos(15, 30);
+=======
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom2(), 30);
+>>>>>>> refs/remotes/origin/RamaMiguel
 
 		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom1(), 30);
+
 
 		pobjetosMoviles = &balon;
 		pobjetosMoviles->SetColor(255, 255, 0);
@@ -192,6 +235,7 @@ void Mundo::Tecla(unsigned char key)
 void Mundo::TeclaEspecial(unsigned char key)
 {
 
+
 	switch (key)
 	{
 	case GLUT_KEY_LEFT:
@@ -208,9 +252,11 @@ void Mundo::TeclaEspecial(unsigned char key)
 						break;
 	}
 	case GLUT_KEY_DOWN:
-		hombre1.SetVel(0.0f, 0.0f);
-		break;
+	{
+						  hombre1.SetVel(0.0f, 0.0f);
+						  break;
 	}
+
 		switch (key)
 		{
 		case GLUT_KEY_LEFT:
@@ -227,21 +273,24 @@ void Mundo::TeclaEspecial(unsigned char key)
 							break;
 		}
 		case GLUT_KEY_DOWN:
-							   hombre1.SetVel(0.0f, 0.0f);
-							   break;
+			hombre1.SetVel(0.0f, 0.0f);
+			break;
 		}
 
-}
+	}
 
+}
 	//Funcion que resetea los puntos cuando acaba una partida
 
 void Mundo::SetPuntosI(){
+
 		if (contadorPuntos_i == maxPuntos)
 			contadorPuntos_i = 0;			
-
 }
 
+
 void Mundo::SetPuntosD(){
+
 	if (contadorPuntos_d == maxPuntos)
 		contadorPuntos_d = 0;
 }

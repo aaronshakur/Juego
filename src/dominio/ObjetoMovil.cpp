@@ -53,16 +53,26 @@ float ObjetoMovil::GetRadio()
 	return radio;
 }
 
-int ObjetoMovil::PosxRandom(){
+int ObjetoMovil::PosxRandom1(){
+	
 	int xrandom;
 	srand(time(NULL)); //semilla 
 	xrandom = (-19 + (rand() % 38)); //rellena con numeros aleatorios en el eje X dentro del campo
 	return xrandom;
 }
+int ObjetoMovil::PosxRandom2(){
+
+	int xrandom2;
+	srand(time(NULL)); //semilla 
+	xrandom2 = (-rand()%39 + (rand() % 38)); //rellena con numeros aleatorios en el eje X dentro del campo
+	return xrandom2;
+}
 
 int ObjetoMovil::VelxRandom(){
 	int velxrandom;
 	srand(time(NULL)); //semilla 
+
 	velxrandom = (-8 + (rand() % 15)); //rellena con numeros aleatorios en el eje X dentro del campo
 	return velxrandom;
 }
+
