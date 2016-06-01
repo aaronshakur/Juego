@@ -4,7 +4,7 @@
 Campo::Campo()  //constructor de campo. Damos valores iniciales
 {
 	suelo_d.SetLim(0.0f, 0.0f, 20.0f, 0.0f);//(x1,y1,x2,y2)
-	suelo_d.SetColor(100, 100, 25);
+	suelo_d.SetColor(45, 100, 25);
 
 	suelo_i.SetLim(-20.0f, 0.0f, 0.0f, 0.0f);//(x1,y1,x2,y2)
 	suelo_i.SetColor(45, 100, 25);
