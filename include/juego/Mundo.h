@@ -41,6 +41,8 @@ public:
 	void RotarOjo();
 	void Mueve();
 	void Dibuja();
+	void DibujaFondo();
+	void DibujaSuelo();
 	int GetBoteD(){ return contadorBotes_d; }
 	int GetBoteI(){ return contadorBotes_i; }
 	int GetPuntoD(){ return contadorPuntos_i;  }

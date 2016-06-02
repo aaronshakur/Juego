@@ -3,12 +3,13 @@
 #include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 
-<<<<<<< HEAD
-#define maxBotes 1000
-=======
-#define maxBotes 10
->>>>>>> refs/remotes/origin/RamaMiguel
+
+#define maxBotes 3
 #define maxPuntos 3
+
+using namespace ETSIDI;
+using ETSIDI::getTexture;
+
 
 CoordinadorJuego::CoordinadorJuego()
 {
@@ -77,21 +78,26 @@ void CoordinadorJuego::Dibuja()
 		gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
 			0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) 
-
 		
+		glTranslated(-10, 15, 1);
 		ETSIDI::setTextColor(1, 1, 0);
-		ETSIDI::setFont("Bitwise.ttf", 16);
-		ETSIDI::printxy("CABEZONES", -5, 8);
+		ETSIDI::print("CABEZONES !!", "fuentes/Bitwise.ttf", 36);
 
-		ETSIDI::setTextColor(1, 1, 1);
-		ETSIDI::setFont("Bitwise.ttf", 12);
-		ETSIDI::printxy("PULSE LA TECLA -e- PARA EMPEZAR", -5, 7);
-		ETSIDI::printxy("PULSE LA TECLA -s- PARA SALIR", -5, 6);
-		ETSIDI::printxy("Aaron Marin & Miguel Angel Huerta", 2, 1); 
+		glTranslated(-10, 8, 1);
+		ETSIDI::setTextColor(1, 1, 0);
+		ETSIDI::print("PULSE LA TECLA -e- PARA EMPEZAR", "fuentes/Bitwise.ttf", 36);
+
+		glTranslated(-10, 5, 1);
+		ETSIDI::setTextColor(1, 1, 0);
+		ETSIDI::print("PULSE LA TECLA -s- PARA SALIR", "fuentes/Bitwise.ttf", 36);
+
+		glTranslated(-10, 0, 1);
+		ETSIDI::setTextColor(1, 1, 0);
+		ETSIDI::print("Aaron Marin & Miguel Angel Huerta", "fuentes/Bitwise.ttf", 36);
 	}
 	else if (estado == PREPARADO)
 	{
-		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA SACAR", -5, 7);
+		//ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA SACAR", -5, 7);
 		mundo.Inicializa();
 		mundo.Dibuja();
 	}
@@ -104,19 +110,19 @@ void CoordinadorJuego::Dibuja()
 	else if (estado == PUNTO)
 	{
 		mundo.Dibuja();
-
+		/*
 		ETSIDI::setTextColor(1, 0, 0);
 		ETSIDI::setFont("Bitwise.ttf", 16);
 		ETSIDI::printxy("PUNTO!!", -5, 10);
-		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA VOLVER SACAR", -5, 7);
+		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA VOLVER SACAR", -5, 7);*/
 	}	
 	else if (estado == FIN)
 	{
 		mundo.Dibuja();
 
-		ETSIDI::setFont("Bitwise.ttf", 16);
+	/*	ETSIDI::setFont("Bitwise.ttf", 16);
 		ETSIDI::printxy("FIN DEL PARTIDO!", -5, 10);
-		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA LA REVANCHA!", -5, 9);
+		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA LA REVANCHA!", -5, 9);*/
 	}
 }
 

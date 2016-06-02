@@ -3,17 +3,14 @@
 #include "glut.h"
 #include <math.h>
 #include "ETSIDI.h"
-
+#include <iostream>
 #include "..\include\juego\Mundo.h"
 #include "..\..\include\dominio\Interaccion.h"
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\ObjetoMovil.h"
-
-<<<<<<< HEAD
-#define maxBotes 1000
-=======
-#define maxBotes 10
->>>>>>> refs/remotes/origin/RamaMiguel
+//using namespace ETSIDI;
+//using ETSIDI::getTexture;
+#define maxBotes 3
 #define maxPuntos 3
 
 //Polimorfismo
@@ -21,25 +18,27 @@ ObjetoMovil  *pobjetosMoviles;
 
 void Mundo::RotarOjo()
 {
-	float dist=sqrt(x_ojo*x_ojo+z_ojo*z_ojo);
-	float ang=atan2(z_ojo,x_ojo);
-	ang+=0.05f;
-	x_ojo=dist*cos(ang);
-	z_ojo=dist*sin(ang);
+	float dist = sqrt(x_ojo*x_ojo + z_ojo*z_ojo);
+	float ang = atan2(z_ojo, x_ojo);
+	ang += 0.05f;
+	x_ojo = dist*cos(ang);
+	z_ojo = dist*sin(ang);
 }
 void Mundo::Dibuja()
 {
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
-			0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
-			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
-
+		0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
+		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+	//DIBUJO FONDO 
+    DibujaFondo();
+	DibujaSuelo();
 	//aqui es donde hay que poner el codigo de dibujo
 	pobjetosMoviles = &balon;
 	pobjetosMoviles->Dibuja();
 
 	pobjetosMoviles = &hombre1;
 	pobjetosMoviles->Dibuja();
-	
+
 	pobjetosMoviles = &hombre2;
 	pobjetosMoviles->Dibuja();
 
@@ -48,7 +47,7 @@ void Mundo::Dibuja()
 
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Dibuja();
-	
+
 	campo.Dibuja();
 
 }
@@ -70,13 +69,7 @@ void Mundo::Mueve()
 
 	pobjetosMoviles = &bonusesp;
 	pobjetosMoviles->Mueve(0.009f);
-<<<<<<< HEAD
-//---------------------COLISIONES HOMBRES CON BONUS-------------------------------
 
-	//En cuanto hay colision con el primero de los dos bonus, el otro despues no hace efecto
-=======
-
->>>>>>> refs/remotes/origin/RamaMiguel
 	if (Interaccion::Colision(bonusnor, hombre1)){
 
 		pobjetosMoviles = &hombre1;
@@ -84,40 +77,23 @@ void Mundo::Mueve()
 	}
 
 	if (Interaccion::Colision(bonusnor, hombre2)){
-<<<<<<< HEAD
-		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
-		pobjetosMoviles = &hombre2;
-		pobjetosMoviles->SetRadio(3.0f);
-	}
-	if (Interaccion::Colision(bonusesp, hombre1)){
-=======
 
 
 		pobjetosMoviles = &hombre2;
 		pobjetosMoviles->SetRadio(3.0f);
 	}
->>>>>>> refs/remotes/origin/RamaMiguel
 
-		pobjetosMoviles = &bonusesp;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom(), 30);
-		pobjetosMoviles = &hombre1;
-		pobjetosMoviles->SetRadio(1.0f);
-	}
 	if (Interaccion::Colision(bonusesp, hombre2)){
 
 		pobjetosMoviles = &hombre2;
 		pobjetosMoviles->SetRadio(1.0f);
 	}
-<<<<<<< HEAD
-	//---------------------REBOTES OBJETOS-------------------------------
-=======
 	if (Interaccion::Colision(bonusesp, hombre1)){
 
 		pobjetosMoviles = &hombre1;
 		pobjetosMoviles->SetRadio(1.0f);
 	}
-	
+
 	Vector2D posbonusesp = bonusesp.GetPos();
 	if (posbonusesp.y < -5.0f){
 
@@ -132,7 +108,6 @@ void Mundo::Mueve()
 		pobjetosMoviles->SetPos(-19 + (rand() % 38), 30.0f);
 	}
 
->>>>>>> refs/remotes/origin/RamaMiguel
 
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
@@ -145,20 +120,19 @@ void Mundo::Mueve()
 		printf("Botes derecha : ");
 		printf("%d\n", contadorBotes_d);
 	}
-	
+
 	if (Interaccion::Colision(balon, campo.suelo_i)){
 		contadorBotes_i++;
 		printf("Botes izquierda: ");
 		printf("%d\n", contadorBotes_i);
-		}
-	
+	}
 
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
 		printf("Puntos izquierda: ");
 		printf("%d\n", contadorPuntos_i);
 
-		}
+	}
 	if (contadorBotes_i == maxBotes){
 		contadorPuntos_d++;
 		printf("Puntos derecha: ");
@@ -168,41 +142,37 @@ void Mundo::Mueve()
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
+//	ETSIDI::playMusica(“sonidos / musicafondo.mp3”, true);
+	contadorBotes_d = 0;
+	contadorBotes_i = 0;
 
-		contadorBotes_d = 0;
-		contadorBotes_i = 0;
+	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
+	x_ojo = 1.5;
+	y_ojo = 9;
+	z_ojo = 70;
 
-		//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
-		x_ojo = 1.5;
-		y_ojo = 9;
-		z_ojo = 70;
+	pobjetosMoviles = &hombre1;
+	pobjetosMoviles->SetColor(255, 0, 0);
+	pobjetosMoviles->SetRadio(1.8f);
+	pobjetosMoviles->SetPos(6, 1);
 
-		pobjetosMoviles = &hombre1;
-		pobjetosMoviles->SetColor(255, 0, 0);
-		pobjetosMoviles->SetRadio(1.8f);
-		pobjetosMoviles->SetPos(6, 1);
+	pobjetosMoviles = &hombre2;
+	pobjetosMoviles->SetColor(0, 0, 255);
+	pobjetosMoviles->SetRadio(1.8f);
+	pobjetosMoviles->SetPos(-6, 1);
 
-		pobjetosMoviles = &hombre2;
-		pobjetosMoviles->SetColor(0, 0, 255);
-		pobjetosMoviles->SetRadio(1.8f);
-		pobjetosMoviles->SetPos(-6, 1);
+	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom2(), 30);
 
-		pobjetosMoviles = &bonusesp;
-<<<<<<< HEAD
-		pobjetosMoviles->SetPos(15, 30);
-=======
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom2(), 30);
->>>>>>> refs/remotes/origin/RamaMiguel
-
-		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom1(), 30);
+	pobjetosMoviles = &bonusnor;
+	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom1(), 30);
 
 
-		pobjetosMoviles = &balon;
-		pobjetosMoviles->SetColor(255, 255, 0);
-		pobjetosMoviles->SetRadio(0.75f);
-		pobjetosMoviles->SetPos(0, 9);
-		pobjetosMoviles->SetVel(pobjetosMoviles->VelxRandom(),9);
+	pobjetosMoviles = &balon;
+	pobjetosMoviles->SetColor(255, 255, 0);
+	pobjetosMoviles->SetRadio(0.75f);
+	pobjetosMoviles->SetPos(0, 9);
+	pobjetosMoviles->SetVel(pobjetosMoviles->VelxRandom(), 9);
 
 }
 
@@ -234,7 +204,6 @@ void Mundo::Tecla(unsigned char key)
 
 void Mundo::TeclaEspecial(unsigned char key)
 {
-
 
 	switch (key)
 	{
@@ -280,12 +249,12 @@ void Mundo::TeclaEspecial(unsigned char key)
 	}
 
 }
-	//Funcion que resetea los puntos cuando acaba una partida
+//Funcion que resetea los puntos cuando acaba una partida
 
 void Mundo::SetPuntosI(){
 
-		if (contadorPuntos_i == maxPuntos)
-			contadorPuntos_i = 0;			
+	if (contadorPuntos_i == maxPuntos)
+		contadorPuntos_i = 0;
 }
 
 
@@ -293,4 +262,36 @@ void Mundo::SetPuntosD(){
 
 	if (contadorPuntos_d == maxPuntos)
 		contadorPuntos_d = 0;
+}
+
+void Mundo::DibujaFondo(){
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/fondo.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1); glVertex3f(-20.0f, 0.0f, -0.1f);
+	glTexCoord2d(1, 1); glVertex3f(20.0f, 0.0f, -0.1f);
+	glTexCoord2d(1, 0); glVertex3f(20.0f, 20.0f, -0.1f);
+	glTexCoord2d(0, 0); glVertex3f(-20.0f, 20.0f, -0.1f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+}
+
+void Mundo::DibujaSuelo(){
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/suelo.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	//glColor3f(1, 1, 1);
+	//(x,y,z)
+	glVertex3f(-20.1f, 0.1f, -0.1f);
+	glVertex3f(-20.1f, 0.1f, 20.0f);
+	glVertex3f(20.0f, 0.1f, 20.0f);
+	glVertex3f(20.0f, 0.1f, -0.1f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
 }
