@@ -1,5 +1,7 @@
 #pragma once
+#include <stdlib.h>
 #include "Mundo.h"
+#include "ETSIDI.h"
 
 class CoordinadorJuego
 {
@@ -11,7 +13,9 @@ public:
 	void Mueve();
 	void Dibuja();
 	void Inicializa();
-	
+	void DibujaPortada();
+	void DibujaLetras();
+
 protected:
 	Mundo mundo;
 	enum Estado { INICIO, PREPARADO, JUEGO, PUNTO, FIN };

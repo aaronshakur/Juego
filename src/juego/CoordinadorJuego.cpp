@@ -3,17 +3,11 @@
 #include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 
-
-#define maxBotes 3
+#define maxBotes 100
 #define maxPuntos 3
 
-using namespace ETSIDI;
-using ETSIDI::getTexture;
-
-
-CoordinadorJuego::CoordinadorJuego()
-{
-	estado = INICIO;	
+CoordinadorJuego::CoordinadorJuego(){
+	estado = INICIO;
 }
 
 CoordinadorJuego::~CoordinadorJuego(){}
@@ -78,22 +72,10 @@ void CoordinadorJuego::Dibuja()
 		gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
 			0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) 
-		
-		glTranslated(-10, 15, 1);
-		ETSIDI::setTextColor(1, 1, 0);
-		ETSIDI::print("CABEZONES !!", "fuentes/Bitwise.ttf", 36);
 
-		glTranslated(-10, 8, 1);
-		ETSIDI::setTextColor(1, 1, 0);
-		ETSIDI::print("PULSE LA TECLA -e- PARA EMPEZAR", "fuentes/Bitwise.ttf", 36);
+		DibujaPortada();
+		DibujaLetras();
 
-		glTranslated(-10, 5, 1);
-		ETSIDI::setTextColor(1, 1, 0);
-		ETSIDI::print("PULSE LA TECLA -s- PARA SALIR", "fuentes/Bitwise.ttf", 36);
-
-		glTranslated(-10, 0, 1);
-		ETSIDI::setTextColor(1, 1, 0);
-		ETSIDI::print("Aaron Marin & Miguel Angel Huerta", "fuentes/Bitwise.ttf", 36);
 	}
 	else if (estado == PREPARADO)
 	{
@@ -157,4 +139,36 @@ void CoordinadorJuego::Mueve()
 		}
 	}
 
+}
+
+void CoordinadorJuego::DibujaPortada(){
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/portada.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1); glVertex3f(-20.0f, 0.0f, 0.0f);
+	glTexCoord2d(1, 1); glVertex3f(20.0f, 0.0f, 0.0f);
+	glTexCoord2d(1, 0); glVertex3f(20.0f, 20.0f, 0.0f);
+	glTexCoord2d(0, 0); glVertex3f(-20.0f, 20.0f, 0.0f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+
+}
+
+void CoordinadorJuego::DibujaLetras(){
+
+	glTranslatef(-18.0f, 8.0f, 1.0f); //traslada posicion relativa
+	ETSIDI::setTextColor(0, 0, 1);
+	ETSIDI::print("Pulse (e) para empezar", "fuentes/Bitwise.ttf", 10);
+
+	glTranslatef(28.0f, 0.0f, 1.0f);
+	ETSIDI::setTextColor(1, 0, 0);
+	ETSIDI::print("Pulse (s) para salir", "fuentes/Bitwise.ttf");
+
+	glTranslatef(-18.5f, -6.0f, 1.0f);
+	ETSIDI::setTextColor(0, 0, 0);
+	ETSIDI::print("Aaron Marin   &   Miguel Angel Huerta", "fuentes/Bitwise.ttf", 16);
 }

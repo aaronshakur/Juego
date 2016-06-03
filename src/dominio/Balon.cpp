@@ -1,10 +1,16 @@
+//#include <stdlib.h>
+//#include <stdio.h>
 #include "..\..\include\dominio\Balon.h"
 #include "glut.h"
+//#include "ETSIDI.h"
 
-Balon::Balon() //constructor de balon. Damos valores iniciales
+Balon::Balon():sprite("imagenes/balon.png", -1) //No tocar! 
 {
+	 //constructor de balon. Damos valores iniciales
+	sprite.setCenter(1.5f,2.5f); //No tocar!
+	sprite.setSize(5, 5); 
+
 	rojo = verde = azul = 255; //blanco
-	//radio = 1.0f;
 	aceleracion.y = -9.8f;
 }
 
@@ -13,10 +19,14 @@ Balon::~Balon()
 }
 
 void Balon::Dibuja(){
-	glColor3ub(rojo, verde, azul);
+	//glColor3ub(rojo, verde, azul);
+	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
-	glutSolidSphere(radio, 20, 20);
-	glTranslatef(-posicion.x, -posicion.y, 0);
+//	glutSolidSphere(radio, 20, 20); //Antiguo balon
+	
+	//gestion de direccion y animacion
+	sprite.draw();
+	glPopMatrix();
 }
 
 void Balon::Mueve(float t){
@@ -25,10 +35,5 @@ void Balon::Mueve(float t){
 	velocidad= velocidad+ aceleracion*t;
 	if (posicion.y <= 0.5) // para que la pelota no desaparezca nunca.
 		posicion.y = 0.5;
+	
 }
-/*
-Esfera *aux = esferas.colision(hombre);
-if (aux != 0){
-	esferas.eliminar(aux);
-	ETSIDI::play("sonidos/impacto.wav");
-}*/ //Para cuando caiga el balon dos veces que haga in sonido, moficiar este codigo
