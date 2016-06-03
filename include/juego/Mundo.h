@@ -16,8 +16,11 @@ private:
 	Balon balon;		//Creamos los objetos para instanciarlos en Mundo. De esta manera, cuando se instancie el objeto Mundo, 
 	Campo campo;		//se instanciaran todos estos objetos.
 	Hombre hombre1, hombre2;//Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
-	BonusEspecial bonusesp;
+	BonusEspecial bonusespgran;
+	BonusEspecial bonusesppeq;
+
 	BonusNormal bonusnor;
+	BonusNormal bonusnorpelota;
 	Pared suelo;
 
 	int contadorBotes_d;

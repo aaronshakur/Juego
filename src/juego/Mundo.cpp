@@ -42,13 +42,23 @@ void Mundo::Dibuja()
 	pobjetosMoviles = &hombre2;
 	pobjetosMoviles->Dibuja();
 
-	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles = &bonusespgran;
+	pobjetosMoviles->Dibuja();
+
+	pobjetosMoviles = &bonusesppeq;
 	pobjetosMoviles->Dibuja();
 
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Dibuja();
 
+<<<<<<< HEAD
+=======
+	pobjetosMoviles = &bonusnorpelota;
+	pobjetosMoviles->Dibuja();
+	
+>>>>>>> refs/remotes/origin/RamaMiguel
 	campo.Dibuja();
+	
 
 }
 
@@ -67,47 +77,88 @@ void Mundo::Mueve()
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->Mueve(0.009f);
 
-	pobjetosMoviles = &bonusesp;
+	pobjetosMoviles = &bonusnorpelota;
+	pobjetosMoviles->Mueve(0.009f);
+
+	pobjetosMoviles = &bonusespgran;
+	pobjetosMoviles->Mueve(0.009f);
+
+	pobjetosMoviles = &bonusesppeq;
 	pobjetosMoviles->Mueve(0.009f);
 
 	if (Interaccion::Colision(bonusnor, hombre1)){
 
-		pobjetosMoviles = &hombre1;
-		pobjetosMoviles->SetRadio(3.0f);
+		campo.red.SetLim(0.0f, 0.0f, 0.0f, 8.0f);
 	}
 
 	if (Interaccion::Colision(bonusnor, hombre2)){
 
+		campo.red.SetLim(0.0f, 0.0f, 0.0f, 8.0f);
+	}
+	if (Interaccion::Colision(bonusnorpelota, hombre1)){
 
-		pobjetosMoviles = &hombre2;
-		pobjetosMoviles->SetRadio(3.0f);
+		balon.SetRadio(1.00f);
 	}
 
-	if (Interaccion::Colision(bonusesp, hombre2)){
+	if (Interaccion::Colision(bonusnorpelota, hombre2)){
+
+		balon.SetRadio(1.00f);
+	}
+
+	if (Interaccion::Colision(bonusespgran, hombre2)){
 
 		pobjetosMoviles = &hombre2;
-		pobjetosMoviles->SetRadio(1.0f);
+		pobjetosMoviles->SetRadio(2.5f);
 	}
-	if (Interaccion::Colision(bonusesp, hombre1)){
+	if (Interaccion::Colision(bonusespgran, hombre1)){
+
+		pobjetosMoviles = &hombre1;
+		pobjetosMoviles->SetRadio(2.50f);
+	}
+	if (Interaccion::Colision(bonusesppeq, hombre2)){
 
 		pobjetosMoviles = &hombre1;
 		pobjetosMoviles->SetRadio(1.0f);
 	}
+	if (Interaccion::Colision(bonusesppeq, hombre1)){
+
+		pobjetosMoviles = &hombre2;
+		pobjetosMoviles->SetRadio(1.0f);
+	}
+<<<<<<< HEAD
 
 	Vector2D posbonusesp = bonusesp.GetPos();
 	if (posbonusesp.y < -5.0f){
+=======
+	
+	Vector2D posbonusespgran = bonusespgran.GetPos();
+	if (posbonusespgran.y < -10.0f){
 
-		pobjetosMoviles = &bonusesp;
-		pobjetosMoviles->SetPos(-19 + (rand() % 38), 30.0f);
+		pobjetosMoviles = &bonusespgran;
+		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
+	}
+>>>>>>> refs/remotes/origin/RamaMiguel
+
+	Vector2D posbonusesppeq = bonusesppeq.GetPos();
+	if (posbonusesppeq.y < -20.0f){
+
+		pobjetosMoviles = &bonusesppeq;
+		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
 	}
 
 	Vector2D posbonusnor = bonusnor.GetPos();
-	if (posbonusnor.y < -5.0f){
+	if (posbonusnor.y < -40.0f){
 
 		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(-19 + (rand() % 38), 30.0f);
+		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
 	}
 
+	Vector2D posbonusnorpelota = bonusnorpelota.GetPos();
+	if (posbonusnorpelota.y < -30.0f){ 
+
+		pobjetosMoviles = &bonusnorpelota;
+		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
+	}
 
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
 	Interaccion::Rebote(hombre2, campo);
@@ -161,12 +212,29 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	pobjetosMoviles->SetRadio(1.8f);
 	pobjetosMoviles->SetPos(-6, 1);
 
+<<<<<<< HEAD
 	pobjetosMoviles = &bonusesp;
 	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom2(), 30);
 
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom1(), 30);
+=======
+		pobjetosMoviles = &bonusespgran;
 
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom2(), pobjetosMoviles->PosyRandom2());
+
+		pobjetosMoviles = &bonusesppeq;
+
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom4(), pobjetosMoviles->PosyRandom4());
+
+		pobjetosMoviles = &bonusnor;
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom1(), pobjetosMoviles->PosyRandom1());
+		pobjetosMoviles->SetColor(255, 0, 0);
+>>>>>>> refs/remotes/origin/RamaMiguel
+
+		pobjetosMoviles = &bonusnorpelota;
+		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom3(), pobjetosMoviles->PosyRandom3());
+		pobjetosMoviles->SetColor(255, 255, 0);
 
 	pobjetosMoviles = &balon;
 	pobjetosMoviles->SetColor(255, 255, 0);
@@ -174,6 +242,8 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	pobjetosMoviles->SetPos(0, 9);
 	pobjetosMoviles->SetVel(pobjetosMoviles->VelxRandom(), 9);
 
+		campo.red.SetLim(0.0f, 0.0f, 0.0f, 5.0f);
+		
 }
 
 void Mundo::Tecla(unsigned char key)
