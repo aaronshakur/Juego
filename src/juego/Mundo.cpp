@@ -1,33 +1,41 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include "ETSIDI.h"
+#include "OpenGL.h"
 #include "glut.h"
 #include <math.h>
-#include "ETSIDI.h"
-
+#include <iostream>
 #include "..\include\juego\Mundo.h"
 #include "..\..\include\dominio\Interaccion.h"
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\ObjetoMovil.h"
 
-#define maxBotes 10
+#define maxBotes 100
 #define maxPuntos 3
 
 //Polimorfismo
 ObjetoMovil  *pobjetosMoviles;
+Mundo::Mundo() :sprite("imagenes/balon.png", -1) //No tocar! 
+{
+}
 
 void Mundo::RotarOjo()
 {
-	float dist=sqrt(x_ojo*x_ojo+z_ojo*z_ojo);
-	float ang=atan2(z_ojo,x_ojo);
-	ang+=0.05f;
-	x_ojo=dist*cos(ang);
-	z_ojo=dist*sin(ang);
+	float dist = sqrt(x_ojo*x_ojo + z_ojo*z_ojo);
+	float ang = atan2(z_ojo, x_ojo);
+	ang += 0.05f;
+	x_ojo = dist*cos(ang);
+	z_ojo = dist*sin(ang);
 }
 void Mundo::Dibuja()
 {
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
-			0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
-			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+		0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
+		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+	//DIBUJO FONDO 
+    DibujaFondo();
+//	DibujaSuelo();
+	DibujaPared_D();
+	DibujaPared_I();
 
 	//aqui es donde hay que poner el codigo de dibujo
 	pobjetosMoviles = &balon;
@@ -35,7 +43,7 @@ void Mundo::Dibuja()
 
 	pobjetosMoviles = &hombre1;
 	pobjetosMoviles->Dibuja();
-	
+
 	pobjetosMoviles = &hombre2;
 	pobjetosMoviles->Dibuja();
 
@@ -53,7 +61,6 @@ void Mundo::Dibuja()
 	
 	campo.Dibuja();
 	
-
 }
 
 void Mundo::Mueve()
@@ -91,12 +98,19 @@ void Mundo::Mueve()
 	}
 	if (Interaccion::Colision(bonusnorpelota, hombre1)){
 
-		balon.SetRadio(1.00f);
+		balon.SetRadio(3.00f);
+		sprite.setSize(10, 10);
+		sprite.draw();
+		
+
 	}
 
 	if (Interaccion::Colision(bonusnorpelota, hombre2)){
 
-		balon.SetRadio(1.00f);
+		balon.SetRadio(3.00f);
+		sprite.setSize(10, 10);
+		sprite.draw();
+		
 	}
 
 	if (Interaccion::Colision(bonusespgran, hombre2)){
@@ -159,20 +173,19 @@ void Mundo::Mueve()
 		printf("Botes derecha : ");
 		printf("%d\n", contadorBotes_d);
 	}
-	
+
 	if (Interaccion::Colision(balon, campo.suelo_i)){
 		contadorBotes_i++;
 		printf("Botes izquierda: ");
 		printf("%d\n", contadorBotes_i);
-		}
-	
+	}
 
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
 		printf("Puntos izquierda: ");
 		printf("%d\n", contadorPuntos_i);
 
-		}
+	}
 	if (contadorBotes_i == maxBotes){
 		contadorPuntos_d++;
 		printf("Puntos derecha: ");
@@ -182,48 +195,47 @@ void Mundo::Mueve()
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
+	ETSIDI::playMusica("sonidos / musicafondo.mp3", true);
+	contadorBotes_d = 0;
+	contadorBotes_i = 0;
 
-		contadorBotes_d = 0;
-		contadorBotes_i = 0;
 
-		//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
-		x_ojo = 1.5;
-		y_ojo = 9;
-		z_ojo = 70;
+	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
+	x_ojo = 1.5;
+	y_ojo = 9;
+	z_ojo = 70;
 
-		pobjetosMoviles = &hombre1;
-		pobjetosMoviles->SetColor(255, 0, 0);
-		pobjetosMoviles->SetRadio(1.8f);
-		pobjetosMoviles->SetPos(6, 1);
+	pobjetosMoviles = &hombre1;
+	pobjetosMoviles->SetColor(255, 0, 0);
+	pobjetosMoviles->SetRadio(1.8f);
+	pobjetosMoviles->SetPos(6, 1);
 
-		pobjetosMoviles = &hombre2;
-		pobjetosMoviles->SetColor(0, 0, 255);
-		pobjetosMoviles->SetRadio(1.8f);
-		pobjetosMoviles->SetPos(-6, 1);
+	pobjetosMoviles = &hombre2;
+	pobjetosMoviles->SetColor(0, 0, 255);
+	pobjetosMoviles->SetRadio(1.8f);
+	pobjetosMoviles->SetPos(-6, 1);
 
-		pobjetosMoviles = &bonusespgran;
+	pobjetosMoviles = &bonusespgran;
+	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom2(), pobjetosMoviles->PosyRandom2());
 
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom2(), pobjetosMoviles->PosyRandom2());
+	pobjetosMoviles = &bonusesppeq;
+	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom4(), pobjetosMoviles->PosyRandom4());
 
-		pobjetosMoviles = &bonusesppeq;
+	pobjetosMoviles = &bonusnor;
+	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom1(), pobjetosMoviles->PosyRandom1());
+	pobjetosMoviles->SetColor(255, 0, 0);
 
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom4(), pobjetosMoviles->PosyRandom4());
+	pobjetosMoviles = &bonusnorpelota;
+	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom3(), pobjetosMoviles->PosyRandom3());
+	pobjetosMoviles->SetColor(255, 255, 0);
 
-		pobjetosMoviles = &bonusnor;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom1(), pobjetosMoviles->PosyRandom1());
-		pobjetosMoviles->SetColor(255, 0, 0);
+	pobjetosMoviles = &balon;
+	pobjetosMoviles->SetColor(255, 255, 0);
+	pobjetosMoviles->SetRadio(0.75f);
+	pobjetosMoviles->SetPos(0, 9);
+	pobjetosMoviles->SetVel(pobjetosMoviles->VelxRandom(), 9);
 
-		pobjetosMoviles = &bonusnorpelota;
-		pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom3(), pobjetosMoviles->PosyRandom3());
-		pobjetosMoviles->SetColor(255, 255, 0);
-
-		pobjetosMoviles = &balon;
-		pobjetosMoviles->SetColor(255, 255, 0);
-		pobjetosMoviles->SetRadio(0.75f);
-		pobjetosMoviles->SetPos(0, 9);
-		pobjetosMoviles->SetVel(pobjetosMoviles->VelxRandom(),9);
-
-		campo.red.SetLim(0.0f, 0.0f, 0.0f, 5.0f);
+	campo.red.SetLim(0.0f, 0.0f, 0.0f, 5.0f);
 		
 }
 
@@ -243,7 +255,6 @@ void Mundo::Tecla(unsigned char key)
 
 				 if (Interaccion::Rebote(hombre2, campo.suelo_i)) // para que solo pueda saltar una vez
 					 hombre2.SetVel(hombre2.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad	
-				 ETSIDI::play("sonidos/disparo.wav");
 				 break;
 	}
 	case 's':
@@ -255,7 +266,6 @@ void Mundo::Tecla(unsigned char key)
 
 void Mundo::TeclaEspecial(unsigned char key)
 {
-
 
 	switch (key)
 	{
@@ -269,7 +279,6 @@ void Mundo::TeclaEspecial(unsigned char key)
 	{
 						if (Interaccion::Rebote(hombre1, campo.suelo_d)) //para que solo pueda saltar una vez
 							hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
-						ETSIDI::play("sonidos/disparo.wav");
 						break;
 	}
 	case GLUT_KEY_DOWN:
@@ -277,36 +286,14 @@ void Mundo::TeclaEspecial(unsigned char key)
 						  hombre1.SetVel(0.0f, 0.0f);
 						  break;
 	}
-
-		switch (key)
-		{
-		case GLUT_KEY_LEFT:
-			hombre1.SetVel(-5.0f, 0.0f);
-			break;
-		case GLUT_KEY_RIGHT:
-			hombre1.SetVel(5.0f, 0.0f);
-			break;
-		case GLUT_KEY_UP:
-		{
-							if (Interaccion::Rebote(hombre1, campo.suelo_d)) //para que solo pueda saltar una vez
-								hombre1.SetVel(hombre1.GetVelx(), 7.0f);  //para que salte en diagonal si arranca con velocidad
-							ETSIDI::play("sonidos/disparo.wav");
-							break;
-		}
-		case GLUT_KEY_DOWN:
-			hombre1.SetVel(0.0f, 0.0f);
-			break;
-		}
-
 	}
-
 }
-	//Funcion que resetea los puntos cuando acaba una partida
+//Funcion que resetea los puntos cuando acaba una partida
 
 void Mundo::SetPuntosI(){
 
-		if (contadorPuntos_i == maxPuntos)
-			contadorPuntos_i = 0;			
+	if (contadorPuntos_i == maxPuntos)
+		contadorPuntos_i = 0;
 }
 
 
@@ -314,4 +301,72 @@ void Mundo::SetPuntosD(){
 
 	if (contadorPuntos_d == maxPuntos)
 		contadorPuntos_d = 0;
+}
+
+void Mundo::DibujaFondo(){
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/fondo.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1); glVertex3f(-20.0f, 0.0f, -0.1f);
+	glTexCoord2d(1, 1); glVertex3f(20.0f, 0.0f, -0.1f);
+	glTexCoord2d(1, 0); glVertex3f(20.0f, 20.0f, -0.1f);
+	glTexCoord2d(0, 0); glVertex3f(-20.0f, 20.0f, -0.1f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+}
+
+/*void Mundo::DibujaSuelo(){
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/suelo.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	//(x,y,z)
+	glVertex3f(-20.1f, 0.1f, -0.1f);
+	glVertex3f(-20.1f, 0.1f, 20.0f);
+	glVertex3f(20.0f, 0.1f, 20.0f);
+	glVertex3f(20.0f, 0.1f, -0.1f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+}*/
+
+void Mundo::DibujaPared_D(){
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/suelo.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	//(x,y,z)
+	glVertex3f(20.0f, 0.0f, 20.0f);
+	glVertex3f(20.0f, 20.0f, 20.0f);
+	glVertex3f(20.0f, 20.0f, -20.0f);
+	glVertex3f(20.0f, 0.0f, -20.0f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+
+}
+void Mundo::DibujaPared_I(){
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/suelo.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	//(x,y,z)
+	glVertex3f(-20.0f, 0.0f, 20.0f);
+	glVertex3f(-20.0f, 20.0f, 20.0f);
+	glVertex3f(-20.0f, 20.0f, -20.0f);
+	glVertex3f(-20.0f, 0.0f, -20.0f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+
 }

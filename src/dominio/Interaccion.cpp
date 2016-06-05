@@ -1,11 +1,12 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include "math.h"
 #include "glut.h"
 #include "..\..\include\dominio\Interaccion.h"
 #include <time.h>
+#include "ETSIDI.h"
 
 ObjetoMovil *pobjetosmoviles;
-
 
 //En esta clase no se van a generar objetos. Va a reunir todos los metodos de interaccion entre parejas de objetos.
 //Ademas, todos los objetos que interaccionen, necesitaran ser amigos de esta clase, ya que estamos intentando acceder a sus
@@ -186,8 +187,8 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 		h.velocidad.y = modv2*sin(fi2); 
 		//probar mas adelante a separar h1 y h2. haciendo negativo el rebote de hombre 2
 		}
+		ETSIDI::play("sonidos/impacto.wav");
 
-		
 		}
 		
 	return false;
@@ -198,8 +199,10 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 
 bool Interaccion::Colision(Balon b, Pared suelo){
 
-	if (Interaccion::ReboteSuelo(b, suelo))
+	if (Interaccion::ReboteSuelo(b, suelo)){
+		ETSIDI::play("sonidos/disparo.wav");
 		return true;
+	}
 	else
 		return false;
 
