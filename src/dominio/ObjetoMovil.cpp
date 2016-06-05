@@ -87,21 +87,21 @@ int ObjetoMovil::PosyRandom1(){
 
 	int yrandom;
 	srand(time(NULL)); //semilla 
-	yrandom = (-rand() % 100 + (rand() % 100)); //rellena con numeros aleatorios en el eje y dentro del campo
+	yrandom = (-rand() % 75 + (rand() % 75)); //rellena con numeros aleatorios en el eje y dentro del campo
 	return yrandom;
 }
 int ObjetoMovil::PosyRandom2(){
 
 	int yrandom2;
 	srand(time(NULL)); //semilla 
-	yrandom2 = (-rand() % 100 + (rand() % 100)); //rellena con numeros aleatorios en el eje y dentro del campo
+	yrandom2 = (-rand() % 75 + (rand() % 75)); //rellena con numeros aleatorios en el eje y dentro del campo
 	return yrandom2;
 }
 int ObjetoMovil::PosyRandom3(){
 
 	int yrandom3;
 	srand(time(NULL)); //semilla 
-	yrandom3 = (-rand() % 100 + (rand() % 100)); //rellena con numeros aleatorios en el eje y dentro del campo
+	yrandom3 = (-rand() % 75 + (rand() % 75)); //rellena con numeros aleatorios en el eje y dentro del campo
 	return yrandom3;
 }
 
@@ -109,7 +109,7 @@ int ObjetoMovil::PosyRandom4(){
 
 	int yrandom4;
 	srand(time(NULL)); //semilla 
-	yrandom4 = (-rand() % 100 + (rand() % 100)); //rellena con numeros aleatorios en el eje y dentro del campo
+	yrandom4 = (-rand() % 75 + (rand() % 75)); //rellena con numeros aleatorios en el eje y dentro del campo
 	return yrandom4;
 }
 

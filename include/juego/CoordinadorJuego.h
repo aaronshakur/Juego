@@ -14,7 +14,10 @@ public:
 	void Dibuja();
 	void Inicializa();
 	void DibujaPortada();
-	void DibujaLetras();
+	void PortadaLetras();
+	void InicioPuntoLetras();
+	void FinJuegoLetras();
+
 
 protected:
 	Mundo mundo;

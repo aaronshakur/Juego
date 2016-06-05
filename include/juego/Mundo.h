@@ -8,7 +8,7 @@
 #include "..\..\include\dominio\BonusNormal.h"
 #include"ETSIDI.h"
 
-using ETSIDI::Sprite;
+
 
 class Mundo
 {
@@ -22,11 +22,9 @@ private:
 	Hombre hombre1, hombre2;//Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
 	BonusEspecial bonusespgran;
 	BonusEspecial bonusesppeq;
-
 	BonusNormal bonusnor;
 	BonusNormal bonusnorpelota;
 	Pared suelo;
-	Sprite sprite;
 
 	int contadorBotes_d;
 	int contadorPuntos_d;
@@ -34,11 +32,12 @@ private:
 	int contadorPuntos_i;
 	bool punto;
 	bool bote;
-	bool mivariable;
+	bool ganadori;
+	bool ganadord;
 
 	friend class campo;
 	friend class interaccion;
-	
+	friend class hombre;
 
 public: 
 	Mundo();
@@ -46,7 +45,6 @@ public:
 	void Tecla(unsigned char key);
 	void TeclaEspecial(unsigned char key);
 	void Inicializa();
-	void RotarOjo();
 	void Mueve();
 	void Dibuja();
 	void DibujaFondo();
@@ -59,5 +57,9 @@ public:
 	int GetPuntoI(){  return contadorPuntos_d; }
 	void SetPuntosD();
 	void SetPuntosI();
+	void SetGanadorI();
+	void SetGanadorD();
+	bool GetGanadorI(){ return ganadori; }
+	bool GetGanadorD(){ return ganadord; }
 
 };

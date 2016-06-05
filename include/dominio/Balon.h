@@ -7,10 +7,17 @@
 
 using ETSIDI::Sprite;
 
+
+
+
 class Balon :public ObjetoMovil
 {
 private:
+
 	Sprite sprite;
+	Sprite sprite2;
+
+
 
 public:
 	Balon();

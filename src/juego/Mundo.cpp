@@ -9,23 +9,21 @@
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\ObjetoMovil.h"
 
+<<<<<<< HEAD
 #define maxBotes 4
+=======
+#define maxBotes 3
+>>>>>>> refs/remotes/origin/RamaMiguelHerencia
 #define maxPuntos 3
 
 //Polimorfismo
 ObjetoMovil  *pobjetosMoviles;
-Mundo::Mundo() :sprite("imagenes/balon.png", -1) //No tocar! 
+
+Mundo::Mundo() 
 {
+
 }
 
-void Mundo::RotarOjo()
-{
-	float dist = sqrt(x_ojo*x_ojo + z_ojo*z_ojo);
-	float ang = atan2(z_ojo, x_ojo);
-	ang += 0.05f;
-	x_ojo = dist*cos(ang);
-	z_ojo = dist*sin(ang);
-}
 void Mundo::Dibuja()
 {
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
@@ -98,18 +96,13 @@ void Mundo::Mueve()
 	}
 	if (Interaccion::Colision(bonusnorpelota, hombre1)){
 
-		balon.SetRadio(3.00f);
-		sprite.setSize(10, 10);
-		sprite.draw();
+		balon.SetRadio(2.00f);
 		
-
 	}
 
 	if (Interaccion::Colision(bonusnorpelota, hombre2)){
 
-		balon.SetRadio(3.00f);
-		sprite.setSize(10, 10);
-		sprite.draw();
+		balon.SetRadio(2.00f);
 		
 	}
 
@@ -134,32 +127,44 @@ void Mundo::Mueve()
 		pobjetosMoviles->SetRadio(1.0f);
 	}
 	
-	Vector2D posbonusespgran = bonusespgran.GetPos();
-	if (posbonusespgran.y < -10.0f){
+
+	if (bonusespgran.GetPos_y() < -10.0f){
 
 		pobjetosMoviles = &bonusespgran;
 		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
 	}
 
-	Vector2D posbonusesppeq = bonusesppeq.GetPos();
-	if (posbonusesppeq.y < -20.0f){
+	if (bonusesppeq.GetPos_y() < -10.0f){
 
 		pobjetosMoviles = &bonusesppeq;
 		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
 	}
 
-	Vector2D posbonusnor = bonusnor.GetPos();
-	if (posbonusnor.y < -40.0f){
+	
+	if (bonusnor.GetPos_y() < -10.0f){
 
 		pobjetosMoviles = &bonusnor;
 		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
 	}
 
-	Vector2D posbonusnorpelota = bonusnorpelota.GetPos();
-	if (posbonusnorpelota.y < -30.0f){ 
+	if (bonusnorpelota.GetPos_y() < -10.0f){
 
 		pobjetosMoviles = &bonusnorpelota;
 		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
+	}
+
+	// para que no caigan bonus normales repetidos
+
+	if (balon.GetRadio() == 2.00f)
+	{
+		pobjetosMoviles = &bonusnorpelota;
+		pobjetosMoviles->SetPos(0, -50);
+	}
+
+	if (campo.red.get_limity2() == 8.00f)
+	{
+		pobjetosMoviles = &bonusnor;
+		pobjetosMoviles->SetPos(0, -50);
 	}
 
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
@@ -193,6 +198,17 @@ void Mundo::Mueve()
 		printf("Puntos derecha: ");
 		printf("%d\n", contadorPuntos_d);
 	}
+
+//Para reiniciar contadores de botes si consigo pasar el balon al otro campo
+	Vector2D vector_pos;
+	if ((Interaccion::Colision(balon, campo.suelo_i)) && (vector_pos.x >= 0.0f)){
+
+		contadorBotes_d = 0;
+	}
+	if ((Interaccion::Colision(balon, campo.suelo_d)) && (vector_pos.x <= 0.0f)){
+
+		contadorBotes_i = 0;
+	}
 }
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
@@ -206,15 +222,13 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	x_ojo = 1.5;
 	y_ojo = 9;
-	z_ojo = 70;
+	z_ojo = 42;
 
 	pobjetosMoviles = &hombre1;
-	pobjetosMoviles->SetColor(255, 0, 0);
 	pobjetosMoviles->SetRadio(1.8f);
 	pobjetosMoviles->SetPos(6, 1);
 
 	pobjetosMoviles = &hombre2;
-	pobjetosMoviles->SetColor(0, 0, 255);
 	pobjetosMoviles->SetRadio(1.8f);
 	pobjetosMoviles->SetPos(-6, 1);
 
@@ -226,14 +240,12 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 
 	pobjetosMoviles = &bonusnor;
 	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom1(), pobjetosMoviles->PosyRandom1());
-	pobjetosMoviles->SetColor(255, 0, 0);
 
 	pobjetosMoviles = &bonusnorpelota;
 	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom3(), pobjetosMoviles->PosyRandom3());
-	pobjetosMoviles->SetColor(255, 255, 0);
+	
 
 	pobjetosMoviles = &balon;
-	pobjetosMoviles->SetColor(255, 255, 0);
 	pobjetosMoviles->SetRadio(0.75f);
 	pobjetosMoviles->SetPos(0, 9);
 	pobjetosMoviles->SetVel(pobjetosMoviles->VelxRandom(), 9);
@@ -295,15 +307,25 @@ void Mundo::TeclaEspecial(unsigned char key)
 
 void Mundo::SetPuntosI(){
 
-	if (contadorPuntos_i == maxPuntos)
+	if (contadorPuntos_i == maxPuntos){
 		contadorPuntos_i = 0;
+		ganadori = true;
+	}
 }
 
 
 void Mundo::SetPuntosD(){
 
-	if (contadorPuntos_d == maxPuntos)
+	if (contadorPuntos_d == maxPuntos){
 		contadorPuntos_d = 0;
+		ganadord = true;
+	}
+}
+void Mundo::SetGanadorI(){
+	ganadori =false;
+}
+void Mundo::SetGanadorD(){
+	ganadord = false;
 }
 
 void Mundo::DibujaFondo(){
@@ -322,22 +344,6 @@ void Mundo::DibujaFondo(){
 	glDisable(GL_TEXTURE_2D);
 }
 
-/*void Mundo::DibujaSuelo(){
-
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/suelo.png").id);
-	glDisable(GL_LIGHTING);
-	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 1);
-	//(x,y,z)
-	glVertex3f(-20.1f, 0.1f, -0.1f);
-	glVertex3f(-20.1f, 0.1f, 20.0f);
-	glVertex3f(20.0f, 0.1f, 20.0f);
-	glVertex3f(20.0f, 0.1f, -0.1f);
-	glEnd();
-	glEnable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);
-}*/
 
 void Mundo::DibujaPared_D(){
 

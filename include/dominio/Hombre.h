@@ -4,12 +4,15 @@
 #include "ObjetoMovil.h"
 #include "ETSIDI.h"
 
-//using ETSIDI::Sprite;
+using ETSIDI::Sprite;
 
 class Hombre :public ObjetoMovil
 {
 private:
-	
+
+	Sprite spriteHombre1Grande, spriteHombre2Grande, spriteHombre1Peq, spriteHombre2Peq, spriteHombre1Nor, spriteHombre2Nor;
+
+
 public:
 	Hombre();
 	~Hombre();
@@ -19,5 +22,6 @@ public:
 	float GetVelx(){ return velocidad.x;};
 
 	friend class Interaccion;
+
 };
 
