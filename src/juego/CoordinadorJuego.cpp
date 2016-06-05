@@ -3,11 +3,8 @@
 #include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 
-<<<<<<< HEAD
-#define maxBotes 4
-=======
+
 #define maxBotes 3
->>>>>>> refs/remotes/origin/RamaMiguelHerencia
 #define maxPuntos 3
 
 CoordinadorJuego::CoordinadorJuego(){
