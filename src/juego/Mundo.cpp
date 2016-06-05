@@ -15,10 +15,10 @@
 //Polimorfismo
 ObjetoMovil  *pobjetosMoviles;
 
-Mundo::Mundo() :sprite2("imagenes/balon.png", -1) //No tocar! 
+Mundo::Mundo() // :sprite2("imagenes/suelo.png", -1) //No tocar! 
 {
-	sprite2.setCenter(1.5f, 2.5f);
-	sprite2.setSize(10, 10);
+//	sprite2.setCenter(1.5f, 2.5f);
+//	sprite2.setSize(10, 10);
 }
 
 void Mundo::RotarOjo()
@@ -103,15 +103,12 @@ void Mundo::Mueve()
 
 		balon.SetRadio(2.00f);
 
-		sprite2.draw();
 	}
 
 	if (Interaccion::Colision(bonusnorpelota, hombre2)){
 
 		balon.SetRadio(2.00f);
-		
-		sprite2.draw();
-		
+
 	}
 
 	if (Interaccion::Colision(bonusespgran, hombre2)){

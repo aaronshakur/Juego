@@ -8,7 +8,7 @@
 #include "..\..\include\dominio\BonusNormal.h"
 #include"ETSIDI.h"
 
-using ETSIDI::Sprite;
+//using ETSIDI::Sprite;
 
 class Mundo
 {
@@ -27,7 +27,7 @@ private:
 	BonusNormal bonusnorpelota;
 	Pared suelo;
 
-	Sprite sprite2;
+	//Sprite sprite2;
 
 	int contadorBotes_d;
 	int contadorPuntos_d;
@@ -39,6 +39,7 @@ private:
 
 	friend class campo;
 	friend class interaccion;
+	//friend class ETSIDI;
 	
 
 public: 
