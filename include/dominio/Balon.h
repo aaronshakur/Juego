@@ -5,12 +5,12 @@
 #include "ETSIDI.h"
 
 
-using ETSIDI::Sprite;
+//using ETSIDI::Sprite;
 
 class Balon :public ObjetoMovil
 {
 private:
-	Sprite sprite;
+	//Sprite sprite;
 
 public:
 	Balon();
