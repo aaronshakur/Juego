@@ -9,7 +9,7 @@
 #include "..\..\include\dominio\Pared.h"
 #include "..\..\include\dominio\ObjetoMovil.h"
 
-#define maxBotes 100
+#define maxBotes 4
 #define maxPuntos 3
 
 //Polimorfismo
@@ -182,12 +182,14 @@ void Mundo::Mueve()
 
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
+		contadorBotes_d = 0;
 		printf("Puntos izquierda: ");
 		printf("%d\n", contadorPuntos_i);
 
 	}
 	if (contadorBotes_i == maxBotes){
 		contadorPuntos_d++;
+		contadorBotes_i = 0;
 		printf("Puntos derecha: ");
 		printf("%d\n", contadorPuntos_d);
 	}
@@ -198,7 +200,8 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	ETSIDI::playMusica("sonidos / musicafondo.mp3", true);
 	contadorBotes_d = 0;
 	contadorBotes_i = 0;
-
+	contadorPuntos_d = 0;
+	contadorPuntos_i = 0;
 
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	x_ojo = 1.5;
