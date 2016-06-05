@@ -26,8 +26,12 @@ private:
 	BonusNormal bonusnor;
 	BonusNormal bonusnorpelota;
 	Pared suelo;
+<<<<<<< HEAD
 
 	//Sprite sprite2;
+=======
+	//Sprite sprite;
+>>>>>>> origin/RamaMiguelHerencia
 
 	int contadorBotes_d;
 	int contadorPuntos_d;
