@@ -3,7 +3,6 @@
 #include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 
-
 #define maxBotes 3
 #define maxPuntos 3
 
@@ -114,12 +113,7 @@ void CoordinadorJuego::Mueve()
 		int botes_d = mundo.GetBoteD();
 		int botes_i = mundo.GetBoteI();
 
-		if (botes_d == maxBotes) 
-		{
-			estado = PREPARADO;
-
-		}
-		if (botes_i == maxBotes)
+		if ((botes_d == maxBotes) || (botes_i == maxBotes))
 		{
 			estado = PREPARADO;
 		}

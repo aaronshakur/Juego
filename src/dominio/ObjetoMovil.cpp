@@ -5,6 +5,7 @@
 #include <time.h>
 
 ObjetoMovil::ObjetoMovil(){}
+
 ObjetoMovil::~ObjetoMovil(){}
 
 void ObjetoMovil::SetPos(float posx, float posy){
