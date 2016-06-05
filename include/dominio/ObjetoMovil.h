@@ -30,6 +30,7 @@ public:
 	float GetPosx(){ return posicion.x; };
 	Vector2D GetPos();	
 	float GetPos_x(){ return posicion.x; };
+	float GetPos_y(){ return posicion.y; };
 //Polimorfismo de Mueve() para Balon, Hombre y Bonus
 	virtual void Mueve(float){};
 
@@ -40,5 +41,6 @@ protected:
 	unsigned char rojo, verde, azul;
 	Vector2D posicion,velocidad, aceleracion;
 	float radio;
+
 
 };

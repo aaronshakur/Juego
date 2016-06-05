@@ -9,7 +9,9 @@ using ETSIDI::Sprite;
 class Hombre :public ObjetoMovil
 {
 private:
-	Sprite sprite;
+
+	Sprite spriteHombre1Grande, spriteHombre2Grande, spriteHombre1Peq, spriteHombre2Peq, spriteHombre1Nor, spriteHombre2Nor;
+
 
 public:
 	Hombre();
@@ -20,5 +22,6 @@ public:
 	float GetVelx(){ return velocidad.x;};
 
 	friend class Interaccion;
+
 };
 
