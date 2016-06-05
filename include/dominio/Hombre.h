@@ -4,12 +4,13 @@
 #include "ObjetoMovil.h"
 #include "ETSIDI.h"
 
-//using ETSIDI::Sprite;
+using ETSIDI::Sprite;
 
 class Hombre :public ObjetoMovil
 {
 private:
-	
+	Sprite sprite;
+
 public:
 	Hombre();
 	~Hombre();

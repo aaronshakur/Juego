@@ -45,7 +45,7 @@ void CoordinadorJuego::Tecla(unsigned char key)
 		//SE HA ACABADO LA PARTIDA, SE ESPERA A QUE SE PULSE ESPACIO PARA REVANCHA O S PARA SALIR
 	{
 		if (key == ' ')
-			estado = INICIO; 
+			estado = PREPARADO; 
 		if (key == 's')
 			exit(0);
 	}
@@ -74,14 +74,14 @@ void CoordinadorJuego::Dibuja()
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) 
 
 		DibujaPortada();
-		DibujaLetras();
+		PortadaLetras();
 
 	}
 	else if (estado == PREPARADO)
 	{
-		//ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA SACAR", -5, 7);
 		mundo.Inicializa();
 		mundo.Dibuja();
+		InicioPuntoLetras();
 	}
 	else if (estado == JUEGO)
 	{
@@ -92,25 +92,19 @@ void CoordinadorJuego::Dibuja()
 	else if (estado == PUNTO)
 	{
 		mundo.Dibuja();
-		/*
-		ETSIDI::setTextColor(1, 0, 0);
-		ETSIDI::setFont("Bitwise.ttf", 16);
-		ETSIDI::printxy("PUNTO!!", -5, 10);
-		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA VOLVER SACAR", -5, 7);*/
+		InicioPuntoLetras();
+		
 	}	
 	else if (estado == FIN)
 	{
 		mundo.Dibuja();
+		FinJuegoLetras();
 
-	/*	ETSIDI::setFont("Bitwise.ttf", 16);
-		ETSIDI::printxy("FIN DEL PARTIDO!", -5, 10);
-		ETSIDI::printxy("PULSE LA TECLA -ESPACIO- PARA LA REVANCHA!", -5, 9);*/
 	}
 }
 
 void CoordinadorJuego::Mueve()
 {
-	
 	if (estado == JUEGO)
 	{
 		mundo.Mueve();
@@ -127,11 +121,8 @@ void CoordinadorJuego::Mueve()
 
 		if (puntos_d == maxPuntos) 
 		{
-			
 			mundo.SetPuntosI();
 			estado = FIN;
-
-
 		}
 		else if (puntos_i == maxPuntos){
 			mundo.SetPuntosD();
@@ -155,10 +146,9 @@ void CoordinadorJuego::DibujaPortada(){
 	glEnd();
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
-
 }
 
-void CoordinadorJuego::DibujaLetras(){
+void CoordinadorJuego::PortadaLetras(){
 
 	glTranslatef(-18.0f, 8.0f, 1.0f); //traslada posicion relativa
 	ETSIDI::setTextColor(0, 0, 1);
@@ -172,3 +162,42 @@ void CoordinadorJuego::DibujaLetras(){
 	ETSIDI::setTextColor(0, 0, 0);
 	ETSIDI::print("Aaron Marin   &   Miguel Angel Huerta", "fuentes/Bitwise.ttf", 16);
 }
+
+void CoordinadorJuego::InicioPuntoLetras(){
+
+	glTranslatef(-10.0f, 18.0f, 1.0f);
+	ETSIDI::setTextColor(0, 0, 0);
+	ETSIDI::print("Pulsa (espacio) para empezar", "fuentes/Bitwise.ttf", 12);
+
+}
+
+void CoordinadorJuego::FinJuegoLetras(){
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/FinPunto.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1); glVertex3f(-20.0f, 0.0f, 0.1f);
+	glTexCoord2d(1, 1); glVertex3f(20.0f, 0.0f, 0.1f);
+	glTexCoord2d(1, 0); glVertex3f(20.0f, 20.0f, 0.1f);
+	glTexCoord2d(0, 0); glVertex3f(-20.0f, 20.0f, 0.1f);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+
+	glTranslatef(-10.0f, 18.0f, 1.0f);
+	ETSIDI::setTextColor(1, 1, 0);
+	ETSIDI::print("Pulsa (espacio) para revancha!", "fuentes/Bitwise.ttf", 12);
+	
+	glTranslatef(0.0f, -2.0f, 0.0f);
+	ETSIDI::setTextColor(0, 0, 0);
+	ETSIDI::print("Pulsa (s) para salir", "fuentes/Bitwise.ttf", 12);
+
+	/*glTranslatef(0.0f, -2.0f, 0.0f);
+	ETSIDI::setTextColor(0, 0, 0);
+	ETSIDI::print("CR7 %d puntos", "fuentes/Bitwise.ttf", 12);*/
+	
+}
+
+	
