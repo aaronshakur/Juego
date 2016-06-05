@@ -8,7 +8,6 @@
 #include "..\..\include\dominio\BonusNormal.h"
 #include"ETSIDI.h"
 
-//using ETSIDI::Sprite;
 
 class Mundo
 {
@@ -27,8 +26,6 @@ private:
 	BonusNormal bonusnorpelota;
 	Pared suelo;
 
-	//Sprite sprite2;
-
 	int contadorBotes_d;
 	int contadorPuntos_d;
 	int contadorBotes_i;
@@ -36,10 +33,10 @@ private:
 	bool punto;
 	bool bote;
 	bool mivariable;
-
+	bool ganadori;
+	bool ganadord;
 	friend class campo;
 	friend class interaccion;
-	//friend class ETSIDI;
 	
 
 public: 
@@ -48,7 +45,6 @@ public:
 	void Tecla(unsigned char key);
 	void TeclaEspecial(unsigned char key);
 	void Inicializa();
-	void RotarOjo();
 	void Mueve();
 	void Dibuja();
 	void DibujaFondo();
@@ -61,5 +57,10 @@ public:
 	int GetPuntoI(){  return contadorPuntos_d; }
 	void SetPuntosD();
 	void SetPuntosI();
+	bool GetGanadorD(){ return ganadord; };
+	bool GetGanadorI(){ return ganadori; };
+	void SetGanadorI();
+	void SetGanadorD();
+
 
 };

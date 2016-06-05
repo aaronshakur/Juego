@@ -8,7 +8,6 @@ Bonus::Bonus()    //constructor de bonus. Damos valores iniciales
 	rojo = verde = 0;
 	azul = 255;
 	lado = 1.0f;
-	//aceleracion.y = -9.8f; 
 	velocidad.y = -15.0f;
 }
 
@@ -23,7 +22,6 @@ void Bonus::Dibuja(){
 	glRotatef(30, 1, 1, 1);
 	glColor3f(rand() / (float)RAND_MAX, rand() / (float)RAND_MAX,
 		rand() / (float)RAND_MAX);//color aleatorio 
-	//glColor3f(rojo,verde,azul); //otro color no aleatorio
 	glutSolidCube(lado);
 	glPopMatrix();
 

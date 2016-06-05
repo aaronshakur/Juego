@@ -3,11 +3,15 @@
 #include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 
-#define maxBotes 100
+#define maxBotes 3
 #define maxPuntos 3
+
 
 CoordinadorJuego::CoordinadorJuego(){
 	estado = INICIO;
+	mundo.SetGanadorD();
+	mundo.SetGanadorI();
+	ETSIDI::playMusica("sonidos\musicafondo.mp3", true);
 }
 
 CoordinadorJuego::~CoordinadorJuego(){}
@@ -165,7 +169,7 @@ void CoordinadorJuego::PortadaLetras(){
 
 void CoordinadorJuego::InicioPuntoLetras(){
 
-	glTranslatef(-10.0f, 18.0f, 1.0f);
+	glTranslatef(-5.0f, 18.0f, 1.0f);
 	ETSIDI::setTextColor(0, 0, 0);
 	ETSIDI::print("Pulsa (espacio) para empezar", "fuentes/Bitwise.ttf", 12);
 
@@ -186,7 +190,7 @@ void CoordinadorJuego::FinJuegoLetras(){
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
 
-	glTranslatef(-10.0f, 18.0f, 1.0f);
+	glTranslatef(-4.0f, 18.0f, 1.0f);
 	ETSIDI::setTextColor(1, 1, 0);
 	ETSIDI::print("Pulsa (espacio) para revancha!", "fuentes/Bitwise.ttf", 12);
 	
@@ -194,10 +198,20 @@ void CoordinadorJuego::FinJuegoLetras(){
 	ETSIDI::setTextColor(0, 0, 0);
 	ETSIDI::print("Pulsa (s) para salir", "fuentes/Bitwise.ttf", 12);
 
-	/*glTranslatef(0.0f, -2.0f, 0.0f);
-	ETSIDI::setTextColor(0, 0, 0);
-	ETSIDI::print("CR7 %d puntos", "fuentes/Bitwise.ttf", 12);*/
+	if (mundo.GetGanadorD() == maxPuntos){
 	
+	glTranslatef(14.0f, -14.5f, 0.0f);
+	ETSIDI::setTextColor(0, 0, 0);
+	ETSIDI::print("MESSI", "fuentes/Bitwise.ttf", 16);
+
+	}
+	if (mundo.GetGanadorI() == maxPuntos){
+
+	glTranslatef(-10.0f, -14.5f, 0.0f);
+	ETSIDI::setTextColor(0, 0, 0);
+	ETSIDI::print("CRISTIANO", "fuentes/Bitwise.ttf", 16);
+
+	}
 }
 
 	
