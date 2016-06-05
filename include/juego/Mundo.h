@@ -26,7 +26,8 @@ private:
 	BonusNormal bonusnor;
 	BonusNormal bonusnorpelota;
 	Pared suelo;
-	Sprite sprite;
+
+	Sprite sprite2;
 
 	int contadorBotes_d;
 	int contadorPuntos_d;

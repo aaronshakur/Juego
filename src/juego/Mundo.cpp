@@ -14,8 +14,11 @@
 
 //Polimorfismo
 ObjetoMovil  *pobjetosMoviles;
-Mundo::Mundo() :sprite("imagenes/balon.png", -1) //No tocar! 
+
+Mundo::Mundo() :sprite2("imagenes/balon.png", -1) //No tocar! 
 {
+	sprite2.setCenter(1.5f, 2.5f);
+	sprite2.setSize(10, 10);
 }
 
 void Mundo::RotarOjo()
@@ -98,18 +101,16 @@ void Mundo::Mueve()
 	}
 	if (Interaccion::Colision(bonusnorpelota, hombre1)){
 
-		balon.SetRadio(3.00f);
-		sprite.setSize(10, 10);
-		sprite.draw();
-		
+		balon.SetRadio(2.00f);
 
+		sprite2.draw();
 	}
 
 	if (Interaccion::Colision(bonusnorpelota, hombre2)){
 
-		balon.SetRadio(3.00f);
-		sprite.setSize(10, 10);
-		sprite.draw();
+		balon.SetRadio(2.00f);
+		
+		sprite2.draw();
 		
 	}
 
@@ -190,6 +191,17 @@ void Mundo::Mueve()
 		contadorPuntos_d++;
 		printf("Puntos derecha: ");
 		printf("%d\n", contadorPuntos_d);
+	}
+
+//Para reiniciar contadores de botes si consigo pasar el balon al otro campo
+	Vector2D vector_pos;
+	if ((Interaccion::Colision(balon, campo.suelo_i)) && (vector_pos.x >= 0.0f)){
+
+		contadorBotes_d = 0;
+	}
+	if ((Interaccion::Colision(balon, campo.suelo_d)) && (vector_pos.x <= 0.0f)){
+
+		contadorBotes_i = 0;
 	}
 }
 

@@ -2,9 +2,8 @@
 #include "glut.h"
 
 
-Hombre::Hombre()  //constructor de hombre. Damos valores iniciales
+Hombre::Hombre() // :sprite();  //constructor de hombre. Damos valores iniciales
 {
-
 	rojo = verde = azul = 255; //blanco
 	aceleracion.y = -9.8;
 }

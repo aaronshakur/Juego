@@ -9,7 +9,8 @@
 class Hombre :public ObjetoMovil
 {
 private:
-	
+	//Sprite sprite;
+
 public:
 	Hombre();
 	~Hombre();

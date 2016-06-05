@@ -27,8 +27,7 @@ public:
 	int PosyRandom4();
 
 	int VelxRandom();
-
-
+	float GetPosx(){ return posicion.x; };
 	Vector2D GetPos();	
 
 //Polimorfismo de Mueve() para Balon, Hombre y Bonus
