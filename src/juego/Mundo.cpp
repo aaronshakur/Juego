@@ -14,7 +14,7 @@
 
 //Polimorfismo
 ObjetoMovil  *pobjetosMoviles;
-Mundo::Mundo() :sprite("imagenes/balon.png", -1) //No tocar! 
+Mundo::Mundo() //:sprite("imagenes/balon.png", -1) //No tocar! 
 {
 }
 
@@ -99,8 +99,8 @@ void Mundo::Mueve()
 	if (Interaccion::Colision(bonusnorpelota, hombre1)){
 
 		balon.SetRadio(3.00f);
-		sprite.setSize(10, 10);
-		sprite.draw();
+		//sprite.setSize(10, 10);
+		//sprite.draw();
 		
 
 	}
@@ -108,8 +108,8 @@ void Mundo::Mueve()
 	if (Interaccion::Colision(bonusnorpelota, hombre2)){
 
 		balon.SetRadio(3.00f);
-		sprite.setSize(10, 10);
-		sprite.draw();
+		//sprite.setSize(10, 10);
+		//sprite.draw();
 		
 	}
 
@@ -182,15 +182,19 @@ void Mundo::Mueve()
 
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
+		contadorBotes_d = 0;
 		printf("Puntos izquierda: ");
 		printf("%d\n", contadorPuntos_i);
 
 	}
 	if (contadorBotes_i == maxBotes){
 		contadorPuntos_d++;
+		contadorBotes_i = 0;
 		printf("Puntos derecha: ");
 		printf("%d\n", contadorPuntos_d);
 	}
+
+
 }
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
