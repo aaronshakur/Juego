@@ -47,10 +47,14 @@ void CoordinadorJuego::Tecla(unsigned char key)
 	else if (estado == FIN)
 		//SE HA ACABADO LA PARTIDA, SE ESPERA A QUE SE PULSE ESPACIO PARA REVANCHA O S PARA SALIR
 	{
-		if (key == ' ')
-			estado = PREPARADO; 
-		if (key == 's')
+		if (key == ' '){
+			estado = PREPARADO;
+			system("cls");
+		}
+		if (key == 's'){
 			exit(0);
+			system("cls");
+		}
 	}
 }
 
@@ -79,6 +83,7 @@ void CoordinadorJuego::Dibuja()
 		DibujaPortada();
 		PortadaLetras();
 
+
 	}
 	else if (estado == PREPARADO)
 	{
@@ -103,6 +108,7 @@ void CoordinadorJuego::Dibuja()
 
 		mundo.Dibuja();
 		FinJuegoLetras();
+	
 			
 	}
 }
@@ -129,14 +135,12 @@ void CoordinadorJuego::Mueve()
 			
 			mundo.SetPuntosI();
 			cout<<"\t     Cristiano es el ganador!!( y el mejor jugador del mundo)"<<endl;
-			system("cls");
 			estado = FIN;
 		}
 		else if (puntos_i == maxPuntos){
 
 			mundo.SetPuntosD();
 			cout<<"\t\t\t    Messi es el ganador!!!"<<endl;
-			system("cls");
 			estado = FIN;
 		}
 	}

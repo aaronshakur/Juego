@@ -303,6 +303,7 @@ void Mundo::SetPuntosI(){
 
 	if (contadorPuntos_i == maxPuntos){
 		contadorPuntos_i = 0;
+		contadorPuntos_d = 0;
 		ganadori = true;
 	}
 }
@@ -312,6 +313,7 @@ void Mundo::SetPuntosD(){
 
 	if (contadorPuntos_d == maxPuntos){
 		contadorPuntos_d = 0;
+		contadorPuntos_i = 0;
 		ganadord = true;
 	}
 }
