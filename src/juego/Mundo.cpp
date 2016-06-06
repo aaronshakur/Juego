@@ -17,12 +17,9 @@ using namespace std;
 //Polimorfismo
 ObjetoMovil  *pobjetosMoviles;
 
-Mundo::Mundo() 
+Mundo::Mundo()
 {
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
 }
 
 void Mundo::Dibuja()
@@ -30,9 +27,9 @@ void Mundo::Dibuja()
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
 		0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
-	
 	//DIBUJO FONDO 
-    DibujaFondo();
+	DibujaFondo();
+	//	DibujaSuelo();
 	DibujaPared_D();
 	DibujaPared_I();
 
@@ -57,8 +54,9 @@ void Mundo::Dibuja()
 
 	pobjetosMoviles = &bonusnorpelota;
 	pobjetosMoviles->Dibuja();
-	
+
 	campo.Dibuja();
+
 }
 
 void Mundo::Mueve()
@@ -97,19 +95,13 @@ void Mundo::Mueve()
 	if (Interaccion::Colision(bonusnorpelota, hombre1)){
 
 		balon.SetRadio(2.00f);
-<<<<<<< HEAD
-=======
-		
->>>>>>> refs/remotes/origin/master
+
 	}
 
 	if (Interaccion::Colision(bonusnorpelota, hombre2)){
 
 		balon.SetRadio(2.00f);
-<<<<<<< HEAD
-=======
-		
->>>>>>> refs/remotes/origin/master
+
 	}
 
 	if (Interaccion::Colision(bonusespgran, hombre2)){
@@ -132,7 +124,7 @@ void Mundo::Mueve()
 		pobjetosMoviles = &hombre2;
 		pobjetosMoviles->SetRadio(1.0f);
 	}
-	
+
 
 	if (bonusespgran.GetPos_y() < -10.0f){
 
@@ -146,7 +138,7 @@ void Mundo::Mueve()
 		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
 	}
 
-	
+
 	if (bonusnor.GetPos_y() < -10.0f){
 
 		pobjetosMoviles = &bonusnor;
@@ -182,7 +174,7 @@ void Mundo::Mueve()
 	if (Interaccion::Colision(balon, campo.suelo_d)){
 		contadorBotes_d++;
 		//cout << "Botes en campo de messi : "  << contadorBotes_d << endl;// por si quisiesemos mostrar la puntuacion en el terminal
-		
+
 	}
 
 	if (Interaccion::Colision(balon, campo.suelo_i)){
@@ -202,18 +194,7 @@ void Mundo::Mueve()
 	}
 
 
-//Para reiniciar contadores de botes si consigo pasar el balon al otro campo
-	Vector2D vector_pos;
-	if ((Interaccion::Colision(balon, campo.suelo_i)) && (vector_pos.x >= 0.0f)){
-
-		contadorBotes_d = 0;
-	}
-	if ((Interaccion::Colision(balon, campo.suelo_d)) && (vector_pos.x <= 0.0f)){
-
-		contadorBotes_i = 0;
-	}
-
-//Para reiniciar contadores de botes si consigo pasar el balon al otro campo
+	//Para reiniciar contadores de botes si consigo pasar el balon al otro campo
 	Vector2D vector_pos;
 	if ((Interaccion::Colision(balon, campo.suelo_i)) && (vector_pos.x >= 0.0f)){
 
@@ -227,9 +208,9 @@ void Mundo::Mueve()
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
-	
 	contadorBotes_d = 0;
 	contadorBotes_i = 0;
+
 
 	//Los hago privados, pero no hace falt hacer Set, porque pertenecen al propio mundo.
 	x_ojo = 1.5;
@@ -255,10 +236,7 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 
 	pobjetosMoviles = &bonusnorpelota;
 	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom3(), pobjetosMoviles->PosyRandom3());
-<<<<<<< HEAD
-=======
-	
->>>>>>> refs/remotes/origin/master
+
 
 	pobjetosMoviles = &balon;
 	pobjetosMoviles->SetRadio(0.75f);
@@ -266,7 +244,7 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	pobjetosMoviles->SetVel(pobjetosMoviles->VelxRandom(), 9);
 
 	campo.red.SetLim(0.0f, 0.0f, 0.0f, 5.0f);
-		
+
 }
 
 void Mundo::Tecla(unsigned char key)
@@ -323,13 +301,10 @@ void Mundo::TeclaEspecial(unsigned char key)
 void Mundo::SetPuntosI(){
 
 	if (contadorPuntos_i == maxPuntos){
+		contadorPuntos_d = 0;
 		contadorPuntos_i = 0;
-<<<<<<< HEAD
-		ganadori = 1;
-=======
 		ganadori = true;
 	}
->>>>>>> refs/remotes/origin/master
 }
 
 
@@ -337,19 +312,15 @@ void Mundo::SetPuntosD(){
 
 	if (contadorPuntos_d == maxPuntos){
 		contadorPuntos_d = 0;
-<<<<<<< HEAD
-		ganadord = 1;
-	}
-=======
+		contadorPuntos_i = 0;
 		ganadord = true;
 	}
 }
 void Mundo::SetGanadorI(){
-	ganadori =false;
+	ganadori = false;
 }
 void Mundo::SetGanadorD(){
 	ganadord = false;
->>>>>>> refs/remotes/origin/master
 }
 
 void Mundo::DibujaFondo(){
@@ -368,10 +339,7 @@ void Mundo::DibujaFondo(){
 	glDisable(GL_TEXTURE_2D);
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
 void Mundo::DibujaPared_D(){
 
 	glEnable(GL_TEXTURE_2D);
@@ -405,12 +373,4 @@ void Mundo::DibujaPared_I(){
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
 
-}
-
-void Mundo::SetGanadorI(){
-	ganadori = false;
-}
-
-void Mundo::SetGanadorD(){
-	ganadord = false;
 }

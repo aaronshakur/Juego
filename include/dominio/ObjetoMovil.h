@@ -42,9 +42,4 @@ protected:
 	Vector2D posicion,velocidad, aceleracion;
 	float radio;
 
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> refs/remotes/origin/master
 };

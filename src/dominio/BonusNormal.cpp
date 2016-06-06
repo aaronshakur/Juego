@@ -4,11 +4,7 @@
 
 BonusNormal::BonusNormal()
 {
-<<<<<<< HEAD
-	
-=======
-	rojo = verde = azul = 255;
->>>>>>> refs/remotes/origin/master
+
 }
 BonusNormal::~BonusNormal()
 {

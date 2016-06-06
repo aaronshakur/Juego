@@ -9,14 +9,9 @@ using ETSIDI::Sprite;
 class Hombre :public ObjetoMovil
 {
 private:
-<<<<<<< HEAD
+
 	Sprite spriteHombre1Nor, spriteHombre2Nor;
 	Sprite spriteHombre1Grande, spriteHombre2Grande, spriteHombre1Peq, spriteHombre2Peq;
-=======
-
-	Sprite spriteHombre1Grande, spriteHombre2Grande, spriteHombre1Peq, spriteHombre2Peq, spriteHombre1Nor, spriteHombre2Nor;
-
->>>>>>> refs/remotes/origin/master
 
 public:
 	Hombre();
