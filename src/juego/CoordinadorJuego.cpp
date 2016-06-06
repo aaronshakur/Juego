@@ -1,17 +1,25 @@
 #include <stdlib.h>
+#include <iostream>
 #include "..\include\juego\CoordinadorJuego.h"
 #include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 
 #define maxBotes 3
 #define maxPuntos 3
+<<<<<<< HEAD
 
 
+=======
+using namespace std;
+>>>>>>> refs/remotes/origin/master
 CoordinadorJuego::CoordinadorJuego(){
 	estado = INICIO;
 	mundo.SetGanadorD();
 	mundo.SetGanadorI();
+<<<<<<< HEAD
 	ETSIDI::playMusica("sonidos\musicafondo.mp3", true);
+=======
+>>>>>>> refs/remotes/origin/master
 }
 
 CoordinadorJuego::~CoordinadorJuego(){}
@@ -101,9 +109,16 @@ void CoordinadorJuego::Dibuja()
 	}	
 	else if (estado == FIN)
 	{
+<<<<<<< HEAD
 		mundo.Dibuja();
 		FinJuegoLetras();
 
+=======
+
+		mundo.Dibuja();
+		FinJuegoLetras();
+			
+>>>>>>> refs/remotes/origin/master
 	}
 }
 
@@ -114,22 +129,28 @@ void CoordinadorJuego::Mueve()
 		mundo.Mueve();
 		int botes_d = mundo.GetBoteD();
 		int botes_i = mundo.GetBoteI();
-
-		if ((botes_d == maxBotes) || (botes_i == maxBotes))
-		{
-			estado = PREPARADO;
-		}
-
 		int puntos_d = mundo.GetPuntoD();
 		int puntos_i = mundo.GetPuntoI();
+		if ((botes_d == maxBotes) || (botes_i == maxBotes))
+		{
+			cout<<"------------------------------------MARCADOR------------------------------------ \n\t\t\t    Cristiano " <<puntos_d <<" - Messi "<< puntos_i<<"\n"<<endl;
+			
+			estado = PREPARADO;
+
+		}
 
 		if (puntos_d == maxPuntos) 
 		{
 			mundo.SetPuntosI();
+			cout<<"\t     Cristiano es el ganador!!( y el mejor jugador del mundo)"<<endl;
+			system("cls");
 			estado = FIN;
 		}
 		else if (puntos_i == maxPuntos){
+
 			mundo.SetPuntosD();
+			cout<<"\t\t\t    Messi es el ganador!!!"<<endl;
+			system("cls");
 			estado = FIN;
 		}
 	}
@@ -198,6 +219,7 @@ void CoordinadorJuego::FinJuegoLetras(){
 	ETSIDI::setTextColor(0, 0, 0);
 	ETSIDI::print("Pulsa (s) para salir", "fuentes/Bitwise.ttf", 12);
 
+<<<<<<< HEAD
 	if (mundo.GetGanadorD() == maxPuntos){
 	
 	glTranslatef(14.0f, -14.5f, 0.0f);
@@ -211,6 +233,25 @@ void CoordinadorJuego::FinJuegoLetras(){
 	ETSIDI::setTextColor(0, 0, 0);
 	ETSIDI::print("CRISTIANO", "fuentes/Bitwise.ttf", 16);
 
+=======
+	
+	if (mundo.GetGanadorD()){
+		glTranslatef(14.0f, -14.5f, 0.0f);
+		ETSIDI::setTextColor(0, 0, 0);
+		ETSIDI::print("Messi", "fuentes/Bitwise.ttf", 12);
+	
+		
+		
+	}
+
+	if (mundo.GetGanadorI()){
+		glTranslatef(-10.0f, -14.5f, 0.0f);
+		ETSIDI::setTextColor(0, 0, 0);
+		ETSIDI::print("Cristiano ", "fuentes/Bitwise.ttf", 12);
+	
+		
+		
+>>>>>>> refs/remotes/origin/master
 	}
 }
 

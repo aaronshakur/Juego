@@ -17,6 +17,7 @@ public:
 	void SetColor(unsigned char, unsigned char, unsigned char);
 	void SetLim(float, float,float,float);
 	float Distancia(Vector2D punto, Vector2D *direccion = 0);
+	float Pared::get_limity2(){ return limite2.y; };
 
 
 friend class Interaccion;

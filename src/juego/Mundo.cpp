@@ -12,11 +12,17 @@
 #define maxBotes 3
 #define maxPuntos 3
 
+using namespace std;
+
 //Polimorfismo
 ObjetoMovil  *pobjetosMoviles;
 
 Mundo::Mundo() 
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 }
 
 void Mundo::Dibuja()
@@ -91,11 +97,19 @@ void Mundo::Mueve()
 	if (Interaccion::Colision(bonusnorpelota, hombre1)){
 
 		balon.SetRadio(2.00f);
+<<<<<<< HEAD
+=======
+		
+>>>>>>> refs/remotes/origin/master
 	}
 
 	if (Interaccion::Colision(bonusnorpelota, hombre2)){
 
 		balon.SetRadio(2.00f);
+<<<<<<< HEAD
+=======
+		
+>>>>>>> refs/remotes/origin/master
 	}
 
 	if (Interaccion::Colision(bonusespgran, hombre2)){
@@ -119,32 +133,44 @@ void Mundo::Mueve()
 		pobjetosMoviles->SetRadio(1.0f);
 	}
 	
-	Vector2D posbonusespgran = bonusespgran.GetPos();
-	if (posbonusespgran.y < -10.0f){
+
+	if (bonusespgran.GetPos_y() < -10.0f){
 
 		pobjetosMoviles = &bonusespgran;
 		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
 	}
 
-	Vector2D posbonusesppeq = bonusesppeq.GetPos();
-	if (posbonusesppeq.y < -20.0f){
+	if (bonusesppeq.GetPos_y() < -10.0f){
 
 		pobjetosMoviles = &bonusesppeq;
 		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
 	}
 
-	Vector2D posbonusnor = bonusnor.GetPos();
-	if (posbonusnor.y < -40.0f){
+	
+	if (bonusnor.GetPos_y() < -10.0f){
 
 		pobjetosMoviles = &bonusnor;
 		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
 	}
 
-	Vector2D posbonusnorpelota = bonusnorpelota.GetPos();
-	if (posbonusnorpelota.y < -30.0f){ 
+	if (bonusnorpelota.GetPos_y() < -10.0f){
 
 		pobjetosMoviles = &bonusnorpelota;
 		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
+	}
+
+	// para que no caigan bonus normales repetidos
+
+	if (balon.GetRadio() == 2.00f)
+	{
+		pobjetosMoviles = &bonusnorpelota;
+		pobjetosMoviles->SetPos(0, -50);
+	}
+
+	if (campo.red.get_limity2() == 8.00f)
+	{
+		pobjetosMoviles = &bonusnor;
+		pobjetosMoviles->SetPos(0, -50);
 	}
 
 	Interaccion::Rebote(hombre1, campo); //Se llama con :: y su cabecera porque es un metodo estatico
@@ -155,26 +181,36 @@ void Mundo::Mueve()
 
 	if (Interaccion::Colision(balon, campo.suelo_d)){
 		contadorBotes_d++;
-		printf("Botes derecha : ");
-		printf("%d\n", contadorBotes_d);
+		//cout << "Botes en campo de messi : "  << contadorBotes_d << endl;// por si quisiesemos mostrar la puntuacion en el terminal
+		
 	}
 
 	if (Interaccion::Colision(balon, campo.suelo_i)){
 		contadorBotes_i++;
-		printf("Botes izquierda: ");
-		printf("%d\n", contadorBotes_i);
+		//cout << "Botes en campo de Cristiano : "  << contadorBotes_i << endl;
+
 	}
 
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
-		printf("Puntos izquierda: ");
-		printf("%d\n", contadorPuntos_i);
+		//cout<<"Puntos Cristiano: " << contadorPuntos_i<<endl;
 
 	}
 	if (contadorBotes_i == maxBotes){
 		contadorPuntos_d++;
-		printf("Puntos derecha: ");
-		printf("%d\n", contadorPuntos_d);
+		//cout<<"Puntos Messi: " << contadorPuntos_d<<endl;
+	}
+
+
+//Para reiniciar contadores de botes si consigo pasar el balon al otro campo
+	Vector2D vector_pos;
+	if ((Interaccion::Colision(balon, campo.suelo_i)) && (vector_pos.x >= 0.0f)){
+
+		contadorBotes_d = 0;
+	}
+	if ((Interaccion::Colision(balon, campo.suelo_d)) && (vector_pos.x <= 0.0f)){
+
+		contadorBotes_i = 0;
 	}
 
 //Para reiniciar contadores de botes si consigo pasar el balon al otro campo
@@ -219,6 +255,10 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 
 	pobjetosMoviles = &bonusnorpelota;
 	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom3(), pobjetosMoviles->PosyRandom3());
+<<<<<<< HEAD
+=======
+	
+>>>>>>> refs/remotes/origin/master
 
 	pobjetosMoviles = &balon;
 	pobjetosMoviles->SetRadio(0.75f);
@@ -282,9 +322,14 @@ void Mundo::TeclaEspecial(unsigned char key)
 
 void Mundo::SetPuntosI(){
 
-	if (contadorPuntos_i == maxPuntos)
+	if (contadorPuntos_i == maxPuntos){
 		contadorPuntos_i = 0;
+<<<<<<< HEAD
 		ganadori = 1;
+=======
+		ganadori = true;
+	}
+>>>>>>> refs/remotes/origin/master
 }
 
 
@@ -292,8 +337,19 @@ void Mundo::SetPuntosD(){
 
 	if (contadorPuntos_d == maxPuntos){
 		contadorPuntos_d = 0;
+<<<<<<< HEAD
 		ganadord = 1;
 	}
+=======
+		ganadord = true;
+	}
+}
+void Mundo::SetGanadorI(){
+	ganadori =false;
+}
+void Mundo::SetGanadorD(){
+	ganadord = false;
+>>>>>>> refs/remotes/origin/master
 }
 
 void Mundo::DibujaFondo(){
@@ -312,6 +368,10 @@ void Mundo::DibujaFondo(){
 	glDisable(GL_TEXTURE_2D);
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 void Mundo::DibujaPared_D(){
 
 	glEnable(GL_TEXTURE_2D);

@@ -8,6 +8,10 @@
 #include "..\..\include\dominio\BonusNormal.h"
 #include"ETSIDI.h"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 
 class Mundo
 {
@@ -21,7 +25,6 @@ private:
 	Hombre hombre1, hombre2;//Hombre1 es el de las teclas de control. Hombre2 teclas "WASD"
 	BonusEspecial bonusespgran;
 	BonusEspecial bonusesppeq;
-
 	BonusNormal bonusnor;
 	BonusNormal bonusnorpelota;
 	Pared suelo;
@@ -32,12 +35,18 @@ private:
 	int contadorPuntos_i;
 	bool punto;
 	bool bote;
+<<<<<<< HEAD
 	bool mivariable;
 	bool ganadori;
 	bool ganadord;
+=======
+	bool ganadori;
+	bool ganadord;
+
+>>>>>>> refs/remotes/origin/master
 	friend class campo;
 	friend class interaccion;
-	
+	friend class hombre;
 
 public: 
 	Mundo();
@@ -57,10 +66,17 @@ public:
 	int GetPuntoI(){  return contadorPuntos_d; }
 	void SetPuntosD();
 	void SetPuntosI();
+<<<<<<< HEAD
 	bool GetGanadorD(){ return ganadord; };
 	bool GetGanadorI(){ return ganadori; };
 	void SetGanadorI();
 	void SetGanadorD();
 
+=======
+	void SetGanadorI();
+	void SetGanadorD();
+	bool GetGanadorI(){ return ganadori; }
+	bool GetGanadorD(){ return ganadord; }
+>>>>>>> refs/remotes/origin/master
 
 };
