@@ -1,10 +1,12 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include "math.h"
 #include "glut.h"
 #include "..\..\include\dominio\Interaccion.h"
+#include <time.h>
+#include "ETSIDI.h"
 
 ObjetoMovil *pobjetosmoviles;
-
 
 //En esta clase no se van a generar objetos. Va a reunir todos los metodos de interaccion entre parejas de objetos.
 //Ademas, todos los objetos que interaccionen, necesitaran ser amigos de esta clase, ya que estamos intentando acceder a sus
@@ -23,7 +25,8 @@ Interaccion::~Interaccion()
 //Se pasa el parametro hombre por referencia, ya que la funcion tiene que modificar los valores del hombre constantemente (posiciones, y velocidades)
 void Interaccion::Rebote(Hombre &h, Campo c)   
 {
-	Interaccion::Rebote(h, c.suelo);
+	Interaccion::Rebote(h, c.suelo_d);
+	Interaccion::Rebote(h, c.suelo_i);
 	Interaccion::Rebote(h, c.techo);
 	Interaccion::Rebote(h, c.pared_dcha);
 	Interaccion::Rebote(h, c.pared_izq);
@@ -53,7 +56,8 @@ bool Interaccion::Rebote(Hombre &h, Pared p)
 void Interaccion::Rebote(Balon &b, Campo c)
 {
 	
-	Interaccion::ReboteSuelo(b, c.suelo);
+	Interaccion::ReboteSuelo(b, c.suelo_i);
+	Interaccion::ReboteSuelo(b, c.suelo_d);
 	Interaccion::Rebote(b, c.techo);
 	Interaccion::Rebote(b, c.pared_dcha);
 	Interaccion::Rebote(b, c.pared_izq);
@@ -183,8 +187,8 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 		h.velocidad.y = modv2*sin(fi2); 
 		//probar mas adelante a separar h1 y h2. haciendo negativo el rebote de hombre 2
 		}
+		ETSIDI::play("sonidos/impacto.wav");
 
-		
 		}
 		
 	return false;
@@ -195,8 +199,10 @@ bool Interaccion::Rebote(Balon &b, Hombre &h) {
 
 bool Interaccion::Colision(Balon b, Pared suelo){
 
-	if (Interaccion::ReboteSuelo(b, suelo))
+	if (Interaccion::ReboteSuelo(b, suelo)){
+		ETSIDI::play("sonidos/disparo.wav");
 		return true;
+	}
 	else
 		return false;
 
@@ -209,44 +215,9 @@ bool Interaccion::Colision(Bonus bon, Hombre h){
 
 	float distancia = (bon.posicion- pos).modulo();
 	if (distancia < bon.lado){
-		printf("\nHa habido colision");
+		//printf("\nHa habido colision hombre-bonus");
 		return true;
 	}
 	return false;
 }
 
-/*void Interaccion::Colision(Bonus &bon, Hombre &h){
-
-		Vector2D pos = h.GetPos(); //la posicion del hombre 
-		pos.y += h.GetRadio() / 2.0f; //posicion del centro del hombre
-
-		float distancia = (bon.posicion - pos).modulo();
-
-		if (distancia < bon.radio)
-		{
-			//Algo para que mande a la posicion inicial de cada bonus (normal o especial)
-			//********************************************************
-			bon.SetPos(8,30);
-			//pobjetosMoviles = &bon;
-			//pobjetosMoviles->bonus.SetPos(8,30);
-			//********************************************************
-
-			if (h.radio < 5.0f)
-				h.radio = h.radio + 0.2f;
-			else h.radio = 5.0f;
-		}
-		printf("Ha habido colision");
-}*/
-/*
-void Interaccion::Colision2(Bonus &b, Hombre &h){
-
-	float dist = ((b.posicion) - (h.posicion)).modulo();
-	if (dist<h.radio)
-	{
-		b.posicion.y = 150.0f;
-		if (h.radio>1.0f)
-			h.radio = h.radio - 0.5f;
-		else h.radio = 1.0f;
-	}
-
-}*/

@@ -38,6 +38,7 @@
     <ClInclude Include="include\dominio\Pared.h" />
     <ClInclude Include="include\juego\CoordinadorJuego.h" />
     <ClInclude Include="include\juego\Mundo.h" />
+    <ClInclude Include="lib\ETSIDI.h" />
     <ClInclude Include="lib\OpenGL.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -72,7 +73,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\</OutDir>
+    <OutDir>$(ProjectDir)/bin</OutDir>
     <IntDir>tmp\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
