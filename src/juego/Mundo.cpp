@@ -17,7 +17,7 @@ using namespace std;
 //Polimorfismo
 ObjetoMovil  *pobjetosMoviles;
 
-Mundo::Mundo() 
+Mundo::Mundo()
 {
 
 }
@@ -28,8 +28,8 @@ void Mundo::Dibuja()
 		0.0, y_ojo, 0.0,      // hacia que punto mira  (0,0,0) 
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 	//DIBUJO FONDO 
-    DibujaFondo();
-//	DibujaSuelo();
+	DibujaFondo();
+	//	DibujaSuelo();
 	DibujaPared_D();
 	DibujaPared_I();
 
@@ -54,9 +54,9 @@ void Mundo::Dibuja()
 
 	pobjetosMoviles = &bonusnorpelota;
 	pobjetosMoviles->Dibuja();
-	
+
 	campo.Dibuja();
-	
+
 }
 
 void Mundo::Mueve()
@@ -95,13 +95,13 @@ void Mundo::Mueve()
 	if (Interaccion::Colision(bonusnorpelota, hombre1)){
 
 		balon.SetRadio(2.00f);
-		
+
 	}
 
 	if (Interaccion::Colision(bonusnorpelota, hombre2)){
 
 		balon.SetRadio(2.00f);
-		
+
 	}
 
 	if (Interaccion::Colision(bonusespgran, hombre2)){
@@ -124,7 +124,7 @@ void Mundo::Mueve()
 		pobjetosMoviles = &hombre2;
 		pobjetosMoviles->SetRadio(1.0f);
 	}
-	
+
 
 	if (bonusespgran.GetPos_y() < -10.0f){
 
@@ -138,7 +138,7 @@ void Mundo::Mueve()
 		pobjetosMoviles->SetPos(-19 + (rand() % 38), -rand() % 100 + (rand() % 100));
 	}
 
-	
+
 	if (bonusnor.GetPos_y() < -10.0f){
 
 		pobjetosMoviles = &bonusnor;
@@ -174,7 +174,7 @@ void Mundo::Mueve()
 	if (Interaccion::Colision(balon, campo.suelo_d)){
 		contadorBotes_d++;
 		//cout << "Botes en campo de messi : "  << contadorBotes_d << endl;// por si quisiesemos mostrar la puntuacion en el terminal
-		
+
 	}
 
 	if (Interaccion::Colision(balon, campo.suelo_i)){
@@ -194,7 +194,7 @@ void Mundo::Mueve()
 	}
 
 
-//Para reiniciar contadores de botes si consigo pasar el balon al otro campo
+	//Para reiniciar contadores de botes si consigo pasar el balon al otro campo
 	Vector2D vector_pos;
 	if ((Interaccion::Colision(balon, campo.suelo_i)) && (vector_pos.x >= 0.0f)){
 
@@ -208,7 +208,6 @@ void Mundo::Mueve()
 
 void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciales que no sean los de por defecto.
 {
-	ETSIDI::playMusica("sonidos / musicafondo.mp3", true);
 	contadorBotes_d = 0;
 	contadorBotes_i = 0;
 
@@ -237,7 +236,7 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 
 	pobjetosMoviles = &bonusnorpelota;
 	pobjetosMoviles->SetPos(pobjetosMoviles->PosxRandom3(), pobjetosMoviles->PosyRandom3());
-	
+
 
 	pobjetosMoviles = &balon;
 	pobjetosMoviles->SetRadio(0.75f);
@@ -245,7 +244,7 @@ void Mundo::Inicializa()  //Inicializamos los objetos con otros valores iniciale
 	pobjetosMoviles->SetVel(pobjetosMoviles->VelxRandom(), 9);
 
 	campo.red.SetLim(0.0f, 0.0f, 0.0f, 5.0f);
-		
+
 }
 
 void Mundo::Tecla(unsigned char key)
@@ -302,6 +301,7 @@ void Mundo::TeclaEspecial(unsigned char key)
 void Mundo::SetPuntosI(){
 
 	if (contadorPuntos_i == maxPuntos){
+		contadorPuntos_d = 0;
 		contadorPuntos_i = 0;
 		ganadori = true;
 	}
@@ -312,11 +312,12 @@ void Mundo::SetPuntosD(){
 
 	if (contadorPuntos_d == maxPuntos){
 		contadorPuntos_d = 0;
+		contadorPuntos_i = 0;
 		ganadord = true;
 	}
 }
 void Mundo::SetGanadorI(){
-	ganadori =false;
+	ganadori = false;
 }
 void Mundo::SetGanadorD(){
 	ganadord = false;

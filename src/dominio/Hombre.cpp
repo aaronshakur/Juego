@@ -37,28 +37,28 @@ void Hombre::Dibuja(){
 	glColor3ub(rojo, verde, azul);
 
 
-	if ((ObjetoMovil::radio == 1.8f) && (ObjetoMovil::GetPos_x() >=0)) {
+	if ((ObjetoMovil::radio == 1.8f) && (ObjetoMovil::GetPos_x() >= 0)) {
 
 		spriteHombre1Nor.draw();
-		
+
 
 	}
 	else if ((ObjetoMovil::radio == 1.8f) && (ObjetoMovil::GetPos_x() <= 0)){
 
 		spriteHombre2Nor.draw();
 	}
-	
+
 	else if ((ObjetoMovil::radio == 1.0f) && (ObjetoMovil::GetPos_x() >= 0)) {
 
 		spriteHombre1Peq.draw();
-	
+
 	}
 	else if ((ObjetoMovil::radio == 1.0f) && (ObjetoMovil::GetPos_x() <= 0)) {
 
 		spriteHombre2Peq.draw();
 
 	}
-	else if( (ObjetoMovil::radio == 2.5f) && (ObjetoMovil::GetPos_x() >= 0)) {
+	else if ((ObjetoMovil::radio == 2.5f) && (ObjetoMovil::GetPos_x() >= 0)) {
 
 		spriteHombre1Grande.draw();
 
@@ -78,9 +78,7 @@ void Hombre::Mueve(float t){
 
 	posicion = posicion + velocidad*t + aceleracion*(t*t*0.5f);   //no puede ser escalar*vector!!! debe ser Vector2D* escalar!! debido a la declaracion en Vector2D.cpp
 	velocidad = velocidad + aceleracion*t;
-		if (posicion.y <= 0.9) // para que el jugador no desaparezca al ponerle aceleracion negativa para el salto.
+	if (posicion.y <= 0.9) // para que el jugador no desaparezca al ponerle aceleracion negativa para el salto.
 		posicion.y = 0.9;
-	
+
 }
-
-

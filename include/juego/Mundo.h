@@ -8,8 +8,6 @@
 #include "..\..\include\dominio\BonusNormal.h"
 #include"ETSIDI.h"
 
-
-
 class Mundo
 {
 private:
@@ -32,8 +30,8 @@ private:
 	int contadorPuntos_i;
 	bool punto;
 	bool bote;
-	bool ganadori;
-	bool ganadord;
+	bool ganadori=0;
+	bool ganadord=0;
 
 	friend class campo;
 	friend class interaccion;
@@ -57,9 +55,9 @@ public:
 	int GetPuntoI(){  return contadorPuntos_d; }
 	void SetPuntosD();
 	void SetPuntosI();
+	bool GetGanadorD(){ return ganadord; };
+	bool GetGanadorI(){ return ganadori; };
 	void SetGanadorI();
 	void SetGanadorD();
-	bool GetGanadorI(){ return ganadori; }
-	bool GetGanadorD(){ return ganadord; }
 
 };
