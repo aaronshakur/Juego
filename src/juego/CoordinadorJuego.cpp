@@ -99,9 +99,10 @@ void CoordinadorJuego::Dibuja()
 	}	
 	else if (estado == FIN)
 	{
+
 		mundo.Dibuja();
 		FinJuegoLetras();
-
+			
 	}
 }
 
@@ -112,22 +113,26 @@ void CoordinadorJuego::Mueve()
 		mundo.Mueve();
 		int botes_d = mundo.GetBoteD();
 		int botes_i = mundo.GetBoteI();
-
-		if ((botes_d == maxBotes) || (botes_i == maxBotes))
-		{
-			estado = PREPARADO;
-		}
-
 		int puntos_d = mundo.GetPuntoD();
 		int puntos_i = mundo.GetPuntoI();
+		if ((botes_d == maxBotes) || (botes_i == maxBotes))
+		{
+			printf("------------------------------------MARCADOR------------------------------------ \n\t\t\t    Cristiano %d - Messi %d\n\n", puntos_d, puntos_i);
+			estado = PREPARADO;
+
+		}
 
 		if (puntos_d == maxPuntos) 
 		{
+			
 			mundo.SetPuntosI();
+			printf("\t     Cristiano es el ganador!!( y el mejor jugador del mundo)\n");
 			estado = FIN;
 		}
 		else if (puntos_i == maxPuntos){
+
 			mundo.SetPuntosD();
+			printf("\t\t\t    Messi es el ganador!!!\n");
 			estado = FIN;
 		}
 	}
@@ -201,12 +206,18 @@ void CoordinadorJuego::FinJuegoLetras(){
 		glTranslatef(14.0f, -14.5f, 0.0f);
 		ETSIDI::setTextColor(0, 0, 0);
 		ETSIDI::print("Messi", "fuentes/Bitwise.ttf", 12);
+	
+		
+		
 	}
 
 	if (mundo.GetGanadorI()){
 		glTranslatef(-10.0f, -14.5f, 0.0f);
 		ETSIDI::setTextColor(0, 0, 0);
 		ETSIDI::print("Cristiano ", "fuentes/Bitwise.ttf", 12);
+	
+		
+		
 	}
 }
 

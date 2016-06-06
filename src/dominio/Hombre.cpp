@@ -19,8 +19,8 @@ Hombre::Hombre() :spriteHombre1Grande("imagenes/jugador1.png", -1), spriteHombre
 	spriteHombre2Peq.setCenter(1.5f, 2.5f);
 	spriteHombre2Peq.setSize(5, 5);
 
-	spriteHombre1Nor.setCenter(2.5f, 3.5f);// si subes el numero le metes para abajo, si sumas x le llevas a la izquierda (al reves)
-	spriteHombre1Nor.setSize(6.75f, 6.75f);// si bajas se hace pequeño
+	spriteHombre1Nor.setCenter(2.5f, 3.5f);
+	spriteHombre1Nor.setSize(6.75f, 6.75f);
 
 	spriteHombre2Nor.setCenter(3.5f, 3.5f);
 	spriteHombre2Nor.setSize(7.5f, 7.5f);

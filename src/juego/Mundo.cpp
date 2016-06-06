@@ -171,27 +171,28 @@ void Mundo::Mueve()
 
 	if (Interaccion::Colision(balon, campo.suelo_d)){
 		contadorBotes_d++;
-		printf("Botes derecha : ");
-		printf("%d\n", contadorBotes_d);
+		//printf("Botes en campo de messi : "); por si quisiesemos mostrar la puntuacion en el terminal
+		//printf("%d\n", contadorBotes_d);
 	}
 
 	if (Interaccion::Colision(balon, campo.suelo_i)){
 		contadorBotes_i++;
-		printf("Botes izquierda: ");
-		printf("%d\n", contadorBotes_i);
+		//printf("Botes en campo de Cristiano: ");
+		//printf("%d\n", contadorBotes_i);
 	}
 
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
-		printf("Puntos izquierda: ");
-		printf("%d\n", contadorPuntos_i);
+		//printf("Puntos Cristiano: ");
+		//printf("%d\n", contadorPuntos_i);
 
 	}
 	if (contadorBotes_i == maxBotes){
 		contadorPuntos_d++;
-		printf("Puntos derecha: ");
-		printf("%d\n", contadorPuntos_d);
+		//printf("Puntos Messi: ");
+		//printf("%d\n", contadorPuntos_d);
 	}
+
 
 //Para reiniciar contadores de botes si consigo pasar el balon al otro campo
 	Vector2D vector_pos;
