@@ -1,11 +1,12 @@
 #include <stdlib.h>
+#include <iostream>
 #include "..\include\juego\CoordinadorJuego.h"
 #include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 
 #define maxBotes 3
 #define maxPuntos 3
-
+using namespace std;
 CoordinadorJuego::CoordinadorJuego(){
 	estado = INICIO;
 	mundo.SetGanadorD();
@@ -99,9 +100,10 @@ void CoordinadorJuego::Dibuja()
 	}	
 	else if (estado == FIN)
 	{
+
 		mundo.Dibuja();
 		FinJuegoLetras();
-
+			
 	}
 }
 
@@ -112,22 +114,29 @@ void CoordinadorJuego::Mueve()
 		mundo.Mueve();
 		int botes_d = mundo.GetBoteD();
 		int botes_i = mundo.GetBoteI();
-
-		if ((botes_d == maxBotes) || (botes_i == maxBotes))
-		{
-			estado = PREPARADO;
-		}
-
 		int puntos_d = mundo.GetPuntoD();
 		int puntos_i = mundo.GetPuntoI();
+		if ((botes_d == maxBotes) || (botes_i == maxBotes))
+		{
+			cout<<"------------------------------------MARCADOR------------------------------------ \n\t\t\t    Cristiano " <<puntos_d <<" - Messi "<< puntos_i<<"\n"<<endl;
+			
+			estado = PREPARADO;
+
+		}
 
 		if (puntos_d == maxPuntos) 
 		{
+			
 			mundo.SetPuntosI();
+			cout<<"\t     Cristiano es el ganador!!( y el mejor jugador del mundo)"<<endl;
+			system("cls");
 			estado = FIN;
 		}
 		else if (puntos_i == maxPuntos){
+
 			mundo.SetPuntosD();
+			cout<<"\t\t\t    Messi es el ganador!!!"<<endl;
+			system("cls");
 			estado = FIN;
 		}
 	}
@@ -201,12 +210,18 @@ void CoordinadorJuego::FinJuegoLetras(){
 		glTranslatef(14.0f, -14.5f, 0.0f);
 		ETSIDI::setTextColor(0, 0, 0);
 		ETSIDI::print("Messi", "fuentes/Bitwise.ttf", 12);
+	
+		
+		
 	}
 
 	if (mundo.GetGanadorI()){
 		glTranslatef(-10.0f, -14.5f, 0.0f);
 		ETSIDI::setTextColor(0, 0, 0);
 		ETSIDI::print("Cristiano ", "fuentes/Bitwise.ttf", 12);
+	
+		
+		
 	}
 }
 
