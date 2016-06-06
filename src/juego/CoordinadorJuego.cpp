@@ -12,6 +12,8 @@ CoordinadorJuego::CoordinadorJuego(){
 	estado = INICIO;
 	mundo.SetGanadorD();
 	mundo.SetGanadorI();
+	ETSIDI::playMusica("sonidos/musicafondo.wav", true);
+
 }
 
 CoordinadorJuego::~CoordinadorJuego(){}

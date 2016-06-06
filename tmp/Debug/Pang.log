@@ -1,4 +1,4 @@
-﻿Compilación iniciada a las 6/6/2016 1:32:19 PM.
+﻿Compilación iniciada a las 6/6/2016 9:01:13 PM.
      1>Proyecto "C:\Users\Aaron\Desktop\2016\Practicas\Juego\Pang.vcxproj" en el nodo 2 (Rebuild destinos).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(357,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
      1>ClCompile:
@@ -48,4 +48,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:06.00
+Tiempo transcurrido 00:00:08.99
