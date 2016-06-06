@@ -12,6 +12,8 @@
 #define maxBotes 3
 #define maxPuntos 3
 
+using namespace std;
+
 //Polimorfismo
 ObjetoMovil  *pobjetosMoviles;
 
@@ -171,26 +173,24 @@ void Mundo::Mueve()
 
 	if (Interaccion::Colision(balon, campo.suelo_d)){
 		contadorBotes_d++;
-		//printf("Botes en campo de messi : "); por si quisiesemos mostrar la puntuacion en el terminal
-		//printf("%d\n", contadorBotes_d);
+		//cout << "Botes en campo de messi : "  << contadorBotes_d << endl;// por si quisiesemos mostrar la puntuacion en el terminal
+		
 	}
 
 	if (Interaccion::Colision(balon, campo.suelo_i)){
 		contadorBotes_i++;
-		//printf("Botes en campo de Cristiano: ");
-		//printf("%d\n", contadorBotes_i);
+		//cout << "Botes en campo de Cristiano : "  << contadorBotes_i << endl;
+
 	}
 
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
-		//printf("Puntos Cristiano: ");
-		//printf("%d\n", contadorPuntos_i);
+		//cout<<"Puntos Cristiano: " << contadorPuntos_i<<endl;
 
 	}
 	if (contadorBotes_i == maxBotes){
 		contadorPuntos_d++;
-		//printf("Puntos Messi: ");
-		//printf("%d\n", contadorPuntos_d);
+		//cout<<"Puntos Messi: " << contadorPuntos_d<<endl;
 	}
 
 

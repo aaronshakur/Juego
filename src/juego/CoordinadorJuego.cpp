@@ -1,11 +1,12 @@
 #include <stdlib.h>
+#include <iostream>
 #include "..\include\juego\CoordinadorJuego.h"
 #include "ETSIDI.h"
 #include "..\..\include\dominio\Interaccion.h"
 
 #define maxBotes 3
 #define maxPuntos 3
-
+using namespace std;
 CoordinadorJuego::CoordinadorJuego(){
 	estado = INICIO;
 	mundo.SetGanadorD();
@@ -117,7 +118,8 @@ void CoordinadorJuego::Mueve()
 		int puntos_i = mundo.GetPuntoI();
 		if ((botes_d == maxBotes) || (botes_i == maxBotes))
 		{
-			printf("------------------------------------MARCADOR------------------------------------ \n\t\t\t    Cristiano %d - Messi %d\n\n", puntos_d, puntos_i);
+			cout<<"------------------------------------MARCADOR------------------------------------ \n\t\t\t    Cristiano " <<puntos_d <<" - Messi "<< puntos_i<<"\n"<<endl;
+			
 			estado = PREPARADO;
 
 		}
@@ -126,13 +128,15 @@ void CoordinadorJuego::Mueve()
 		{
 			
 			mundo.SetPuntosI();
-			printf("\t     Cristiano es el ganador!!( y el mejor jugador del mundo)\n");
+			cout<<"\t     Cristiano es el ganador!!( y el mejor jugador del mundo)"<<endl;
+			system("cls");
 			estado = FIN;
 		}
 		else if (puntos_i == maxPuntos){
 
 			mundo.SetPuntosD();
-			printf("\t\t\t    Messi es el ganador!!!\n");
+			cout<<"\t\t\t    Messi es el ganador!!!"<<endl;
+			system("cls");
 			estado = FIN;
 		}
 	}
