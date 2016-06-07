@@ -57,10 +57,9 @@ void CoordinadorJuego::Tecla(unsigned char key)
 		if (key == 's'){
 			exit(0);
 			system("cls");
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
+
+
 		}
 	}
 }
@@ -115,12 +114,7 @@ void CoordinadorJuego::Dibuja()
 
 		mundo.Dibuja();
 		FinJuegoLetras();
-<<<<<<< HEAD
-	
-			
-=======
 
->>>>>>> refs/remotes/origin/master
 	}
 }
 
@@ -145,21 +139,17 @@ void CoordinadorJuego::Mueve()
 		{
 
 			mundo.SetPuntosI();
-<<<<<<< HEAD
-			cout<<"\t     Cristiano es el ganador!!( y el mejor jugador del mundo)"<<endl;
-=======
+
 			cout << "\t     Cristiano es el ganador!!( y el mejor jugador del mundo)" << endl;
->>>>>>> refs/remotes/origin/master
+
 			estado = FIN;
 		}
 		else if (puntos_i == maxPuntos){
 
 			mundo.SetPuntosD();
-<<<<<<< HEAD
+
 			cout<<"\t\t\t    Messi es el ganador!!!"<<endl;
-=======
-			cout << "\t\t\t    Messi es el ganador!!!" << endl;
->>>>>>> refs/remotes/origin/master
+
 			estado = FIN;
 		}
 	}
