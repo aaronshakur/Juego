@@ -10,8 +10,8 @@ class Hombre :public ObjetoMovil
 {
 private:
 
-	Sprite spriteHombre1Grande, spriteHombre2Grande, spriteHombre1Peq, spriteHombre2Peq, spriteHombre1Nor, spriteHombre2Nor;
-
+	Sprite spriteHombre1Nor, spriteHombre2Nor;
+	Sprite spriteHombre1Grande, spriteHombre2Grande, spriteHombre1Peq, spriteHombre2Peq;
 
 public:
 	Hombre();

@@ -7,10 +7,13 @@
 #define maxBotes 3
 #define maxPuntos 3
 using namespace std;
+
 CoordinadorJuego::CoordinadorJuego(){
 	estado = INICIO;
 	mundo.SetGanadorD();
 	mundo.SetGanadorI();
+	ETSIDI::playMusica("sonidos/musicafondo.wav", true);
+
 }
 
 CoordinadorJuego::~CoordinadorJuego(){}
@@ -26,7 +29,7 @@ void CoordinadorJuego::Tecla(unsigned char key)
 		if (key == 's')
 			exit(0);
 	}
-		
+
 	else if (estado == PREPARADO){
 		//ESPERAMOS HASTA QUE SE PULSE ESPACIO PARA LANZAR LA BOLA
 		if (key == ' ')
@@ -54,6 +57,10 @@ void CoordinadorJuego::Tecla(unsigned char key)
 		if (key == 's'){
 			exit(0);
 			system("cls");
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 		}
 	}
 }
@@ -65,13 +72,13 @@ void CoordinadorJuego::TeclaEspecial(unsigned char key)
 }
 
 void CoordinadorJuego::Inicializa(){
-	
+
 	x_ojo = 1.5;
 	y_ojo = 9;
 	z_ojo = 42;
 
 	mundo.Inicializa();
-	
+
 }
 void CoordinadorJuego::Dibuja()
 {
@@ -94,22 +101,26 @@ void CoordinadorJuego::Dibuja()
 	else if (estado == JUEGO)
 	{
 		mundo.Dibuja();
-	
+
 
 	}
 	else if (estado == PUNTO)
 	{
 		mundo.Dibuja();
 		InicioPuntoLetras();
-		
-	}	
+
+	}
 	else if (estado == FIN)
 	{
 
 		mundo.Dibuja();
 		FinJuegoLetras();
+<<<<<<< HEAD
 	
 			
+=======
+
+>>>>>>> refs/remotes/origin/master
 	}
 }
 
@@ -124,23 +135,31 @@ void CoordinadorJuego::Mueve()
 		int puntos_i = mundo.GetPuntoI();
 		if ((botes_d == maxBotes) || (botes_i == maxBotes))
 		{
-			cout<<"------------------------------------MARCADOR------------------------------------ \n\t\t\t    Cristiano " <<puntos_d <<" - Messi "<< puntos_i<<"\n"<<endl;
-			
+			cout << "------------------------------------MARCADOR------------------------------------ \n\t\t\t    Cristiano " << puntos_d << " - Messi " << puntos_i << "\n" << endl;
+
 			estado = PREPARADO;
 
 		}
 
-		if (puntos_d == maxPuntos) 
+		if (puntos_d == maxPuntos)
 		{
-			
+
 			mundo.SetPuntosI();
+<<<<<<< HEAD
 			cout<<"\t     Cristiano es el ganador!!( y el mejor jugador del mundo)"<<endl;
+=======
+			cout << "\t     Cristiano es el ganador!!( y el mejor jugador del mundo)" << endl;
+>>>>>>> refs/remotes/origin/master
 			estado = FIN;
 		}
 		else if (puntos_i == maxPuntos){
 
 			mundo.SetPuntosD();
+<<<<<<< HEAD
 			cout<<"\t\t\t    Messi es el ganador!!!"<<endl;
+=======
+			cout << "\t\t\t    Messi es el ganador!!!" << endl;
+>>>>>>> refs/remotes/origin/master
 			estado = FIN;
 		}
 	}
@@ -204,29 +223,26 @@ void CoordinadorJuego::FinJuegoLetras(){
 	glTranslatef(-4.0f, 18.0f, 1.0f);
 	ETSIDI::setTextColor(1, 1, 0);
 	ETSIDI::print("Pulsa (espacio) para revancha!", "fuentes/Bitwise.ttf", 12);
-	
+
 	glTranslatef(0.0f, -2.0f, 0.0f);
 	ETSIDI::setTextColor(0, 0, 0);
 	ETSIDI::print("Pulsa (s) para salir", "fuentes/Bitwise.ttf", 12);
 
-	
+
 	if (mundo.GetGanadorD()){
 		glTranslatef(14.0f, -14.5f, 0.0f);
 		ETSIDI::setTextColor(0, 0, 0);
 		ETSIDI::print("Messi", "fuentes/Bitwise.ttf", 12);
-	
-		
-		
+
 	}
 
 	if (mundo.GetGanadorI()){
 		glTranslatef(-10.0f, -14.5f, 0.0f);
 		ETSIDI::setTextColor(0, 0, 0);
 		ETSIDI::print("Cristiano ", "fuentes/Bitwise.ttf", 12);
-	
-		
-		
+
+
+
 	}
 }
 
-	
