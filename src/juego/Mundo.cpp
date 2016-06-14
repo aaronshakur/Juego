@@ -173,24 +173,24 @@ void Mundo::Mueve()
 
 	if (Interaccion::Colision(balon, campo.suelo_d)){
 		contadorBotes_d++;
-		//cout << "Botes en campo de messi : "  << contadorBotes_d << endl;// por si quisiesemos mostrar la puntuacion en el terminal
+		cout << "Botes en campo de messi : "  << contadorBotes_d << endl;// por si quisiesemos mostrar la puntuacion en el terminal
 
 	}
 
 	if (Interaccion::Colision(balon, campo.suelo_i)){
 		contadorBotes_i++;
-		//cout << "Botes en campo de Cristiano : "  << contadorBotes_i << endl;
+		cout << "Botes en campo de Cristiano : "  << contadorBotes_i << endl;
 
 	}
 
 	if (contadorBotes_d == maxBotes){
 		contadorPuntos_i++;
-		//cout<<"Puntos Cristiano: " << contadorPuntos_i<<endl;
+		cout<<"Puntos Cristiano: " << contadorPuntos_i<<endl;
 
 	}
 	if (contadorBotes_i == maxBotes){
 		contadorPuntos_d++;
-		//cout<<"Puntos Messi: " << contadorPuntos_d<<endl;
+		cout<<"Puntos Messi: " << contadorPuntos_d<<endl;
 	}
 
 

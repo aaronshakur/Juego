@@ -30,8 +30,8 @@ private:
 	int contadorPuntos_i;
 	bool punto;
 	bool bote;
-	bool ganadori=0;
-	bool ganadord=0;
+	bool ganadori;
+	bool ganadord;
 
 	friend class campo;
 	friend class interaccion;
